@@ -2,6 +2,7 @@ package rs.levi9.survey.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import rs.levi9.survey.model.CustomAnswer;
 import rs.levi9.survey.model.Question;
 import rs.levi9.survey.repository.QuestionRepository;
 
@@ -31,5 +32,11 @@ public class QuestionService {
 
     public void delete(Long id) {
         questionRepository.deleteById(id);
+    }
+
+    public void saveCustomAnswer(CustomAnswer customAnswer) {
+        Question question = getOne(customAnswer.getQuestionId());
+        question.getCustomAnswers().add(customAnswer);
+        save(question);
     }
 }

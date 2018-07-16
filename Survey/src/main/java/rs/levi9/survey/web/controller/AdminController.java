@@ -20,7 +20,7 @@ public class AdminController {
         this.adminService = adminService;
     }
 
-    @RequestMapping(path = "/{id}", method = RequestMethod.GET)
+    @GetMapping(path = "/{id}")
     public ResponseEntity getOne(@PathVariable("id") Long id) {
         Admin admin = adminService.getOne(id);
         if (admin == null) {
@@ -29,18 +29,18 @@ public class AdminController {
         return new ResponseEntity(admin, HttpStatus.OK);
     }
 
-    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(path = "/{id}")
     public ResponseEntity delete(@PathVariable("id") Long id) {
         adminService.delete(id);
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public Admin save(@RequestBody Admin admin) {
         return adminService.save(admin);
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
+    @PutMapping
     public Admin update(@RequestBody Admin admin) {
         return adminService.save(admin);
     }

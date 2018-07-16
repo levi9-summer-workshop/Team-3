@@ -6,4 +6,5 @@ import rs.levi9.survey.model.Answer;
 
 @Repository
 public interface AnswerRepository extends JpaRepository<Answer, Long> {
+
 }

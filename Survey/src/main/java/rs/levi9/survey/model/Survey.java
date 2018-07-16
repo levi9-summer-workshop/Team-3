@@ -1,9 +1,6 @@
 package rs.levi9.survey.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
@@ -12,15 +9,17 @@ import java.util.List;
 @Table(name = "survey")
 public class Survey extends BaseEntity implements Serializable {
 
+    private Long timesSubmitted;
+
     @NotNull
     @Column(nullable = false)
     private String description;
 
     @NotNull
     @Column(nullable = false)
-    private Boolean isOpen;
+    private boolean isOpen;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @NotNull
     @Column(nullable = false)
     private List<Question> questionList;
@@ -28,10 +27,29 @@ public class Survey extends BaseEntity implements Serializable {
     public Survey() {
     }
 
-    public Survey(@NotNull String description, @NotNull Boolean isOpen, @NotNull List<Question> questionList) {
+    public Survey(@NotNull String description, @NotNull boolean isOpen, @NotNull List<Question> questionList) {
         this.description = description;
         this.isOpen = isOpen;
         this.questionList = questionList;
+    }
+
+    public Survey(Long timesSubmitted, @NotNull String description, @NotNull boolean isOpen, @NotNull List<Question> questionList) {
+        this.timesSubmitted = timesSubmitted;
+        this.description = description;
+        this.isOpen = isOpen;
+        this.questionList = questionList;
+    }
+
+    public Long getTimesSubmitted() {
+        return timesSubmitted;
+    }
+
+    public void setTimesSubmitted(Long timesSubmitted) {
+        this.timesSubmitted = timesSubmitted;
+    }
+
+    public void incrTimesSubmitted() {
+        timesSubmitted++;
     }
 
     public String getDescription() {
@@ -42,11 +60,11 @@ public class Survey extends BaseEntity implements Serializable {
         this.description = description;
     }
 
-    public Boolean getOpen() {
+    public boolean getOpen() {
         return isOpen;
     }
 
-    public void setOpen(Boolean open) {
+    public void setOpen(boolean open) {
         isOpen = open;
     }
 

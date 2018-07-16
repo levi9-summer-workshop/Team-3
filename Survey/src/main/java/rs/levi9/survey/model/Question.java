@@ -11,35 +11,51 @@ public class Question extends BaseEntity implements Serializable {
 
     @NotNull
     @Column(nullable = false)
-    private String text;
+    private String questionText;
 
-    @OneToMany()
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<CustomAnswer> customAnswers;
+
+    @OneToMany(cascade = CascadeType.ALL)
     @NotNull
     @Column(nullable = false)
-    private List<Answer> answer;
-
+    private List<Answer> answerList;
 
     public Question() {
     }
 
-    public Question(@NotNull String text, List<Answer> answer) {
-        this.text = text;
-        this.answer = answer;
+    public Question(@NotNull String questionText, List<Answer> answerList) {
+        this.questionText = questionText;
+        this.answerList = answerList;
     }
 
-    public String getText() {
-        return text;
+    public Question(@NotNull String questionText, List<CustomAnswer> customAnswers, @NotNull List<Answer> answerList) {
+        this.questionText = questionText;
+        this.customAnswers = customAnswers;
+        this.answerList = answerList;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public String getQuestionText() {
+        return questionText;
     }
 
-    public List<Answer> getAnswer() {
-        return answer;
+    public void setQuestionText(String questionText) {
+        this.questionText = questionText;
     }
 
-    public void setAnswer(List<Answer> answer) {
-        this.answer = answer;
+    public List<Answer> getAnswerList() {
+        return answerList;
+    }
+
+    public void setAnswerList(List<Answer> answerList) {
+        this.answerList = answerList;
+    }
+
+    public List<CustomAnswer> getCustomAnswers() {
+        return customAnswers;
+    }
+
+    public void setCustomAnswers(List<CustomAnswer> customAnswers) {
+        this.customAnswers = customAnswers;
     }
 }

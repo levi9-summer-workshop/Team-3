@@ -1,35 +1,30 @@
 package rs.levi9.survey.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "answer")
+@Table(name = "answerText")
 public class Answer extends BaseEntity implements Serializable {
 
-    @NotNull
-    @Column(nullable = false)
-    private String text;
+    private String answerText;
 
-    @NotNull
-    @Column(nullable = false)
     private int timesChosen;
 
     public Answer() {
     }
 
-    public Answer(String text, int timesChosen) {
-        this.text = text;
+    public Answer(String answerText, int timesChosen) {
+        this.answerText = answerText;
         this.timesChosen = timesChosen;
     }
 
-    public String getText() {
-        return text;
+    public String getAnswerText() {
+        return answerText;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setAnswerText(String answerText) {
+        this.answerText = answerText;
     }
 
     public int getTimesChosen() {
@@ -38,5 +33,9 @@ public class Answer extends BaseEntity implements Serializable {
 
     public void setTimesChosen(int timesChosen) {
         this.timesChosen = timesChosen;
+    }
+
+    public void incrementTimesChosen() {
+        this.timesChosen++;
     }
 }

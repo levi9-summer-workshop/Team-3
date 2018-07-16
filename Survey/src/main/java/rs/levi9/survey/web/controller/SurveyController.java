@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.levi9.survey.model.Survey;
+import rs.levi9.survey.model.dto.SubmittedSurvey;
 import rs.levi9.survey.service.SurveyService;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class SurveyController {
         this.surveyService = surveyService;
     }
 
-    @RequestMapping(path = "/{id}", method = RequestMethod.GET)
+    @GetMapping(path = "/{id}")
     public ResponseEntity getOne(@PathVariable("id") Long id) {
         Survey survey = surveyService.getOne(id);
         if (survey == null) {
@@ -29,24 +30,29 @@ public class SurveyController {
         return new ResponseEntity(survey, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     public List<Survey> findAll() {
         return surveyService.findAll();
     }
 
-    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
+    @DeleteMapping(path = "/{id}")
     public ResponseEntity delete(@PathVariable("id") Long id) {
         surveyService.delete(id);
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     public Survey save(@RequestBody Survey survey) {
         return surveyService.save(survey);
     }
 
-    @RequestMapping(method = RequestMethod.PUT)
+    @PutMapping
     public Survey update(@RequestBody Survey survey) {
         return surveyService.save(survey);
+    }
+
+    @PostMapping("/filled")
+    public void saveSubmittedSurvey(@RequestBody SubmittedSurvey submittedSurvey) {
+        surveyService.saveFilledSurvey(submittedSurvey);
     }
 }
