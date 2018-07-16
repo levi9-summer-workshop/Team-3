@@ -41,6 +41,11 @@ public class SurveyService {
         surveyRepository.deleteById(id);
     }
 
+    /**
+     * This method will increment the amount of times a Survey has been submitted.
+     *
+     * @param id - id of the Survey whos number should be incremented.
+     */
     private void incrementTimesSubmitted(Long id) {
         Survey s = getOne(id);
         s.incrTimesSubmitted();
@@ -56,7 +61,6 @@ public class SurveyService {
     public void saveFilledSurvey(SubmittedSurvey submittedSurvey) {
 
         incrementTimesSubmitted(submittedSurvey.getSurveyId());
-
         for (Answer answer : submittedSurvey.getAnswerList()) {
             answerService.incrementAnswerCount(answer.getId());
         }

@@ -13,6 +13,9 @@ public class SubmittedSurvey {
 
     private List<CustomAnswer> customAnswerList;
 
+    public SubmittedSurvey() {
+    }
+
     public SubmittedSurvey(Long surveyId, List<Answer> answerList) {
         this.surveyId = surveyId;
         this.answerList = answerList;
