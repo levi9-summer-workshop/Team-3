@@ -1,12 +1,14 @@
 
-<form> 
+
+
+<form (ngSubmit)="takeLoginData(f)" #f="ngForm"> 
     <div id = "loginform">
     <div class="container">
     <!--  <label for="uname">Please Enter Username</label><br> -->
     <br>
-      <input type="text" style="width: 350px;" placeholder="Enter Username" name="uname" required><br>
-   <!--   <label for="psw">Please Enter Password</label> --><br> 
-      <input type="password" style="width: 350px;" placeholder="Enter Password" name="psw" required> <br> <br>
+      <input type="text"  name="uss"  ngModel style="width: 350px;" placeholder="Enter Username"required><br>
+     <br>
+      <input type="password"  name="pass" ngModel style="width: 350px;" placeholder="Enter Password" required> <br> <br>
       <button style="width: 170px;" type="submit">Login</button>
       <button  style="width: 170px;"type="button" class="cancelbtn">Cancel</button>
      </div>
@@ -16,4 +18,3 @@
     </div>
     </div>
 </form>
-
