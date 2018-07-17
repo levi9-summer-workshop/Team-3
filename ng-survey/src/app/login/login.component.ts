@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   }
 
     public takeLoginData(form: NgForm){
-     this.setSurveyUser(form.value.uss, form.value.pass);
+     this.setSurveyUser(form.value.username, form.value.password);
      this.printSurveyProperties();
   }
   

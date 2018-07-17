@@ -1,17 +1,21 @@
 
-
-
 <form (ngSubmit)="takeLoginData(f)" #f="ngForm"> 
+ 
     <div id = "loginform">
     <div class="container">
-    <!--  <label for="uname">Please Enter Username</label><br> -->
+        <h3>Please enter your credentials</h3>
     <br>
-      <input type="text"  name="uss"  ngModel style="width: 350px;" placeholder="Enter Username"required><br>
-     <br>
-      <input type="password"  name="pass" ngModel style="width: 350px;" placeholder="Enter Password" required> <br> <br>
+    <div *ngIf="username.invalid && (username.dirty || username.touched)"class="alert alert-danger">Please enter username</div>
+      <input class="form-control" type="text" name="username" required minLength = "5" 
+      ngModel style="width: 350px;"  [(ngModel)] ="user.username" #username="ngModel" placeholder="Enter Username"><br>
+     
+     <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">Please enter password</div>
+      <input class="form-control"  [(ngModel)] ="user.password" #password="ngModel" type="password" required minLength = "5" name="password" 
+      ngModel style="width: 350px;" placeholder="Enter Password"> <br>
+
       <button style="width: 170px;" type="submit">Login</button>
       <button  style="width: 170px;"type="button" class="cancelbtn">Cancel</button>
-     </div>
+     </div> <br>
     <div class="container" >
       <span class="psw">Forgot <a href="#">password?</a></span>
       <span class="psw">No account?<a href="#"> Register!</a></span>
