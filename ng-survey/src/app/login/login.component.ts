@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SurveyUser } from '../model/survey-user.model';
+import { SurveyUser } from '../survey-user/survey-user.model';
 import { NgForm } from '@angular/forms';
 
 @Component({

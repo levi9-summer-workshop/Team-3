@@ -4,10 +4,12 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './login/login.component';
+import { SurveyUserListComponent } from './survey-user-list/survey-user-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: LoginComponent }
+  { path: 'home', component: LoginComponent },
+  { path: "user", component: SurveyUserListComponent}
 ];
 
 
