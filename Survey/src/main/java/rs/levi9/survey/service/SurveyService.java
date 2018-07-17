@@ -38,7 +38,7 @@ public class SurveyService {
     }
 
     public void delete(Long id) {
-        surveyRepository.deleteById(id);
+        surveyRepository.delete(id);
     }
 
     /**

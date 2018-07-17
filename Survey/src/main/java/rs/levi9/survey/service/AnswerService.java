@@ -32,7 +32,7 @@ public class AnswerService {
     }
 
     public void delete(Long id) {
-        answerRepository.deleteById(id);
+        answerRepository.delete(id);
     }
 
     public void incrementAnswerCount(Long id) {

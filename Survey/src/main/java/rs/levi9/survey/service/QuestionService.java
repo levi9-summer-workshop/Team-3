@@ -31,7 +31,7 @@ public class QuestionService {
     }
 
     public void delete(Long id) {
-        questionRepository.deleteById(id);
+        questionRepository.delete(id);
     }
 
     public void saveCustomAnswer(CustomAnswer customAnswer) {

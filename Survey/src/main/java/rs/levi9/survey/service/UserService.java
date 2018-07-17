@@ -28,7 +28,7 @@ public class UserService {
     }
 
     public void delete(Long id) {
-        userRepository.deleteById(id);
+        userRepository.delete(id);
     }
 
     public User findUser(String uss, String pass) {
