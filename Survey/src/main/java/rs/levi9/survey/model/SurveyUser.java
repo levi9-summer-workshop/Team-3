@@ -9,8 +9,8 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name = "user")
-public class User extends BaseEntity implements Serializable {
+@Table(name = "survey_user")
+public class SurveyUser extends BaseEntity implements Serializable {
 
     @NotNull
     @Column(nullable = false)
@@ -29,10 +29,10 @@ public class User extends BaseEntity implements Serializable {
     @OneToMany
     private List<Survey> surveyList;
 
-    public User() {
+    public SurveyUser() {
     }
 
-    public User(@NotNull String username, @NotNull String email, @NotNull String password, @NotNull List<Survey> surveyList) {
+    public SurveyUser(@NotNull String username, @NotNull String email, @NotNull String password, @NotNull List<Survey> surveyList) {
         this.username = username;
         this.email = email;
         this.password = password;

@@ -35,7 +35,7 @@ public class QuestionService {
     }
 
     public void saveCustomAnswer(CustomAnswer customAnswer) {
-        Question question = getOne(customAnswer.getQuestionId());
+        Question question = getOne(customAnswer.getQuestion().getId());
         question.getCustomAnswers().add(customAnswer);
         save(question);
     }

@@ -1,7 +1,7 @@
 package rs.levi9.survey.service;
 
 import org.springframework.stereotype.Service;
-import rs.levi9.survey.model.User;
+import rs.levi9.survey.model.SurveyUser;
 import rs.levi9.survey.repository.UserRepository;
 
 import java.util.List;
@@ -15,23 +15,23 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User getOne(Long id) {
+    public SurveyUser getOne(Long id) {
         return userRepository.getOne(id);
     }
 
-    public List<User> findAll() {
+    public List<SurveyUser> findAll() {
         return userRepository.findAll();
     }
 
-    public User save(User user) {
-        return userRepository.save(user);
+    public SurveyUser save(SurveyUser surveyUser) {
+        return userRepository.save(surveyUser);
     }
 
     public void delete(Long id) {
         userRepository.delete(id);
     }
 
-    public User findUser(String uss, String pass) {
+    public SurveyUser findUser(String uss, String pass) {
         return (userRepository.findUserByEmailAndPassword(uss, pass) == null) ? userRepository.findUserByUsernameAndPassword(uss, pass) : userRepository.findUserByEmailAndPassword(uss, pass);
     }
 }

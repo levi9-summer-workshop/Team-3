@@ -2,13 +2,13 @@ package rs.levi9.survey.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import rs.levi9.survey.model.User;
+import rs.levi9.survey.model.SurveyUser;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
+public interface UserRepository extends JpaRepository<SurveyUser, Long> {
 
-    User findUserByEmailAndPassword(String email, String password);
+    SurveyUser findUserByEmailAndPassword(String email, String password);
 
-    User findUserByUsernameAndPassword(String username, String password);
+    SurveyUser findUserByUsernameAndPassword(String username, String password);
 
 }

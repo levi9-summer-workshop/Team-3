@@ -1,6 +1,7 @@
 package rs.levi9.survey.model;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
 
@@ -8,24 +9,26 @@ import java.io.Serializable;
 @Table(name = "custom_answer")
 public class CustomAnswer extends BaseEntity implements Serializable {
 
-    private Long questionId;
+
+    @ManyToOne
+    private Question question;
 
     private String customAnswer;
 
     public CustomAnswer() {
     }
 
-    public CustomAnswer(Long questionId, String customAnswer) {
-        this.questionId = questionId;
+    public CustomAnswer(Question question, String customAnswer) {
+        this.question = question;
         this.customAnswer = customAnswer;
     }
 
-    public Long getQuestionId() {
-        return questionId;
+    public Question getQuestion() {
+        return question;
     }
 
-    public void setQuestionId(Long questionId) {
-        this.questionId = questionId;
+    public void setQuestion(Question question) {
+        this.question = question;
     }
 
     public String getCustomAnswer() {
