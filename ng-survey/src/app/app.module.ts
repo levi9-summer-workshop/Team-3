@@ -12,14 +12,12 @@ import { SurveyUserComponent } from './survey-user/survey-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SurveyUserService } from './survey-user/survey-user.service';
 import { SurveyUserListComponent } from './survey-user-list/survey-user-list.component';
-<<<<<<< HEAD
 import { SurveyCreatePageComponent } from './survey-create-page/survey-create-page.component';
 import { SurveyAnswerComponent } from './survey-answer/survey-answer.component';
 import { SurveyQuestionComponent } from './survey-question/survey-question.component';
 import { SurveyComponent } from './survey/survey.component';
-=======
 import { RegistrationComponent } from './registration/registration.component';
->>>>>>> login-and-signup
+
 
 @NgModule({
   declarations: [
@@ -30,14 +28,13 @@ import { RegistrationComponent } from './registration/registration.component';
     LoginComponent,
     SurveyUserComponent,
     SurveyUserListComponent,
-<<<<<<< HEAD
+
     SurveyCreatePageComponent,
     SurveyAnswerComponent,
     SurveyQuestionComponent,
-    SurveyComponent
-=======
+    SurveyComponent,
     RegistrationComponent
->>>>>>> login-and-signup
+
   ],
   imports: [
     BrowserModule,
