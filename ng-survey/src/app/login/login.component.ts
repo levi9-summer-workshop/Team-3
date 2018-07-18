@@ -12,6 +12,8 @@ export class LoginComponent implements OnInit {
 
   public user: SurveyUser;
   public loggedUser : SurveyUser;
+  public errorMessage : string;
+
   constructor(private surveyService: SurveyUserService) { }
 
   ngOnInit() {
@@ -25,10 +27,10 @@ export class LoginComponent implements OnInit {
       this.loggedUser = data; 
     },
     (error) => { 
-      console.log(error);
+        this.errorMessage = error;
     },
     () => {
-        console.log("IT'S COMPLETE!");
+        console.log("User logged in!");
     });
   }
   

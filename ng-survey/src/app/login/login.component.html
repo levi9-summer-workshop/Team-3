@@ -2,7 +2,12 @@
 <form (ngSubmit)="takeLoginData(f)" #f="ngForm"> 
  
     <div id = "loginform">
+            <div *ngIf="errorMessage">  
+                    <h1 style="color:RED"> BAD CREDENTIALS!</h1>
+                </div>
     <div class="container">
+        
+   
         <h3>Please enter your credentials</h3>
     <br>
     <div *ngIf="username.invalid && (username.dirty || username.touched)"class="alert alert-danger">Please enter username</div>
@@ -12,8 +17,8 @@
      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">Please enter password</div>
       <input class="form-control"  [(ngModel)] ="user.password" #password="ngModel" type="password" required minLength = "5" name="password" 
       ngModel style="width: 350px;" placeholder="Enter Password"> <br>
-
-      <button [disabled] = "f.invalid" style="width: 170px;" type="submit">Login</button>
+        
+      <button [disabled] = "f.invalid" style="width: 170px;" type = "submit">Login</button>
       <button  style="width: 170px;"type="button" class="cancelbtn">Cancel</button>
      </div> <br>
     <div class="container" >
