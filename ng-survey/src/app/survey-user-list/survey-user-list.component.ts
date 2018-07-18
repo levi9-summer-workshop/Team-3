@@ -14,7 +14,7 @@ export class SurveyUserListComponent implements OnInit {
     this.surveyService.get().subscribe(data => { 
       this.users = data; 
     },
-    (error) => {
+    (error) => { 
       console.log(error);
     },
     () => {
