@@ -12,19 +12,15 @@ import java.util.List;
 @Table(name = "survey_user")
 public class SurveyUser extends BaseEntity implements Serializable {
 
-    @NotNull
     @Column(nullable = false)
     private String username;
 
-    @NotNull
     @Column(nullable = false)
     private String email;
 
-    @NotNull
     @Column(nullable = false)
     private String password;
 
-    @NotNull
     @Column(nullable = false)
     @OneToMany
     private List<Survey> surveyList;

@@ -8,8 +8,8 @@ import java.io.Serializable;
 public class Answer extends BaseEntity implements Serializable {
 
     private String answerText;
-
     private int timesChosen;
+    private boolean isCustom;
 
     public Answer() {
     }
@@ -17,6 +17,20 @@ public class Answer extends BaseEntity implements Serializable {
     public Answer(String answerText, int timesChosen) {
         this.answerText = answerText;
         this.timesChosen = timesChosen;
+    }
+
+    public Answer(String answerText, int timesChosen, boolean isCustom) {
+        this.answerText = answerText;
+        this.timesChosen = timesChosen;
+        this.isCustom = isCustom;
+    }
+
+    public boolean isCustom() {
+        return isCustom;
+    }
+
+    public void setCustom(boolean custom) {
+        isCustom = custom;
     }
 
     public String getAnswerText() {

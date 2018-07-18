@@ -11,29 +11,26 @@ public class Survey extends BaseEntity implements Serializable {
 
     private Long timesSubmitted;
 
-    @NotNull
     @Column(nullable = false)
     private String description;
 
-    @NotNull
     @Column(nullable = false)
     private boolean isOpen;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @NotNull
     @Column(nullable = false)
     private List<Question> questionList;
 
     public Survey() {
     }
 
-    public Survey(@NotNull String description, @NotNull boolean isOpen, @NotNull List<Question> questionList) {
+    public Survey(String description, boolean isOpen, List<Question> questionList) {
         this.description = description;
         this.isOpen = isOpen;
         this.questionList = questionList;
     }
 
-    public Survey(Long timesSubmitted, @NotNull String description, @NotNull boolean isOpen, @NotNull List<Question> questionList) {
+    public Survey(Long timesSubmitted, String description, boolean isOpen, List<Question> questionList) {
         this.timesSubmitted = timesSubmitted;
         this.description = description;
         this.isOpen = isOpen;

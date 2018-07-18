@@ -31,10 +31,6 @@ public class UserController {
         user.add(new SurveyUser("444", "ddd"));
         user.add(new SurveyUser("555", "eee"));
         user.add(new SurveyUser("666", "fff"));
-            boolean t = true;
-            if(t){
-                return new ResponseEntity(user,HttpStatus.BAD_REQUEST);
-            }
         user.add(new SurveyUser("777", "ggg"));
         user.add(new SurveyUser("aaaaaaaaaaaa", "bbbbbbbbbb"));
         return new ResponseEntity(user, HttpStatus.OK);
@@ -49,5 +45,4 @@ public class UserController {
             return new ResponseEntity(user, HttpStatus.OK);
         }
     }
-
 }

@@ -3,7 +3,6 @@ package rs.levi9.survey.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.levi9.survey.model.Answer;
-import rs.levi9.survey.model.CustomAnswer;
 import rs.levi9.survey.model.Survey;
 import rs.levi9.survey.model.dto.SubmittedSurvey;
 import rs.levi9.survey.repository.SurveyRepository;
@@ -62,10 +61,11 @@ public class SurveyService {
 
         incrementTimesSubmitted(submittedSurvey.getSurveyId());
         for (Answer answer : submittedSurvey.getAnswerList()) {
-            answerService.incrementAnswerCount(answer.getId());
-        }
-        for (CustomAnswer customAnswer : submittedSurvey.getCustomAnswerList()) {
-            questionService.saveCustomAnswer(customAnswer);
+            if (!answer.isCustom()) {
+                answerService.incrementAnswerCount(answer.getId());
+            }else {
+                answerService.save(answer);
+            }
         }
     }
 }
