@@ -32,6 +32,12 @@ public class SurveyUser extends BaseEntity implements Serializable {
     public SurveyUser() {
     }
 
+    public SurveyUser(String uss, String pass) {
+        this.username = uss;
+        this.email = uss;
+        this.password = pass;
+    }
+
     public SurveyUser(@NotNull String username, @NotNull String email, @NotNull String password, @NotNull List<Survey> surveyList) {
         this.username = username;
         this.email = email;

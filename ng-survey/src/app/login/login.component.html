@@ -13,7 +13,7 @@
       <input class="form-control"  [(ngModel)] ="user.password" #password="ngModel" type="password" required minLength = "5" name="password" 
       ngModel style="width: 350px;" placeholder="Enter Password"> <br>
 
-      <button style="width: 170px;" type="submit">Login</button>
+      <button [disabled] = "f.invalid" style="width: 170px;" type="submit">Login</button>
       <button  style="width: 170px;"type="button" class="cancelbtn">Cancel</button>
      </div> <br>
     <div class="container" >

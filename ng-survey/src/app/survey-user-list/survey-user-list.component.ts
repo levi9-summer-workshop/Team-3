@@ -10,9 +10,15 @@ export class SurveyUserListComponent implements OnInit {
   users : Array<any>;
   constructor(private surveyService: SurveyUserService) { }
 
-  ngOnInit() {
+    ngOnInit() {
     this.surveyService.get().subscribe(data => { 
       this.users = data; 
+    },
+    (error) => {
+      console.log(error);
+    },
+    () => {
+        console.log("IT'S COMPLETE!");
     });
   }
 }
