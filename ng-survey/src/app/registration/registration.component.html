@@ -1,0 +1,39 @@
+<body>
+  <div class="signup-form">	
+    <form (ngSubmit)="takeSignUpData(f)" #f="ngForm">
+		<h2>Sign up</h2>
+        <div class="form-group">
+			<div class="input-group">
+				<span class="input-group-addon"></span>
+        <input class="form-control" type="text" name="username" #username="ngModel" ngModel required placeholder="Username" [ngClass]="{'is-invalid': username.invalid && (username.dirty || username.touched)}">
+        <div class="invalid-feedback" *ngIf="username.invalid && (username.dirty || username.touched)">Please enter your username!</div>
+      </div>
+        </div>
+        <div class="form-group">
+			<div class="input-group">
+        <span class="input-group-addon"></span>
+				<input class="form-control" type="email" name="email" email #email="ngModel" ngModel required placeholder="Email Address" [ngClass]="{'is-invalid': email.invalid && (email.dirty || email.touched)}">
+        <div class="invalid-feedback" *ngIf="email.invalid && (email.dirty || email.touched)">Please enter your e-mail!</div>
+      </div>
+        </div>
+		<div class="form-group">
+			<div class="input-group">
+        <span class="input-group-addon"></span>
+				<input class="form-control" type="text" name="password" #password="ngModel" ngModel required placeholder="Password" [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched)}">
+        <div class="invalid-feedback" *ngIf="password.invalid && (password.dirty || password.touched)">Please enter your password!</div>
+      </div>
+        </div>
+		<div class="form-group">
+			<div class="input-group">
+        <span class="input-group-addon"></span>
+				<input class="form-control" type="text" name="confirm_password" #confirm_password="ngModel" ngModel required placeholder="Confirm Password" [ngClass]="{'is-invalid': confirm_password.invalid && (confirm_password.dirty || confirm_password.touched)}">
+        <div class="invalid-feedback" *ngIf="confirm_password.invalid && (confirm_password.dirty || confirm_password.touched)">You need to confirm your password!</div>
+      </div>
+        </div>        
+		<div class="form-group">
+            <button type="submit" [disabled]="f.invalid" class="btn btn-primary btn-block btn-lg">Sign Up</button>
+        </div>
+    </form>
+	<div class="text-center font">Already have an account? <a href="home">Login here</a>.</div>
+</div>
+</body>

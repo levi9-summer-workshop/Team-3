@@ -6,12 +6,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SurveyUserListComponent } from './survey-user-list/survey-user-list.component';
 import { SurveyCreatePageComponent } from './survey-create-page/survey-create-page.component';
+import { RegistrationComponent } from './registration/registration.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: LoginComponent },
   { path: "user", component: SurveyUserListComponent},
-  {path: "survey", component: SurveyCreatePageComponent }
+  {path: "survey", component: SurveyCreatePageComponent },
+  { path: "registration", component: RegistrationComponent }
+
 ];
 
 
