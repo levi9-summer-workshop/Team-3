@@ -12,6 +12,7 @@ import { SurveyUserComponent } from './survey-user/survey-user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SurveyUserService } from './survey-user/survey-user.service';
 import { SurveyUserListComponent } from './survey-user-list/survey-user-list.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SurveyUserListComponent } from './survey-user-list/survey-user-list.com
     FooterComponent,
     LoginComponent,
     SurveyUserComponent,
-    SurveyUserListComponent
+    SurveyUserListComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,

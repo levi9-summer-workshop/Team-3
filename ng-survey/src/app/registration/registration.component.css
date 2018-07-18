@@ -52,10 +52,14 @@ body {
 .signup-form .btn {        
     font-size: 16px;
     font-weight: bold;
+    background: #19aa8d;
     border-radius: 3px;
     border: none;
     min-width: 140px;
     outline: none !important;
+}
+.signup-form .btn:hover, .signup-form .btn:focus {
+    background: #179b81;
 }
 .signup-form a {
     color: #19aa8d;
@@ -64,7 +68,12 @@ body {
 .signup-form a:hover {
     text-decoration: underline;
 }
-
+.signup-form .fa {
+    font-size: 21px;
+}
+.signup-form .fa-paper-plane {
+    font-size: 17px;
+}
 .signup-form .fa-check {
     color: #fff;
     left: 9px;
@@ -75,12 +84,6 @@ body {
 
 .font {
     color: #999;
-    font-size: 13px;
-    font-family: 'Roboto', sans-serif;
-}
-
-.font-highlights {
-    color: turquoise;
     font-size: 13px;
     font-family: 'Roboto', sans-serif;
 }

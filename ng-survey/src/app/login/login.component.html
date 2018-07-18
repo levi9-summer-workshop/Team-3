@@ -1,24 +1,49 @@
 
-<form (ngSubmit)="takeLoginData(f)" #f="ngForm"> 
- 
-    <div id = "loginform">
+    <!-- <div id = "loginform">
     <div class="container">
         <h3>Please enter your credentials</h3>
     <br>
     <div *ngIf="username.invalid && (username.dirty || username.touched)"class="alert alert-danger">Please enter username</div>
       <input class="form-control" type="text" name="username" required minLength = "5" 
-      ngModel style="width: 350px;"  [(ngModel)] ="user.username" #username="ngModel" placeholder="Enter Username"><br>
+      ngModel style="width: 350px;"  [(ngModel)] ="user.username" #username="ngModel" placeholder="Enter Username"><br> 
      
-     <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">Please enter password</div>
+    <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">Please enter password</div>
       <input class="form-control"  [(ngModel)] ="user.password" #password="ngModel" type="password" required minLength = "5" name="password" 
       ngModel style="width: 350px;" placeholder="Enter Password"> <br>
-
       <button [disabled] = "f.invalid" style="width: 170px;" type="submit">Login</button>
       <button  style="width: 170px;"type="button" class="cancelbtn">Cancel</button>
-     </div> <br>
+     
+    </div> <br>
     <div class="container" >
       <span class="psw">Forgot <a href="#">password?</a></span>
       <span class="psw">No account?<a href="#"> Register!</a></span>
     </div>
-    </div>
-</form>
+    </div> -->
+<body>
+    <div class="signup-form">	
+        <form (ngSubmit)="takeLoginData(f)" #f="ngForm">
+            <h2>Sign in</h2>
+              <div class="form-group">
+                <div class="input-group">
+                <span class="input-group-addon"></span>
+                <input class="form-control" type="text" name="username" #username="ngModel" ngModel [(ngModel)] ="user.username" required placeholder="Username or e-mail" [ngClass]="{'is-invalid': username.invalid && (username.dirty || username.touched)}">
+                <div class="invalid-feedback" *ngIf="username.invalid && (username.dirty || username.touched)">Please enter your username or e-mail!</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                <span class="input-group-addon"></span>
+                <input class="form-control" type="password" name="password" #password="ngModel" ngModel [(ngModel)] ="user.password" required placeholder="Password" [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched)}">
+              <div class="invalid-feedback" *ngIf="password.invalid && (password.dirty || password.touched)">Please enter your password!</div>
+            </div>
+              </div>     
+              <div class="form-group">
+                  <button type="submit" [disabled]="f.invalid" class="btn btn-primary btn-block btn-lg">Sign In</button>
+              </div>
+              <div>
+                    <span class="font">Forgot <a href="#" class="font-highlights">password?</a></span>
+                    <span class="font">No account? <a href="registration" class="font-highlights">Register!</a></span>
+              </div>
+          </form>
+      </div>
+      </body>
