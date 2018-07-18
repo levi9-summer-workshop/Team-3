@@ -1,10 +1,6 @@
 package rs.levi9.survey.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
@@ -21,8 +17,7 @@ public class SurveyUser extends BaseEntity implements Serializable {
     @Column(nullable = false)
     private String password;
 
-    @Column(nullable = false)
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Survey> surveyList;
 
     public SurveyUser() {
@@ -31,10 +26,15 @@ public class SurveyUser extends BaseEntity implements Serializable {
     public SurveyUser(String uss, String pass) {
         this.username = uss;
         this.email = uss;
-        this.password = pass;
     }
 
-    public SurveyUser(@NotNull String username, @NotNull String email, @NotNull String password, @NotNull List<Survey> surveyList) {
+    public SurveyUser(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
+    public SurveyUser(String username, String email, String password, List<Survey> surveyList) {
         this.username = username;
         this.email = email;
         this.password = password;

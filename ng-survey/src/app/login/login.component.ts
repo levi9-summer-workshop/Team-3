@@ -20,10 +20,9 @@ export class LoginComponent implements OnInit {
     this.user = new SurveyUser();
     }
 
-    public takeLoginData(form: NgForm){
-
-     this.setSurveyUser(form.value.username, form.value.password); 
-     this.surveyService.post(this.user).subscribe(data => { 
+    public takeLoginData(form: NgForm) {
+      this.setSurveyUser(form.value.username, form.value.password); 
+      this.surveyService.post(this.user).subscribe(data => { 
       this.loggedUser = data; 
     },
     (error) => { 
@@ -34,7 +33,7 @@ export class LoginComponent implements OnInit {
     });
   }
   
-  public setSurveyUser(uss:string, pass:string){
+  public setSurveyUser(uss:string, pass:string) {
     this.user.username = uss;
     this.user.password = pass;   
   }

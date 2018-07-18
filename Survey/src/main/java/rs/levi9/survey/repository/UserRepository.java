@@ -11,4 +11,7 @@ public interface UserRepository extends JpaRepository<SurveyUser, Long> {
 
     SurveyUser findUserByUsernameAndPassword(String username, String password);
 
+    SurveyUser findUserByUsername(String username);
+
+    SurveyUser findUserByEmail(String email);
 }

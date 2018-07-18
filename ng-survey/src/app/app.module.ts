@@ -17,6 +17,7 @@ import { SurveyAnswerComponent } from './survey-answer/survey-answer.component';
 import { SurveyQuestionComponent } from './survey-question/survey-question.component';
 import { SurveyComponent } from './survey/survey.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { RegistrationService } from './registration/registration.service';
 
 
 @NgModule({
@@ -42,7 +43,10 @@ import { RegistrationComponent } from './registration/registration.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [SurveyUserService],
+  providers: [
+    SurveyUserService,
+    RegistrationService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

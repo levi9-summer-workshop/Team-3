@@ -40,9 +40,18 @@ public class UserController {
     public ResponseEntity login(@RequestBody SurveyUser surveyUser){
         SurveyUser user = userService.findUser(surveyUser.getUsername(), surveyUser.getPassword());
         if(user == null){
-            return new ResponseEntity(user,HttpStatus.BAD_REQUEST);
-        }else {
+            return new ResponseEntity(user, HttpStatus.BAD_REQUEST);
+        } else {
             return new ResponseEntity(user, HttpStatus.OK);
+        }
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity register(@RequestBody SurveyUser surveyUser) {
+        if(userService.checkIfUserExists(surveyUser)) {
+            return new ResponseEntity(userService.save(surveyUser), HttpStatus.OK);
+        } else {
+            return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
     }
 }

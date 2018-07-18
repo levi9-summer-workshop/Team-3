@@ -1,4 +1,4 @@
-import { Component } from "../../../node_modules/@angular/core";
+import { Component } from "@angular/core";
 import { SurveyQuestion } from "../survey-question/survey-question.model";
 
 export class Survey {
