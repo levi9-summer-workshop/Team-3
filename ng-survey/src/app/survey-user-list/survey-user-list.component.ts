@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SurveyUserService } from '../survey-user/survey-user.service';
+import { SurveyUser } from '../survey-user/survey-user.model';
 
 @Component({
   selector: 'app-survey-user-list',
@@ -8,11 +9,17 @@ import { SurveyUserService } from '../survey-user/survey-user.service';
 })
 export class SurveyUserListComponent implements OnInit {
   users : Array<any>;
+  currentUser: SurveyUser;
   constructor(private surveyService: SurveyUserService) { }
+  isBlocked : boolean;
 
     ngOnInit() {
     this.surveyService.get().subscribe(data => { 
       this.users = data; 
+      for(let i =0; i< this.users.length; i++){
+          console.log(
+            this.users[i].blocked);
+      }
     },
     (error) => { 
       console.log(error);

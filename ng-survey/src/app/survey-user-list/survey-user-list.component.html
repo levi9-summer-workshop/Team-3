@@ -1,4 +1,24 @@
-<h1> Users </h1>>
-<div *ngFor="let user of users">
-    Username is: {{user.username}}, Password is: {{user.password}}
-</div>
+<div class="container text-center"><h1 class="font">Users</h1></div>
+<table class="table">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center align-middle">#</th>
+            <th scope="col" class="text-center align-middle">Username</th>
+            <th scope="col" class="text-center align-middle">E-mail</th>
+            <th scope="col" class="text-center align-middle">Block</th>
+            <th scope="col" class="text-center align-middle">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let user of users; let i = index'>
+            
+            <th scope="row" class="text-center align-middle"> {{ i + 1 }}</th>
+            <td class="text-center align-middle">{{ user.username }}</td>
+            <td class="text-center align-middle">{{ user.email }} {{user.isBlocked}}</td>
+            <td class="text-center align-middle"><button class="btn btn-info button-size">{{ user.blocked ? 'Unblock' : 'Block'}}</button></td>
+            <td class="text-center align-middle"><button class="btn btn-danger button-size">Delete</button></td>
+          </tr>
+        </tbody>
+</table>
+
+

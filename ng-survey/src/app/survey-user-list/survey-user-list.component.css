@@ -1,0 +1,12 @@
+.text-center {
+    text-align: center;
+  }
+
+  .font {
+    color: darkslategrey;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.button-size {
+    width: 100px;
+}

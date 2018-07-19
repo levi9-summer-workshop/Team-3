@@ -5,5 +5,7 @@ export class SurveyUser {
     public username:string;
     public email:string;
     public password:string;   
+    public blocked:boolean;
+    public blockedUntil:Date;
 
 }
