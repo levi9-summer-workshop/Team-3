@@ -5,8 +5,8 @@
         <div class="form-group">
 			<div class="input-group">
 				<span class="input-group-addon"></span>
-        <input class="form-control" type="text" name="username" #username="ngModel" ngModel [(ngModel)] ="user.username" required placeholder="Username" [ngClass]="{'is-invalid': username.invalid && (username.dirty || username.touched)}">
-        <div class="invalid-feedback" *ngIf="username.invalid && (username.dirty || username.touched)">Please enter your username!</div>
+        <input class="form-control" type="text" name="username" #username="ngModel" ngModel [(ngModel)] ="user.username" required minlength="3" placeholder="Username" [ngClass]="{'is-invalid': username.invalid && (username.dirty || username.touched)}">
+        <div class="invalid-feedback" *ngIf="username.invalid && (username.dirty || username.touched)">Please enter your username (minimum 3 characters)!</div>
       </div>
         </div>
         <div class="form-group">
@@ -19,14 +19,14 @@
 		<div class="form-group">
 			<div class="input-group">
         <span class="input-group-addon"></span>
-				<input class="form-control" type="text" name="password" #password="ngModel" ngModel [(ngModel)] ="user.password" required placeholder="Password" [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched)}">
+				<input class="form-control" type="password" name="password" #password="ngModel" ngModel [(ngModel)] ="user.password" placeholder="Password" required validateEqual="confirmPassword" reverse="true" [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched)}">
         <div class="invalid-feedback" *ngIf="password.invalid && (password.dirty || password.touched)">Please enter your password!</div>
       </div>
         </div>
 		<div class="form-group">
 			<div class="input-group">
         <span class="input-group-addon"></span>
-				<input class="form-control" type="text" name="confirm_password" #confirm_password="ngModel" ngModel required placeholder="Confirm Password" [ngClass]="{'is-invalid': confirm_password.invalid && (confirm_password.dirty || confirm_password.touched)}">
+				<input class="form-control" type="password" name="confirm_password" #confirm_password="ngModel" ngModel placeholder="Confirm Password" required validateEqual="password" [ngClass]="{'is-invalid': confirm_password.invalid && (confirm_password.dirty || confirm_password.touched)}">
         <div class="invalid-feedback" *ngIf="confirm_password.invalid && (confirm_password.dirty || confirm_password.touched)">You need to confirm your password!</div>
       </div>
         </div>        

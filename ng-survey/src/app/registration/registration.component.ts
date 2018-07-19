@@ -13,6 +13,7 @@ export class RegistrationComponent implements OnInit {
 
   public user: SurveyUser;
   public errorMessage : string;
+  public pass: string;
 
   constructor(private registrationService: RegistrationService) { }
 
@@ -24,7 +25,7 @@ export class RegistrationComponent implements OnInit {
  
     console.log(form.value.username);
     console.log(form.value.email);
-    console.log( form.value.password);
+    console.log(form.value.password);
 
     this.insertNewUser(form.value.username, form.value.email, form.value.password);
       this.registrationService.post(this.user).subscribe(data => {
@@ -32,7 +33,6 @@ export class RegistrationComponent implements OnInit {
     },
     (error) => { 
       this.errorMessage = error;
-      console.log("ASDASDASDASDASDASD");
     },
     () => {
       console.log("User registered!");

@@ -11,7 +11,6 @@ export class RegistrationService {
   constructor(private http: HttpClient) { }
 
   post(user: SurveyUser): Observable<any> {
-    console.log("sadasdas");
     return this.http.post("//localhost:8080/user/register", user);
   }
 }

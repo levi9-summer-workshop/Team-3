@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { EqualValidator } from './registration/equal-validator.directive';
 
 
 import { AppComponent } from './app.component';
@@ -34,7 +35,8 @@ import { RegistrationService } from './registration/registration.service';
     SurveyAnswerComponent,
     SurveyQuestionComponent,
     SurveyComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    EqualValidator
 
   ],
   imports: [
