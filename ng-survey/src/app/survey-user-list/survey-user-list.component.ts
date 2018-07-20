@@ -17,7 +17,7 @@ export class SurveyUserListComponent implements OnInit {
     ngOnInit() {
     this.surveyService.get().subscribe(data => { 
       this.users = data; 
-      for(let i =0; i< this.users.length; i++){
+      for(let i = 0; i < this.users.length; i++){
           console.log(
             this.users[i].blocked);
       }
