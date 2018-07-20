@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { SurveyUser } from '../survey-user/survey-user.model';
 import { SurveyUserService } from '../survey-user/survey-user.service';
@@ -15,6 +15,8 @@ export class RegistrationComponent implements OnInit {
   public user: SurveyUser;
   public errorMessage : string;
   public pass: string;
+  public submitted: boolean;
+  public message: string;
 
   constructor(private registrationService: RegistrationService, private router: Router) { }
 
@@ -29,16 +31,21 @@ export class RegistrationComponent implements OnInit {
     console.log(form.value.password);
 
     this.insertNewUser(form.value.username, form.value.email, form.value.password);
+      this.submitted = false;
       this.registrationService.post(this.user).subscribe(data => {
-      this.user = data;
-      this.router.navigate(['/home']);
+      this.user = data;     
+      this.submitted = true;
     },
     (error) => { 
       this.errorMessage = error;
-      window.alert("User with this username or e-mail exists!");
+      this.submitted = false;
+      this.message = "Couldn't register, user with that username or e-mail already exists!";
     },
     () => {
       console.log("User registered!");
+      this.submitted = true;
+      this.message = "You registered succcessfully!"
+      form.reset();
     });
   }
 
@@ -46,5 +53,9 @@ export class RegistrationComponent implements OnInit {
     this.user.username = username;
     this.user.email = email;
     this.user.password = password;
+  }
+
+  public onOk() {
+      this.router.navigate(['/home']);
   }
 }

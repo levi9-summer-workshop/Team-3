@@ -5,7 +5,7 @@ import { SurveyUser } from './survey-user.model';
 
 @Injectable()
 export class SurveyUserService {
-  
+
   constructor(private http: HttpClient) { }
 
   get(): Observable<any>{
@@ -15,4 +15,8 @@ export class SurveyUserService {
   post(user: SurveyUser):Observable<any>{
     return this.http.post("//localhost:8080/user", user);
   }
+
+  delete(userId: number) {
+    return this.http.delete("//localhost:8080/user" + '/' + userId);
+}
 }
