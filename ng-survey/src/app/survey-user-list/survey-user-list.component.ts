@@ -12,6 +12,7 @@ export class SurveyUserListComponent implements OnInit {
   currentUser: SurveyUser;
   constructor(private surveyService: SurveyUserService) { }
   isBlocked : boolean;
+  user: SurveyUser;
 
     ngOnInit() {
     this.surveyService.get().subscribe(data => { 
@@ -27,5 +28,13 @@ export class SurveyUserListComponent implements OnInit {
     () => {
         console.log("IT'S COMPLETE!");
     });
+  }
+
+  onDeleteUser(user: SurveyUser) {
+    this.user = user;
+  }
+
+  onDeleteUserSubmit() {
+    
   }
 }
