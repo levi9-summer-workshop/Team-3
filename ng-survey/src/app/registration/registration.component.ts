@@ -44,7 +44,7 @@ export class RegistrationComponent implements OnInit {
     () => {
       console.log("User registered!");
       this.submitted = true;
-      this.message = "You registered succcessfully!"
+      this.message = "You registered succcessfully!";
       form.reset();
     });
   }

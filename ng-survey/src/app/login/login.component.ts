@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   public user: SurveyUser;
   public loggedUser : SurveyUser;
   public errorMessage : string;
+  public message : string;
 
   constructor(private surveyService: SurveyUserService, private router: Router) { }
 
@@ -25,14 +26,15 @@ export class LoginComponent implements OnInit {
       this.setSurveyUser(form.value.username, form.value.password); 
       this.surveyService.post(this.user).subscribe(data => { 
       this.loggedUser = data; 
-      this.router.navigate(['/home']);
     },
     (error) => { 
         this.errorMessage = error;
-        window.alert("Bad credentials!");
+        this.message = "Bad credentials!";
     },
     () => {
-        console.log("User logged in!");
+      console.log("User logged in!");
+      this.message = "You logged in succcessfully!";
+      form.reset();
     });
   }
   
@@ -40,4 +42,8 @@ export class LoginComponent implements OnInit {
     this.user.username = uss;
     this.user.password = pass;   
   }
+
+  public onOk() {
+    this.router.navigate(['/home']);
+}
 }
