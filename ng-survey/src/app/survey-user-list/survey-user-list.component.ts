@@ -30,6 +30,10 @@ export class SurveyUserListComponent implements OnInit {
     });
   }
 
+  changeStatus(user: SurveyUser) {
+    user.blocked = !user.blocked;
+  }
+
   onDeleteUser(user: SurveyUser) {
     this.user = user;
   }

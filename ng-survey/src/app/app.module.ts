@@ -19,6 +19,7 @@ import { SurveyQuestionComponent } from './survey-question/survey-question.compo
 import { SurveyComponent } from './survey/survey.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { RegistrationService } from './registration/registration.service';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { RegistrationService } from './registration/registration.service';
     SurveyQuestionComponent,
     SurveyComponent,
     RegistrationComponent,
-    EqualValidator
+    EqualValidator,
+    HomeComponent
 
   ],
   imports: [

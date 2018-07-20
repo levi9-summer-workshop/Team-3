@@ -14,8 +14,8 @@
             
             <th scope="row" class="text-center align-middle"> {{ i + 1 }}</th>
             <td class="text-center align-middle">{{ user.username }}</td>
-            <td class="text-center align-middle">{{ user.email }} {{user.isBlocked}}</td>
-            <td class="text-center align-middle"><button class="btn btn-info button-size">{{ user.blocked ? 'Unblock' : 'Block'}}</button></td>
+            <td class="text-center align-middle">{{ user.email }}</td>
+            <td class="text-center align-middle"><button class="btn btn-info button-size" (click)="changeStatus(user)">{{ user.blocked ? 'Unblock' : 'Block'}}</button></td>
             <td class="text-center align-middle"><button class="btn btn-danger button-size">Delete</button></td>
           </tr>
         </tbody>
