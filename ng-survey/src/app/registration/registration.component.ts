@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { SurveyUser } from '../survey-user/survey-user.model';
 import { SurveyUserService } from '../survey-user/survey-user.service';
 import { RegistrationService } from './registration.service';
-import { Router } from '../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',

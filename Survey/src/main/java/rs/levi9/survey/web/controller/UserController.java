@@ -4,11 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import rs.levi9.survey.model.Survey;
 import rs.levi9.survey.model.SurveyUser;
 import rs.levi9.survey.service.UserService;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -23,17 +22,15 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity getMockedUser(){
-        List<SurveyUser> user = new ArrayList();
-        user.add(new SurveyUser("111", "aaa"));
-        user.add(new SurveyUser("222", "bbb"));
-        user.add(new SurveyUser("333", "ccc"));
-        user.add(new SurveyUser("444", "ddd"));
-        user.add(new SurveyUser("555", "eee"));
-        user.add(new SurveyUser("666", "fff"));
-        user.add(new SurveyUser("777", "ggg"));
-        user.add(new SurveyUser("aaaaaaaaaaaa", "bbbbbbbbbb"));
-        return new ResponseEntity(user, HttpStatus.OK);
+    public ResponseEntity getUsers(){
+
+        return new ResponseEntity(userService.findAll(), HttpStatus.OK);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public ResponseEntity delete(@PathVariable("id") Long id) {
+        userService.delete(id);
+        return new ResponseEntity(HttpStatus.OK);
     }
 
     @PostMapping
@@ -48,10 +45,16 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody SurveyUser surveyUser) {
+        surveyUser.setId(null);
         if(userService.checkIfUserExists(surveyUser)) {
             return new ResponseEntity(userService.save(surveyUser), HttpStatus.OK);
         } else {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }
+    }
+
+    @PutMapping("/block")
+    public ResponseEntity block(@RequestBody SurveyUser surveyUser) {
+        return new ResponseEntity(userService.block(surveyUser), HttpStatus.OK);
     }
 }

@@ -9,11 +9,15 @@ export class SurveyUserService {
   constructor(private http: HttpClient) { }
 
   get(): Observable<any>{
-      return this.http.get("//localhost:8080/user");
+    return this.http.get("//localhost:8080/user");
   }
 
   post(user: SurveyUser):Observable<any>{
     return this.http.post("//localhost:8080/user", user);
+  }
+
+  block(user: SurveyUser){
+    return this.http.get("//localhost:8080/user");
   }
 
   delete(userId: number) {

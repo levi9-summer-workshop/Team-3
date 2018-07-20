@@ -1,6 +1,7 @@
 package rs.levi9.survey.service;
 
 import org.springframework.stereotype.Service;
+import rs.levi9.survey.model.Survey;
 import rs.levi9.survey.model.SurveyUser;
 import rs.levi9.survey.repository.UserRepository;
 
@@ -31,14 +32,16 @@ public class UserService {
         userRepository.delete(id);
     }
 
+    public SurveyUser block(SurveyUser surveyUser) {
+        surveyUser.setBlocked(!surveyUser.isBlocked());
+        return userRepository.save(surveyUser);
+    }
+
     public SurveyUser findUser(String uss, String pass) {
         return (userRepository.findUserByEmailAndPassword(uss, pass) == null) ? userRepository.findUserByUsernameAndPassword(uss, pass) : userRepository.findUserByEmailAndPassword(uss, pass);
     }
 
     public boolean checkIfUserExists(SurveyUser surveyUser) {
-
-        SurveyUser s1 = userRepository.findUserByEmail(surveyUser.getEmail());
-        SurveyUser s2 = userRepository.findUserByUsername( surveyUser.getUsername());
-        return(s1 == null && s2 == null);
+        return(userRepository.findUserByEmail(surveyUser.getEmail()) == null && userRepository.findUserByUsername( surveyUser.getUsername()) == null);
     }
 }

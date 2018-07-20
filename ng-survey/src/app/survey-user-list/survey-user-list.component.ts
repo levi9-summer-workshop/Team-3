@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SurveyUserService } from '../survey-user/survey-user.service';
 import { SurveyUser } from '../survey-user/survey-user.model';
-import { Observable } from '../../../node_modules/rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-survey-user-list',
@@ -26,12 +26,14 @@ export class SurveyUserListComponent implements OnInit {
       console.log(error);
     },
     () => {
-        console.log("IT'S COMPLETE!");
+      console.log("IT'S COMPLETE!");
     });
   }
 
   changeStatus(user: SurveyUser) {
-    user.blocked = !user.blocked;
+    this.surveyService.block(this.user).subscribe(
+      () => user.blocked = !user.blocked
+    );
   }
 
   onUserDelete(user: SurveyUser) {

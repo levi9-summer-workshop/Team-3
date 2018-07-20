@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SurveyUser } from '../survey-user/survey-user.model';
 import { NgForm } from '@angular/forms';
 import { SurveyUserService } from '../survey-user/survey-user.service';
-import { Router } from '../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -45,5 +45,5 @@ export class LoginComponent implements OnInit {
 
   public onOk() {
     this.router.navigate(['/home']);
-}
+  }
 }
