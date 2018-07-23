@@ -31,3 +31,7 @@
     font-family: 'Roboto', sans-serif;
     font-size: 17px;
 }
+.col-centered{
+    margin: 0 auto;
+    float: none;
+}

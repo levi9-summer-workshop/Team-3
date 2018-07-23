@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { SurveyQuestion } from '../survey-question/survey-question.model';
 import { SurveyAnswer } from '../survey-answer/survey-answer.model';
 import { Survey } from '../survey/survey.model';
+import { SurveyCreatePageServiceService } from './survey-create-page-service.service';
+import { Router } from '../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-survey-create-page',
@@ -11,15 +13,14 @@ import { Survey } from '../survey/survey.model';
 export class SurveyCreatePageComponent implements OnInit {
 
   public surveyName : string;
-
+  public desc: string;
   public questions : SurveyQuestion[] = [];
 
-  constructor() { }
+  constructor(private service : SurveyCreatePageServiceService, private router : Router) { }
 
   ngOnInit() {
-    this.surveyName = "My first survey!";
-    
-    let a1 : SurveyAnswer[] = [];
+ 
+        let a1 : SurveyAnswer[] = [];
     a1.push(new SurveyAnswer("Before 7 am?"));
     a1.push(new SurveyAnswer("After 7 am?"));
     a1.push(new SurveyAnswer("Ain't nobody got time for that"));
@@ -40,7 +41,20 @@ export class SurveyCreatePageComponent implements OnInit {
   }
   
   submit(){
-    let surveyObj = new Survey(this.surveyName, this.questions);
-      console.log(JSON.stringify(surveyObj));
+  
+    if(this.surveyName == null){
+      this.surveyName = "Survey default name";
+    }
+    if(this.desc == null){
+      this.desc = "default description";
+    }
+    this.service.post(new Survey(this.surveyName, this.desc, this.questions)).subscribe(data =>{
+
+    },
+  (error) => {}, 
+  () =>{
+      this.router.navigate(['/home']);
+  } )
+   
     }
 }

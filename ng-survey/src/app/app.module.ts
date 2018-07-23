@@ -20,6 +20,7 @@ import { SurveyComponent } from './survey/survey.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { RegistrationService } from './registration/registration.service';
 import { HomeComponent } from './home/home.component';
+import { SurveyCreatePageServiceService } from './survey-create-page/survey-create-page-service.service';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { HomeComponent } from './home/home.component';
   ],
   providers: [
     SurveyUserService,
+    SurveyCreatePageServiceService,
     RegistrationService
   ],
   bootstrap: [AppComponent]

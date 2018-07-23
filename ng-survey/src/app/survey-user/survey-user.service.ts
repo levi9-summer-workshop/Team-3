@@ -22,5 +22,5 @@ export class SurveyUserService {
 
   delete(userId: number) {
     return this.http.delete("//localhost:8080/user" + '/' + userId);
-}
+  }
 }
