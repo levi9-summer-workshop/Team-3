@@ -19,6 +19,7 @@ export class SurveyQuestionComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    this.question.multipleChoices = false;
   }
 
   addAnswer(){

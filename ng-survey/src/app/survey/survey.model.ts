@@ -8,4 +8,9 @@ export class Survey {
     public isOpen: boolean;
     public questionList: SurveyQuestion[];
     
+    public constructor(name: string, q: SurveyQuestion[]){
+        this.description = name;
+        this. questionList = q;
+    }
+    
 }
