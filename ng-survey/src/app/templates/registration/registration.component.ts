@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { SurveyUser } from '../survey-user/survey-user.model';
-import { SurveyUserService } from '../survey-user/survey-user.service';
+import { SurveyUser } from '../../survey-user/survey-user.model';
+import { SurveyUserService } from '../../survey-user/survey-user.service';
 import { RegistrationService } from './registration.service';
 import { Router } from '@angular/router';
 

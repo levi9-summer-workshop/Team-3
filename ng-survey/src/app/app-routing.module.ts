@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
-import { LoginComponent } from './login/login.component';
+
 import { SurveyUserListComponent } from './survey-user-list/survey-user-list.component';
-import { SurveyCreatePageComponent } from './survey-create-page/survey-create-page.component';
-import { RegistrationComponent } from './registration/registration.component';
-import { SurveyUserComponent } from './survey-user/survey-user.component';
+import { RegistrationComponent } from './templates/registration/registration.component';
 import { SurveyComponent } from './survey/survey.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './templates/home/home.component';
+import { LoginComponent } from './templates/login/login.component';
+import { SurveyCreatePageComponent } from './create-survey/survey-create-page/survey-create-page.component';
 
 
 const routes: Routes = [

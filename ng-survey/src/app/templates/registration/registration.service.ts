@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { SurveyUser } from '../survey-user/survey-user.model';
+import { SurveyUser } from '../../survey-user/survey-user.model';
 
 @Injectable()
 export class RegistrationService {

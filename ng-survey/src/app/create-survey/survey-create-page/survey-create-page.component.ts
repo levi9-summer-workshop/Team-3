@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SurveyQuestion } from '../survey-question/survey-question.model';
 import { SurveyAnswer } from '../survey-answer/survey-answer.model';
-import { Survey } from '../survey/survey.model';
+import { Survey } from '../../survey/survey.model';
 import { SurveyCreatePageServiceService } from './survey-create-page-service.service';
-import { Router } from '../../../node_modules/@angular/router';
+import { Router } from '../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-survey-create-page',
