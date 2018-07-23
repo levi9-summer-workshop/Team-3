@@ -6,4 +6,7 @@ export class SurveyQuestion {
     public questionText: string;
     public answerList : SurveyAnswer[];
 
+    public constructor(){
+        //this.answerList[0] = new SurveyAnswer("default text");
+    }
 }

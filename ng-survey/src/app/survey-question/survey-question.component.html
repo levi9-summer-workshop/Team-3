@@ -1,3 +1,5 @@
-<p>
-  survey-question works!
-</p>
+
+<p> Question: </p><input type="text" placeholder="question text" class = "input" [(ngModel)]="question.questionText"><button class = "btn button" (click)="addAnswer()">+</button><br>
+<form>
+<app-survey-answer *ngFor="let answer of question.answerList" [srvAnswer]="answer" ></app-survey-answer> <h5> ------- </h5> <br>
+</form>

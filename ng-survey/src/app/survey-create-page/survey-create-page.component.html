@@ -1,5 +1,5 @@
-<div class="container">
-  <h3 class="text-align:center">Want to create new surveys?</h3>
-  <hr>
-  <p class="">This is the place for you!</p>
-</div>
+<h2> Survey name is: {{surveyName}}</h2> 
+<button type="button" class="btn btn-info" (click)="addQuestion()">Add Q</button>
+<app-survey-question *ngFor="let question of questions" [questionList] = "question"></app-survey-question>
+
+<button type="button" class ="btn btn-danger">Submit!</button>

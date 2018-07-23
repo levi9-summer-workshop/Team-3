@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { SurveyAnswer } from './survey-answer.model';
 
 @Component({
   selector: 'app-survey-answer',
@@ -6,13 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./survey-answer.component.css']
 })
 export class SurveyAnswerComponent implements OnInit {
+  
+  @Input('srvAnswer') public answerObj : SurveyAnswer; 
 
-  answer: SurveyAnswerComponent;
-
-onstructor() { }
-
-  ngOnInit() {
-    
-  }
-
+ constructor() { }
+ 
+ ngOnInit() {     
+    }
 }

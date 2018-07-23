@@ -6,4 +6,10 @@ export class SurveyAnswer {
   public timesChosen: number;
   public isCustom: boolean;
   
+  public constructor(str:string){
+    this.answerText = str;
+  }
+  public getText(){
+    return this.answerText;
+  }
 }
