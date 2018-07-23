@@ -15,12 +15,15 @@ import { SurveyUserService } from './survey-user/survey-user.service';
 import { SurveyUserListComponent } from './survey-user-list/survey-user-list.component';
 import { SurveyAnswerComponent } from './create-survey/survey-answer/survey-answer.component';
 import { SurveyQuestionComponent } from './create-survey/survey-question/survey-question.component';
-import { SurveyComponent } from './survey/survey.component';
 import { RegistrationComponent } from './templates/registration/registration.component';
 import { RegistrationService } from './templates/registration/registration.service';
 import { HomeComponent } from './templates/home/home.component';
 import { SurveyCreatePageServiceService } from './create-survey/survey-create-page/survey-create-page-service.service';
 import { SurveyCreatePageComponent } from './create-survey/survey-create-page/survey-create-page.component';
+import { FillAnswerComponent } from './survey-fill/fill-answer/fill-answer.component';
+import { FillQuestionComponent } from './survey-fill/fill-question/fill-question.component';
+import { FillSurveyComponent } from './survey-fill/fill-survey/fill-survey.component';
+
 
 
 @NgModule({
@@ -32,14 +35,15 @@ import { SurveyCreatePageComponent } from './create-survey/survey-create-page/su
     LoginComponent,
     SurveyUserComponent,
     SurveyUserListComponent,
-
     SurveyCreatePageComponent,
     SurveyAnswerComponent,
     SurveyQuestionComponent,
-    SurveyComponent,
     RegistrationComponent,
     EqualValidator,
-    HomeComponent
+    HomeComponent,
+    FillAnswerComponent,
+    FillQuestionComponent,
+    FillSurveyComponent
 
   ],
   imports: [

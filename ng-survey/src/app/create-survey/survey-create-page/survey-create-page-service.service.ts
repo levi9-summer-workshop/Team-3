@@ -1,9 +1,9 @@
 
 
-import { Survey } from "../../survey/survey.model";
-import { HttpClient } from "../../../../node_modules/@angular/common/http";
-import { Injectable } from "../../../../node_modules/@angular/core";
-import { Observable } from "../../../../node_modules/rxjs/Observable";
+import { Survey } from "./survey.model";
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class SurveyCreatePageServiceService {

@@ -1,0 +1,7 @@
+<p> Question: </p>
+{{questionText}}
+<div *ngIf="multipleChoices">Feel free to choose more answers!</div>
+<div *ngIf="!multipleChoices">Please choose only one answer!</div>
+<form>
+<app-fill-answer *ngFor="let ans of question.answerList; let i = index" [answerModel] = "ans" [multipleChoises] = "question.multipleChoices" [buttonId] = "i" ></app-fill-answer>
+</form>

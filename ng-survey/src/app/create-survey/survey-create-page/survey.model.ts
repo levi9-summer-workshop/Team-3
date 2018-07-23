@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { SurveyQuestion } from "../create-survey/survey-question/survey-question.model";
+import { SurveyQuestion } from "../survey-question/survey-question.model";
 
 
 export class Survey {
@@ -15,6 +15,5 @@ export class Survey {
         this.name = name;
         this.description = desc;
         this. questionList = q;
-    }
-    
+    } 
 }

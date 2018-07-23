@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SurveyUserService } from '../survey-user/survey-user.service';
 import { SurveyUser } from '../survey-user/survey-user.model';
 import { Observable } from 'rxjs/Observable';
-import { Router } from '../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-survey-user-list',
