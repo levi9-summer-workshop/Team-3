@@ -1,5 +1,6 @@
 <h2> Survey name is: {{surveyName}}</h2> 
 <button type="button" class="btn btn-info" (click)="addQuestion()">Add Q</button>
-<app-survey-question *ngFor="let question of questions" [questionList] = "question"></app-survey-question>
+
+<app-survey-question *ngFor="let question of questions; let i = index" (deleteEvent) = "deleteEventHandler($event)" [questionId]= "i" [questionList] = "question"></app-survey-question>
 
 <button type="button" class ="btn btn-danger">Submit!</button>

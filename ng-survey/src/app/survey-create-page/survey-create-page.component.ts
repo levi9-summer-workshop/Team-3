@@ -48,4 +48,8 @@ export class SurveyCreatePageComponent implements OnInit {
     this.questions[this.questions.length - 1].answerList = s1;
     console.log();
   }
+  
+  deleteEventHandler($event : any){
+    this.questions.splice($event, 1);
+  } 
 }
