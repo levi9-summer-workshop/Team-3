@@ -16,8 +16,8 @@ export class SurveyUserService {
     return this.http.post("//localhost:8080/user", user);
   }
 
-  block(user: SurveyUser){
-    return this.http.get("//localhost:8080/user");
+  block(user: SurveyUser):Observable<any>{
+    return this.http.put("//localhost:8080/user/block", user);
   }
 
   delete(userId: number) {
