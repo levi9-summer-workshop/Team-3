@@ -22,6 +22,7 @@ import { FillAnswerComponent } from './survey-fill/fill-answer/fill-answer.compo
 import { FillQuestionComponent } from './survey-fill/fill-question/fill-question.component';
 import { FillSurveyComponent } from './survey-fill/fill-survey/fill-survey.component';
 import { AllSurveysComponent } from './survey-fill/all-surveys/all-surveys.component';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 
 @NgModule({
@@ -43,14 +44,14 @@ import { AllSurveysComponent } from './survey-fill/all-surveys/all-surveys.compo
     FillQuestionComponent,
     FillSurveyComponent,
     AllSurveysComponent
-
   ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFontAwesomeModule
   ],
 
   providers: [

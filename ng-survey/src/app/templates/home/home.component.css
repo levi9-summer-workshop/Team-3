@@ -1,7 +1,109 @@
-body,h1 {font-family: "Raleway", sans-serif}
-body, html {height: 100%}
-
-
-.bg {
-    background-color: lightsalmon;
+.home {
+    height: 100%;
+    height: 100%;
+    background-image: url(http://www.wallpapers4u.org/wp-content/uploads/road_markings_autumn_trees_92769_1920x1080.jpg);
 }
+
+.upper {
+    width: 100%;
+    height: 60%;
+    overflow-x: hidden;
+}
+
+.lower {
+    top: 60%;
+    width: 100%;
+    height: 40%;
+    overflow-x: hidden;
+}
+
+.up {
+    height: 55%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
+    padding-top: 20px;
+    top: 0;
+    background-image: url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/SImAn91gin31gtxk/stock-market-fluctuations-graph-on-screen-indexes-going-up-and-down-statistics-electronic-chart-with-stock-market-fluctuations_h6zdiquyx_thumbnail-full12.png);
+    opacity: 1;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .down {
+    height: 60%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    bottom: 2px;
+    overflow-x: hidden;
+    padding-top: 20px;
+    bottom: 0;
+    background-color: whitesmoke;
+  }
+
+
+  .left {
+    left: 5%;
+    width: 30%;
+    height: 40%;
+    top: 62%;
+    bottom: 2%;
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
+    background-color: lightblue;
+  }
+
+  .mid {
+    left: 35%;
+    width: 30%;
+    height: 40%;
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
+    background-color: lightcoral;
+  }
+
+  .right {
+    right: 5%;
+    width: 30%;
+    height: 40%;
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
+    background-color:lightpink;
+  } 
+
+ .btn {
+    padding-top: 105px;
+    width: 400px;
+    height: 260px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 25px;
+    /* align-content: space-around; */
+  }
+
+  .op {
+    opacity: 0.85;
+  }
+
+  .buttons {
+    padding-top: 2%;
+    align-content: space-around;
+    text-align: center;
+  }
+
+  .jumbotron {
+      position: relative;
+      top: 85px;
+      left: 37%;
+      text-align: center;
+      /* vertical-align: middle; */
+      width: 500px;
+      font-size: 30px;
+      opacity: 0.8;  
+    }
