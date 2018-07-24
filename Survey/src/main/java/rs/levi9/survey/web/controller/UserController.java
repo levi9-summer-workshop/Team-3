@@ -22,7 +22,7 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity getUsers(){
+    public ResponseEntity getUsers() {
 
         return new ResponseEntity(userService.findAll(), HttpStatus.OK);
     }
@@ -34,9 +34,9 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity login(@RequestBody SurveyUser surveyUser){
+    public ResponseEntity login(@RequestBody SurveyUser surveyUser) {
         SurveyUser user = userService.findUser(surveyUser.getUsername(), surveyUser.getPassword());
-        if(user == null){
+        if (user == null) {
             return new ResponseEntity(user, HttpStatus.BAD_REQUEST);
         } else {
             return new ResponseEntity(user, HttpStatus.OK);
@@ -46,7 +46,7 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody SurveyUser surveyUser) {
         surveyUser.setId(null);
-        if(userService.checkIfUserExists(surveyUser)) {
+        if (userService.checkIfUserExists(surveyUser)) {
             return new ResponseEntity(userService.save(surveyUser), HttpStatus.OK);
         } else {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
@@ -56,5 +56,10 @@ public class UserController {
     @PutMapping("/block")
     public ResponseEntity block(@RequestBody SurveyUser surveyUser) {
         return new ResponseEntity(userService.block(surveyUser), HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public SurveyUser getOne(@PathVariable("id") Long id) {
+        return this.userService.getOne(id);
     }
 }

@@ -16,12 +16,20 @@ public class Question extends BaseEntity implements Serializable {
     @Column(nullable = false)
     private List<Answer> answerList;
 
+    private boolean multipleChoices;
+
     public Question() {
     }
 
     public Question(String questionText, List<Answer> answerList) {
         this.questionText = questionText;
         this.answerList = answerList;
+    }
+
+    public Question(String questionText, List<Answer> answerList, boolean multipleChoices) {
+        this.questionText = questionText;
+        this.answerList = answerList;
+        this.multipleChoices = multipleChoices;
     }
 
     public String getQuestionText() {
@@ -38,5 +46,13 @@ public class Question extends BaseEntity implements Serializable {
 
     public void setAnswerList(List<Answer> answerList) {
         this.answerList = answerList;
+    }
+
+    public boolean isMultipleChoices() {
+        return multipleChoices;
+    }
+
+    public void setMultipleChoices(boolean multipleChoices) {
+        this.multipleChoices = multipleChoices;
     }
 }

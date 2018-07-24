@@ -17,7 +17,8 @@ public class UserService {
     }
 
     public SurveyUser getOne(Long id) {
-        return userRepository.getOne(id);
+     //   return userRepository.getOne(id);
+        return userRepository.findOne(id);
     }
 
     public List<SurveyUser> findAll() {
