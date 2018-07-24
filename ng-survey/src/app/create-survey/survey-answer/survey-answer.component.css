@@ -2,6 +2,16 @@
     display: flex;
 }
 
-.button {
+.button {    
+    height: 35px;
     width: 35px;
+}
+
+.input {
+    width: 90%;
+}
+
+.line {
+    padding-inline-start: 1%;
+    inline-size: 100%;
 }

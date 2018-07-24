@@ -1,8 +1,6 @@
-<div class="container">
-        <p style="font-size: 15px; vertical-align: middle;">{{ id + 1 }}.</p>
-
-    <div class="row-fluid">
-        <input type="text" placeholder="Question text" class="input form-control form-control-sm" [(ngModel)]="question.questionText">
+<div class="container font">
+    <div class="form-inline">
+            {{ id + 1 }}.&nbsp;<input type="text" placeholder="Question text" class="input form-control form-control-sm" [(ngModel)]="question.questionText">&nbsp;
         <div class="btn-group">
             <button class="btn button btn-secondary" (click)="addAnswer()">+</button>
             <button class="btn button btn-secondary" (click)="deleteQuestion()">&times;</button>
@@ -10,10 +8,12 @@
         <br>
     </div>
     <div class="justify-content-center col-lg-10">
-    <form>
-    <app-survey-answer *ngFor="let answer of question.answerList; let i = index" (deleteEvent) = "deleteEventHandler($event)" [answerId]= "i" [srvAnswer]="answer"></app-survey-answer>
-    </form>
-    <input class = "btn button" type="checkbox" [(ngModel)]="question.multipleChoices"> Allow choosing multiple choices?
+        <form>
+            <app-survey-answer *ngFor="let answer of question.answerList; let i = index" (deleteEvent) = "deleteEventHandler($event)" [answerId]= "i" [srvAnswer]="answer"></app-survey-answer>
+        </form>
+    <div class="lft">
+        <input class="btn button" type="checkbox" [(ngModel)]="question.multipleChoices">Allow choosing multiple choices?
     </div>
-    <br>
+    <hr>
     </div>
+</div>
