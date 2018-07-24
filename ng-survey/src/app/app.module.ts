@@ -18,10 +18,9 @@ import { RegistrationService } from './templates/registration/registration.servi
 import { HomeComponent } from './templates/home/home.component';
 import { SurveyCreatePageServiceService } from './create-survey/survey-create-page/survey-create-page-service.service';
 import { SurveyCreatePageComponent } from './create-survey/survey-create-page/survey-create-page.component';
-import { FillQuestionComponent } from './survey-fill/fill-question/fill-question.component';
 import { FillSurveyComponent } from './survey-fill/fill-survey/fill-survey.component';
 import { AllSurveysComponent } from './survey-fill/all-surveys/all-surveys.component';
-
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 @NgModule({
   declarations: [
@@ -38,7 +37,6 @@ import { AllSurveysComponent } from './survey-fill/all-surveys/all-surveys.compo
     RegistrationComponent,
     EqualValidator,
     HomeComponent,
-    FillQuestionComponent,
     FillSurveyComponent,
     AllSurveysComponent
 
@@ -48,7 +46,8 @@ import { AllSurveysComponent } from './survey-fill/all-surveys/all-surveys.compo
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFontAwesomeModule
   ],
 
   providers: [

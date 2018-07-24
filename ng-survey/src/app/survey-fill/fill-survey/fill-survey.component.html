@@ -1,4 +1,37 @@
+
 <h1> {{survey.name}} </h1>
 <h2> {{survey.description}} </h2>
-<app-fill-question *ngFor="let q of survey.questionList" [questionModel] = "q"></app-fill-question>
-<button class="btn button-submit" (click) = "submit()">Submit!</button>
+<form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)">
+ <!-- List all questions in an answer. -->
+<ng-container *ngFor="let question of survey.questionList">
+    <div>
+        <p> Question: </p>
+        <h5>{{question.questionText}}</h5>
+      
+       <!--  <div *ngIf="question.multipleChoices">Feel free to choose more answers!</div>
+        <div *ngIf="!question.multipleChoices">Please choose only one answer!</div> --> 
+
+               <!-- List all answers in a question -->
+            <ng-container *ngFor="let answer of question.answerList; let i = index">
+                 <br>
+                 <!-- Checkbox -->
+            <ng-container *ngIf="question.multipleChoices">
+                <input class="input" type="checkbox"  name = "{{answer.id}}" value="{{answer.answerText}}" ngModel > {{answer.answerText}}
+            </ng-container>
+                <!-- Radio -->
+            <ng-container *ngIf="!question.multipleChoices">
+                <input class="input" type="radio" name = "{{question.id}}"  value="{{answer.answerText}}" ngModel> {{answer.answerText}}
+            </ng-container>
+
+        </ng-container>
+    </div>
+</ng-container>
+    <br>
+<button class="btn button-submit">Submit!</button>
+</form>
+
+<!-- 
+ 
+ name="{{question.id}}"  value="{{answer.id}}" ngModel
+ name="noname" value="{{answer.id}}" ngModel #rButton="ngModel" 
+-->

@@ -1,4 +1,4 @@
-import { Question } from "../fill-question/question";
+import { Question } from "../question";
 
 export class Survey {
 
@@ -8,11 +8,5 @@ export class Survey {
     public isOpen: boolean;
     public name : string;
     public questionList: Question[] = [];
-    
-   /* public constructor(name: string, desc: string, q: Question[]){
-        this.name = name;
-        this.description = desc;
-        this. questionList = q;
-    } */ 
     
 }

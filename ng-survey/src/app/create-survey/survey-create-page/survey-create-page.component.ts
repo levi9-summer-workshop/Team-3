@@ -47,11 +47,10 @@ export class SurveyCreatePageComponent implements OnInit {
     if(this.desc == null){
       this.desc = "default description";
     }
-    let surv = new Survey(this.surveyName, this.desc, this.questions);
-    //console.log(JSON.stringify(surv));
-    this.service.post(surv).subscribe(data =>{
+  
+    this.service.post(new Survey(this.surveyName, this.desc, this.questions)).subscribe(data =>{
     },
-    (error) => {}, 
+    (error) => { console.log(error); }, 
     () =>{
       this.router.navigate(['/home']);
     })
