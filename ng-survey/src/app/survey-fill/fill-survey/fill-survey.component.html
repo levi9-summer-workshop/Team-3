@@ -1,4 +1,4 @@
 <h1> {{survey.name}} </h1>
 <h2> {{survey.description}} </h2>
-<app-fill-question *ngFor=" let q of survey.questionList" [questionModel] = "q"></app-fill-question>
+<app-fill-question *ngFor="let q of survey.questionList" [questionModel] = "q"></app-fill-question>
 <button class="btn button-submit" (click) = "submit()">Submit!</button>

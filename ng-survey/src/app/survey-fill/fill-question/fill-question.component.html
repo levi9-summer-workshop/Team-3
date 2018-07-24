@@ -1,11 +1,13 @@
 <p> Question: </p>
 {{question.questionText}}
-<div *ngIf="multipleChoices">Feel free to choose more answers!</div>
-<div *ngIf="!multipleChoices">Please choose only one answer!</div>
+<div *ngIf="question.multipleChoices">Feel free to choose more answers!</div>
+<div *ngIf="!question.multipleChoices">Please choose only one answer!</div>
 <form>
     <ng-container *ngFor="let ans of question.answerList; let i = index">
-  <br>
-    <ng-container *ngIf="multipleChoices"><input class="input" type="checkbox">{{ans.answerText}}    </ng-container>
-    <ng-container *ngIf="!multipleChoices"><input class="input" (click) = "buttonIsClicked(i)" name="radio-button" type="radio" value="{{ans.answerText}}">{{ans.answerText}}  </ng-container>
+         <br>
+    <ng-container *ngIf="question.multipleChoices">
+        <input class="input" (click)="checkBoxIsClicked(i)" type="checkbox" >{{ans.answerText}}</ng-container>
+    <ng-container *ngIf="!question.multipleChoices">
+        <input class="input" (click) = "buttonIsClicked(i)" name="radio-button"  type="radio" value="{{ans.answerText}}" ngModel #rButton="ngModel" >{{ans.answerText}} </ng-container>
 </ng-container>
 </form>

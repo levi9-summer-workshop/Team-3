@@ -20,13 +20,18 @@ export class FillQuestionComponent implements OnInit {
     console.log("is clicked " + i);
   }
   buttonIsClicked(index: number){
+
     for(let i = 0; i < this.question.answerList.length; i++){
       if(i == index){
         this.question.answerList[i].isClicked = true;
-        
       }else {
       this.question.answerList[i].isClicked = false;
     }
     }
   }
+
+  checkBoxIsClicked(index : number){
+      console.log(index);
+  }
+
 }

@@ -33,7 +33,6 @@ export class SurveyCreatePageComponent implements OnInit {
     this.questions.push(new SurveyQuestion());
      let  s1 : SurveyAnswer[] = [];
     this.questions[this.questions.length - 1].answerList = s1;
-    console.log();
   }
   
   deleteEventHandler($event : any){
@@ -49,7 +48,7 @@ export class SurveyCreatePageComponent implements OnInit {
       this.desc = "default description";
     }
     let surv = new Survey(this.surveyName, this.desc, this.questions);
-    console.log(JSON.stringify(surv));
+    //console.log(JSON.stringify(surv));
     this.service.post(surv).subscribe(data =>{
     },
     (error) => {}, 

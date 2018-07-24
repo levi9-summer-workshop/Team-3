@@ -42,8 +42,4 @@ export class FillSurveyComponent implements OnInit, OnDestroy  {
       this.sub.unsubscribe();
     }
 
-      submit(){
-        console.log(JSON.stringify(this.survey));
-      }
-      
 }
