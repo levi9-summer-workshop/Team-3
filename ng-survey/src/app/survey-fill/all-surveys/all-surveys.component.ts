@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SurveyCreatePageServiceService } from '../../create-survey/survey-create-page/survey-create-page-service.service';
-import { Router } from '../../../../node_modules/@angular/router';
+import { Router } from '@angular/router';
 import { Survey } from '../fill-survey/survey';
 
 @Component({

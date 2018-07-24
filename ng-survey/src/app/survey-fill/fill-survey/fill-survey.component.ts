@@ -1,8 +1,7 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Survey } from './survey';
 import { SurveyCreatePageServiceService } from '../../create-survey/survey-create-page/survey-create-page-service.service';
-import { Router, ActivatedRoute } from '../../../../node_modules/@angular/router';
-import { stringify } from '../../../../node_modules/@angular/core/src/util';
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -43,7 +42,8 @@ export class FillSurveyComponent implements OnInit, OnDestroy  {
       this.sub.unsubscribe();
     }
 
-    submit(){
+      submit(){
         console.log(JSON.stringify(this.survey));
       }
+      
 }

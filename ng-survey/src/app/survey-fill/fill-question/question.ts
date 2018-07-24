@@ -1,5 +1,5 @@
 import { Component } from "@angular/core";
-import { Answer } from "../fill-answer/answer";
+import { Answer } from "../answer";
 
 export class Question {
 
