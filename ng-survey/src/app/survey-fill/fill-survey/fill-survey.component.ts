@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Survey } from './survey';
-import { Question } from '../fill-question/question';
-import { Answer } from '../fill-answer/answer';
 import { SurveyCreatePageServiceService } from '../../create-survey/survey-create-page/survey-create-page-service.service';
-import { Router } from '../../../../node_modules/@angular/router';
+import { Router, ActivatedRoute } from '../../../../node_modules/@angular/router';
 
 
 
@@ -12,17 +10,22 @@ import { Router } from '../../../../node_modules/@angular/router';
   templateUrl: './fill-survey.component.html',
   styleUrls: ['./fill-survey.component.css']
 })
-export class FillSurveyComponent implements OnInit {
+export class FillSurveyComponent implements OnInit, OnDestroy  {
 
   public survey: Survey;
+
+  id: number;
+  private sub: any;
   
-  constructor(private surveyService : SurveyCreatePageServiceService, private router : Router) { }
+  constructor(private surveyService : SurveyCreatePageServiceService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.survey = new Survey();
-    
-        this.getOne(1);
-       //this.getAll();
+
+    this.sub = this.route.params.subscribe(params => {
+       this.id = +params['id']; 
+       this.survey = new Survey();    
+      this.getOne(this.id);
+    });
   } 
 
   getOne(id : number){
@@ -30,20 +33,13 @@ export class FillSurveyComponent implements OnInit {
     this.surveyService.getById(id).subscribe(data =>{
           this.survey = data;
     },
-    (error) => { console.log("ne radi"); }, 
-    () =>{
-     // this.router.navigate(['/home']);
+    (error) => { 
+      console.log("ne radi"); 
     })
-  
     }
 
-    getAll(){
-      this.surveyService.get().subscribe(data =>{
-        this.survey = data;
-      },
-     (error) => { console.log("ne radi"); }, 
-       () =>{
-   // this.router.navigate(['/home']);
-       })
+    ngOnDestroy(){
+      this.sub.unsubscribe();
     }
+
 }

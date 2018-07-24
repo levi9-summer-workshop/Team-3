@@ -9,9 +9,9 @@ import { RegistrationComponent } from './templates/registration/registration.com
 import { HomeComponent } from './templates/home/home.component';
 import { LoginComponent } from './templates/login/login.component';
 import { SurveyCreatePageComponent } from './create-survey/survey-create-page/survey-create-page.component';
-import { FillAnswerComponent } from './survey-fill/fill-answer/fill-answer.component';
 import { FillQuestionComponent } from './survey-fill/fill-question/fill-question.component';
 import { FillSurveyComponent } from './survey-fill/fill-survey/fill-survey.component';
+import { AllSurveysComponent } from './survey-fill/all-surveys/all-surveys.component';
 
 
 const routes: Routes = [
@@ -24,7 +24,8 @@ const routes: Routes = [
   { path: "new-survey", component: SurveyCreatePageComponent },
   { path: "login", component: LoginComponent },
   { path: "questions", component: FillQuestionComponent },
-  { path : "surveys", component :  FillSurveyComponent }
+  { path : "surveys/:id", component :  FillSurveyComponent },
+  { path : "all-surveys", component : AllSurveysComponent}
 ];
 
 

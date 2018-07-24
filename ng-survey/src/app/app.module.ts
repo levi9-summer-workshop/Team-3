@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { EqualValidator } from './templates/registration/equal-validator.directive';
-
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './templates/header/header.component';
@@ -23,7 +21,7 @@ import { SurveyCreatePageComponent } from './create-survey/survey-create-page/su
 import { FillAnswerComponent } from './survey-fill/fill-answer/fill-answer.component';
 import { FillQuestionComponent } from './survey-fill/fill-question/fill-question.component';
 import { FillSurveyComponent } from './survey-fill/fill-survey/fill-survey.component';
-
+import { AllSurveysComponent } from './survey-fill/all-surveys/all-surveys.component';
 
 
 @NgModule({
@@ -43,20 +41,24 @@ import { FillSurveyComponent } from './survey-fill/fill-survey/fill-survey.compo
     HomeComponent,
     FillAnswerComponent,
     FillQuestionComponent,
-    FillSurveyComponent
+    FillSurveyComponent,
+    AllSurveysComponent
 
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule
   ],
+
   providers: [
     SurveyUserService,
     SurveyCreatePageServiceService,
     RegistrationService
   ],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }
