@@ -1,7 +1,14 @@
 <div class="container">
-    <p>Question:</p><div class="row-fluid">
-    <input type="text" placeholder="Question text" class="input form-control form-control-sm" [(ngModel)]="question.questionText">
-    <button class="btn button" (click)="addAnswer()">+</button>  <button (click)="deleteQuestion()" class="btn button">-</button><br></div>
+        <p style="font-size: 15px; vertical-align: middle;">{{ id + 1 }}.</p>
+
+    <div class="row-fluid">
+        <input type="text" placeholder="Question text" class="input form-control form-control-sm" [(ngModel)]="question.questionText">
+        <div class="btn-group">
+            <button class="btn button btn-secondary" (click)="addAnswer()">+</button>
+            <button class="btn button btn-secondary" (click)="deleteQuestion()">&times;</button>
+        </div>
+        <br>
+    </div>
     <div class="justify-content-center col-lg-10">
     <form>
     <app-survey-answer *ngFor="let answer of question.answerList; let i = index" (deleteEvent) = "deleteEventHandler($event)" [answerId]= "i" [srvAnswer]="answer"></app-survey-answer>

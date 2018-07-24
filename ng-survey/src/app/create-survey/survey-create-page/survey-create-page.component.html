@@ -1,10 +1,8 @@
 <div class="survey container text-align:center">
-    <input type="text" class="input form-control form-control-lg col-sm-4 col-centered" placeholder="Name of your survey" [(ngModel)]="surveyName">
-  
+    <input type="text" class="input form-control form-control-lg col-sm-6 col-centered" placeholder="Name of your survey" [(ngModel)]="surveyName">
     <br>
     <div class="content">
-        <textarea class="input form-control form-control-sm col-sm-8 col-centered" placeholder="Describe your survey" [(ngModel)]="desc"></textarea>
-       
+        <textarea class="input form-control form-control-sm col-sm-12 col-centered" placeholder="Describe your survey" maxlength="200" rows="3" [(ngModel)]="desc"></textarea>
     </div>   
     <div class="container justify-content-center col-lg-8 font-sm"> 
         <app-survey-question *ngFor="let question of questions; let i = index" (deleteEvent) = "deleteEventHandler($event)" [questionId]= "i" [questionList] = "question"></app-survey-question>
