@@ -11,6 +11,8 @@ public class Survey extends BaseEntity implements Serializable {
 
     private Long timesSubmitted;
 
+    private String name;
+
     @Column(nullable = false)
     private String description;
 
@@ -32,6 +34,14 @@ public class Survey extends BaseEntity implements Serializable {
 
     public Survey(Long timesSubmitted, String description, boolean isOpen, List<Question> questionList) {
         this.timesSubmitted = timesSubmitted;
+        this.description = description;
+        this.isOpen = isOpen;
+        this.questionList = questionList;
+    }
+
+    public Survey(Long timesSubmitted, String name, String description, boolean isOpen, List<Question> questionList) {
+        this.timesSubmitted = timesSubmitted;
+        this.name = name;
         this.description = description;
         this.isOpen = isOpen;
         this.questionList = questionList;
@@ -71,5 +81,17 @@ public class Survey extends BaseEntity implements Serializable {
 
     public void setQuestionList(List<Question> questionList) {
         this.questionList = questionList;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public boolean isOpen() {
+        return isOpen;
     }
 }

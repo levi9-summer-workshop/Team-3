@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import rs.levi9.survey.model.Answer;
 import rs.levi9.survey.model.Survey;
 import rs.levi9.survey.model.dto.SubmittedSurvey;
+import rs.levi9.survey.model.dto.SurveyList;
 import rs.levi9.survey.repository.SurveyRepository;
 
 import java.util.List;
@@ -25,7 +26,8 @@ public class SurveyService {
     }
 
     public Survey getOne(Long id) {
-        return surveyRepository.getOne(id);
+      //  return surveyRepository.getOne(id);
+        return surveyRepository.findOne(id);
     }
 
     public List<Survey> findAll() {
