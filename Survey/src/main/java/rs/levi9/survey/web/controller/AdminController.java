@@ -10,6 +10,7 @@ import rs.levi9.survey.service.AdminService;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/admin")
 public class AdminController {
 

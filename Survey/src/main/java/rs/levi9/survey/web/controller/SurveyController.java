@@ -11,6 +11,7 @@ import rs.levi9.survey.service.SurveyService;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/survey")
 public class SurveyController {
 

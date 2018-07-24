@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Survey } from './survey';
 import { Question } from '../fill-question/question';
 import { Answer } from '../fill-answer/answer';
+import { SurveyCreatePageServiceService } from '../../create-survey/survey-create-page/survey-create-page-service.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class FillSurveyComponent implements OnInit {
 
   public survey: Survey;
 
-  constructor() { }
+  constructor(private surveyService : SurveyCreatePageServiceService) { }
 
   ngOnInit() {
     this.survey = new Survey();
