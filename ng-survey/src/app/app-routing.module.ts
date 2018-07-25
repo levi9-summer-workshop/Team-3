@@ -11,6 +11,7 @@ import { LoginComponent } from './templates/login/login.component';
 import { SurveyCreatePageComponent } from './create-survey/survey-create-page/survey-create-page.component';
 import { FillSurveyComponent } from './survey-fill/fill-survey/fill-survey.component';
 import { AllSurveysComponent } from './survey-fill/all-surveys/all-surveys.component';
+import { SurveyResultsComponent } from './survey-fill/survey-results/survey-results.component';
 
 
 const routes: Routes = [
@@ -23,7 +24,8 @@ const routes: Routes = [
   { path: "new-survey", component: SurveyCreatePageComponent },
   { path: "login", component: LoginComponent },
   { path : "surveys/:id", component :  FillSurveyComponent },
-  { path : "all-surveys", component : AllSurveysComponent }
+  { path : "all-surveys", component : AllSurveysComponent },
+  { path: "survey-results/:id", component : SurveyResultsComponent }
 ];
 
 

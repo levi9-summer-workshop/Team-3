@@ -21,6 +21,7 @@ import { SurveyCreatePageComponent } from './create-survey/survey-create-page/su
 import { FillSurveyComponent } from './survey-fill/fill-survey/fill-survey.component';
 import { AllSurveysComponent } from './survey-fill/all-surveys/all-surveys.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { SurveyResultsComponent } from './survey-fill/survey-results/survey-results.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     EqualValidator,
     HomeComponent,
     FillSurveyComponent,
-    AllSurveysComponent
+    AllSurveysComponent,
+    SurveyResultsComponent
   ],
 
   imports: [

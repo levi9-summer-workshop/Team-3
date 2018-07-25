@@ -1,6 +1,7 @@
 <ng-container *ngFor="let survey of surveys">
-    <br>  Click to see survey: 
+      Click to see survey: 
 <a [routerLink]="['/surveys', survey.id]">
-  {{ survey.name }}
-</a>
+  {{ survey.name }},
+</a>  click to see <a [routerLink]="['/survey-results/', survey.id]"> results!</a> 
+<br>
 </ng-container>
