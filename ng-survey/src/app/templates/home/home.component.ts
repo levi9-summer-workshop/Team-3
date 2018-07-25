@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   }
 
   onNew() {
-    this.router.navigate(['/new-surveys']);
+    this.router.navigate(['/new-survey']);
   }
 
   onManage() {
