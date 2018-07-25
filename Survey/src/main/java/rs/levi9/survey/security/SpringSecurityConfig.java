@@ -9,18 +9,23 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import rs.levi9.survey.service.UserService;
+import rs.levi9.survey.service.AuthUserService;
 
 @Configurable
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserService service;
+    private AuthUserService authUserService;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(service);
+         auth.userDetailsService(authUserService);
+       // auth.inMemoryAuthentication()
+         //       .withUser("user5").password("user5").authorities("USER")
+           //     .and()
+             //   .withUser("user6").password("user6").roles("USER", "ADMIN");
+        System.out.println("global configurer finished");
     }
 
     @Override

@@ -8,17 +8,17 @@ import javax.persistence.Enumerated;
 public class Role extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
-    private RoleType type;
+    private RoleType roleType;
 
     public enum RoleType {
         ROLE_USER, ROLE_ADMIN
     }
 
-    public RoleType getType() {
-        return type;
+    public RoleType getRoleType() {
+        return roleType;
     }
 
-    public void setType(RoleType type) {
-        this.type = type;
+    public void setRoleType(RoleType roleType) {
+        this.roleType = roleType;
     }
 }
