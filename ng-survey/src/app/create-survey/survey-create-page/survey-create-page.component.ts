@@ -54,6 +54,5 @@ export class SurveyCreatePageComponent implements OnInit {
     () =>{
       this.router.navigate(['/surveys/'+id]);
     })
-   
     }
 }

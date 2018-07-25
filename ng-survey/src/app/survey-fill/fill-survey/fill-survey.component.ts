@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { Survey } from './survey';
+import { Survey } from '../survey';
 import { SurveyCreatePageServiceService } from '../../create-survey/survey-create-page/survey-create-page-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
@@ -23,7 +23,7 @@ export class FillSurveyComponent implements OnInit, OnDestroy  {
   constructor(private surveyService : SurveyCreatePageServiceService, private route: ActivatedRoute, private router : Router) { }
 
   ngOnInit() {
-
+  
     this.sub = this.route.params.subscribe(params => {
        this.id = +params['id']; 
        this.survey = new Survey();    
