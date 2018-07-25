@@ -4,7 +4,6 @@
     position: fixed;
     z-index: 1;
     overflow-x: hidden;
-    /* padding-top: 20px; */
     background-size: cover;
     top: 0;
     background-image: url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/SImAn91gin31gtxk/stock-market-fluctuations-graph-on-screen-indexes-going-up-and-down-statistics-electronic-chart-with-stock-market-fluctuations_h6zdiquyx_thumbnail-full12.png);    background-repeat: no-repeat;
@@ -46,13 +45,11 @@
   } 
 
  .btn {
-    padding-top: 120px;
     width: 400px;
     height: 300px;
     text-align: center;
     vertical-align: middle;
     font-size: 25px;
-    /* align-content: space-around; */
   }
 
   .op {
@@ -66,13 +63,3 @@
     top: 22%; 
     position: relative;
   }
-
-  /* .jumbotron {
-      position: relative;
-      top: 85px;
-      left: 37%;
-      text-align: center;
-      width: 500px;
-      font-size: 30px;
-      opacity: 0.8;  
-    } */

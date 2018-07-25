@@ -1,17 +1,10 @@
-<!-- <div class="container">
-    <h1 class="text-align:center">WELCOME TO OUR HOME PAGE</h1>
-    <hr>
-    <p class="">Coming soon!</p>
-</div> -->
-
 <div class="bg"></div>
 <div class="home">
     <div class="up">
-        <!-- <div class="jumbotron">Welcome!</div> -->
         <div class="buttons">
-            <a href="/new-survey" class="btn btn-lg btn-info"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp;Create new survey</a>
-            <a href="/home" class="btn btn-lg btn-info op"><i class="fa fa-sticky-note" aria-hidden="true"></i>&nbsp;Manage your surveys</a>
-            <a href="/all-surveys" class="btn btn-lg btn-info"><i class="fa fa-list-ul" aria-hidden="true"></i>&nbsp;See all surveys</a>
+            <button class="btn btn-lg btn-info" (click)="onNew()"><i class="fa fa-pencil-square-o" aria-hidden="true" (click)="onNew()"></i>&nbsp;Create new survey</button>
+            <button class="btn btn-lg btn-info op" (click)="onManage()"><i class="fa fa-sticky-note" aria-hidden="true" (click)="onManage()"></i>&nbsp;Manage your surveys</button>
+            <button class="btn btn-lg btn-info" (click)="onAll()"><i class="fa fa-list-ul" aria-hidden="true"></i>&nbsp;See all surveys</button>
         </div>
     </div>
 </div>
