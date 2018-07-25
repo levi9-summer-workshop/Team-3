@@ -50,17 +50,15 @@ export class FillSurveyComponent implements OnInit, OnDestroy  {
       let questions : FilledQuestionModel[] = [];
       let surv = new FilledSurveyModel(questions);
       surv.id = this.survey.id;
-     
+       
       //loop through whole form (aka. question list)
        for(let i = 0; i < this.survey.questionList.length; i++){
          //create new question in an array of questions
-      
         questions.push(new FilledQuestionModel());
         //set question id 
         questions[i].id = this.survey.questionList[i].id;
         questions[i].answers = [];
         //create temporary 
-
         if(this.survey.questionList[i].multipleChoices == false){
           //print answer text for testing purposes.
            for(let j = 0; j < this.survey.questionList[i].answerList.length; j++){
@@ -72,6 +70,7 @@ export class FillSurveyComponent implements OnInit, OnDestroy  {
           } else{
             //if it's checkbox
             for(let j = 0, k = 0; j < this.survey.questionList[i].answerList.length; j++){
+             
              if(f.controls[this.survey.questionList[i].answerList[j].id].value == true){
                   questions[i].answers[k] = this.survey.questionList[i].answerList[j].id;
                   k++;  

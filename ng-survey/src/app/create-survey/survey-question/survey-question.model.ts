@@ -9,6 +9,6 @@ export class SurveyQuestion {
     public id: number;
 
     public constructor(){
-        //this.answerList[0] = new SurveyAnswer("default text");
+       
     }
 }

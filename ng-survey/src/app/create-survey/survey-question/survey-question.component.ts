@@ -23,7 +23,7 @@ export class SurveyQuestionComponent implements OnInit {
   }
 
   addAnswer(){
-      this.question.answerList.push(new SurveyAnswer("default text"));
+      this.question.answerList.push(new SurveyAnswer(""));
   }
   deleteEventHandler($event : any){
       this.question.answerList.splice($event, 1);
