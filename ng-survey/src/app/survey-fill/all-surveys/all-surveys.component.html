@@ -1,7 +1,19 @@
-<ng-container *ngFor="let survey of surveys">
-      Click to see survey: 
-<a [routerLink]="['/surveys', survey.id]">
-  {{ survey.name }},
-</a>  click to see <a [routerLink]="['/survey-results/', survey.id]"> results!</a> 
-<br>
-</ng-container>
+<div class="container text-center"><h1 class="font">Surveys</h1></div>
+<table class="table">
+        <thead>
+          <tr>
+            <th scope="col" class="text-center align-middle">#</th>
+            <th scope="col" class="text-center align-middle">Name</th>
+            <th scope="col" class="text-center align-middle">User</th>
+            <th scope="col" class="text-center align-middle">Results</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let survey of surveys; let i = index'>            
+            <th scope="row" class="text-center align-middle"> {{ i + 1 }}</th>
+            <td class="text-center align-middle"><a [routerLink]="['/surveys', survey.id]">{{ survey.name }}</a></td>
+            <td class="text-center align-middle"></td> 
+            <td class="text-center align-middle"><a [routerLink]="['/survey-results/', survey.id]">See the results</a></td>
+          </tr>
+        </tbody>
+</table>
