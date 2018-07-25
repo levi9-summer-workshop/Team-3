@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.levi9.survey.model.Answer;
 import rs.levi9.survey.model.Survey;
-import rs.levi9.survey.model.dto.SubmittedSurvey;
-import rs.levi9.survey.model.dto.SurveyList;
+import rs.levi9.survey.model.dto.FilledQuestion;
+import rs.levi9.survey.model.dto.FilledSurvey;
 import rs.levi9.survey.repository.SurveyRepository;
 
 import java.util.List;
@@ -57,16 +57,14 @@ public class SurveyService {
      * This method will increment number of times this survey has been filled and
      * save all the answers that user has filled.
      *
-     * @param submittedSurvey - object of SubmittedSurvey that we received from controller.
+     * @param filledSurvey - object of FilledSurvey that we received from controller.
      */
-    public void saveFilledSurvey(SubmittedSurvey submittedSurvey) {
+    public void saveFilledSurvey(FilledSurvey filledSurvey) {
 
-        incrementTimesSubmitted(submittedSurvey.getSurveyId());
-        for (Answer answer : submittedSurvey.getAnswerList()) {
-            if (!answer.isCustom()) {
-                answerService.incrementAnswerCount(answer.getId());
-            }else {
-                answerService.save(answer);
+        incrementTimesSubmitted(filledSurvey.getId());
+        for(FilledQuestion question : filledSurvey.getQuestions()){
+            for (Long id : question.getAnswers()) {
+                answerService.incrementAnswerCount(id);
             }
         }
     }

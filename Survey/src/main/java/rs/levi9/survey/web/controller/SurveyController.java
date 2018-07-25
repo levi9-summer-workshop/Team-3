@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import rs.levi9.survey.model.Survey;
-import rs.levi9.survey.model.dto.SubmittedSurvey;
+import rs.levi9.survey.model.dto.FilledSurvey;
 import rs.levi9.survey.service.SurveyService;
 
 import java.util.List;
@@ -53,7 +53,8 @@ public class SurveyController {
     }
 
     @PostMapping("/filled")
-    public void saveSubmittedSurvey(@RequestBody SubmittedSurvey submittedSurvey) {
-        surveyService.saveFilledSurvey(submittedSurvey);
+    public ResponseEntity saveSubmittedSurvey(@RequestBody FilledSurvey filledSurvey) {
+      this.surveyService.saveFilledSurvey(filledSurvey);
+      return new ResponseEntity(filledSurvey, HttpStatus.OK);
     }
 }

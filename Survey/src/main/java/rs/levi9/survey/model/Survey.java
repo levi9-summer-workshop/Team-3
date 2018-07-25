@@ -1,5 +1,7 @@
 package rs.levi9.survey.model;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -56,6 +58,9 @@ public class Survey extends BaseEntity implements Serializable {
     }
 
     public void incrTimesSubmitted() {
+        if(timesSubmitted == null){
+            timesSubmitted = new Long(0);
+        }
         timesSubmitted++;
     }
 
