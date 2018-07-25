@@ -16,11 +16,11 @@
                  <br>
                  <!-- Checkbox -->
             <ng-container *ngIf="question.multipleChoices">
-                <input class="input" type="checkbox"  name = "{{answer.id}}" value="{{answer.answerText}}" ngModel > {{answer.answerText}}
+                <input class = "input" type = "checkbox"  name = "{{answer.id}}" [checked] value = "{{answer.answerText}}" ngModel > {{answer.answerText}}
             </ng-container>
                 <!-- Radio -->
             <ng-container *ngIf="!question.multipleChoices">
-                <input class="input" type="radio" name = "{{question.id}}"  value="{{answer.answerText}}" ngModel> {{answer.answerText}}
+                <input class = "input" type = "radio"  name = "{{question.id}}"  value = "{{answer.answerText}}" ngModel> {{answer.answerText}}
             </ng-container>
 
         </ng-container>
@@ -31,7 +31,7 @@
 </form>
 
 <!-- 
- 
+    
  name="{{question.id}}"  value="{{answer.id}}" ngModel
  name="noname" value="{{answer.id}}" ngModel #rButton="ngModel" 
 -->

@@ -4,6 +4,7 @@ import { Survey } from "./survey.model";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
+import { FilledSurveyModel } from "../../survey-fill/filled-survey-models/filled-survey-model";
 
 @Injectable()
 export class SurveyCreatePageServiceService {
@@ -22,5 +23,7 @@ export class SurveyCreatePageServiceService {
   delete(id : number) : Observable<any>{
     return this.http.delete("//localhost:8080/survey/"+id);
   }
-  
+  postSubmitedSurvey(survey : FilledSurveyModel) : Observable<any>{
+    return this.http.post("//localhost:8080/survey/filled", survey);
+  }
 }

@@ -49,6 +49,7 @@ export class SurveyCreatePageComponent implements OnInit {
     }
   
     this.service.post(new Survey(this.surveyName, this.desc, this.questions)).subscribe(data =>{
+     
     },
     (error) => { console.log(error); }, 
     () =>{
