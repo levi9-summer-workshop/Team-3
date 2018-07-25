@@ -39,7 +39,6 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     HomeComponent,
     FillSurveyComponent,
     AllSurveysComponent
-
   ],
 
   imports: [

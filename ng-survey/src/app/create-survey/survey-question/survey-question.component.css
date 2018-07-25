@@ -1,3 +1,19 @@
 .row-fluid {
     display: flex;
 }
+
+.button {
+    width: 35px;
+}
+
+.input {
+    width: 80%;
+}
+
+.font {
+    font-size: 90%;
+}
+
+.lft {
+    left: 35%;
+}

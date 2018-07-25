@@ -6,6 +6,7 @@ export class SurveyQuestion {
     public questionText: string;
     public answerList : SurveyAnswer[];
     public multipleChoices : boolean;
+    public id: number;
 
     public constructor(){
         //this.answerList[0] = new SurveyAnswer("default text");
