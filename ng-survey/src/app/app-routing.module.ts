@@ -16,14 +16,14 @@ import { AllSurveysComponent } from './survey-fill/all-surveys/all-surveys.compo
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: "user", component: SurveyUserListComponent},
+  { path: "user", component: SurveyUserListComponent },
   { path: "survey", component: SurveyCreatePageComponent },
   { path: "registration", component: RegistrationComponent },
   { path: "users", component: SurveyUserListComponent },
   { path: "new-survey", component: SurveyCreatePageComponent },
   { path: "login", component: LoginComponent },
   { path : "surveys/:id", component :  FillSurveyComponent },
-  { path : "all-surveys", component : AllSurveysComponent}
+  { path : "all-surveys", component : AllSurveysComponent }
 ];
 
 

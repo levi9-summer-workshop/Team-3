@@ -81,8 +81,10 @@ export class FillSurveyComponent implements OnInit, OnDestroy  {
        this.submitFilledSurvey(surv);
     } 
     submitFilledSurvey(survey : FilledSurveyModel){
-    this.surveyService.postSubmitedSurvey(survey).subscribe(() =>{
+    this.surveyService.postSubmitedSurvey(survey).subscribe((data) =>{
       this.router.navigate(['/home']);
+      survey = data;
+     
     },
        (error) => {console.log(error),
       () =>{

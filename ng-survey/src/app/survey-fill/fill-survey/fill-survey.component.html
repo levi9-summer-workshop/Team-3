@@ -8,8 +8,8 @@
         <p> Question: </p>
         <h5>{{question.questionText}}</h5>
       
-       <!--  <div *ngIf="question.multipleChoices">Feel free to choose more answers!</div>
-        <div *ngIf="!question.multipleChoices">Please choose only one answer!</div> --> 
+       <div *ngIf="question.multipleChoices">Feel free to choose more answers!</div>
+        <div *ngIf="!question.multipleChoices">Please choose only one answer!</div> 
 
                <!-- List all answers in a question -->
             <ng-container *ngFor="let answer of question.answerList; let i = index">

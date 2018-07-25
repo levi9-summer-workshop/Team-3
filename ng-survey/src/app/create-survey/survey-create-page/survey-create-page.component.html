@@ -1,21 +1,3 @@
-<!-- <div class="survey container text-align:center">
-    <input type="text" class="input form-control form-control-lg col-sm-4 col-centered" placeholder="Name of your survey" [(ngModel)]="surveyName">
-  
-    <br>
-    <div class="content">
-        <textarea class="input form-control form-control-sm col-sm-8 col-centered" placeholder="Describe your survey" [(ngModel)]="desc"></textarea>
-       
-    </div>   
-    <div class="container justify-content-center col-lg-8 font-sm"> 
-        <app-survey-question *ngFor="let question of questions; let i = index" (deleteEvent) = "deleteEventHandler($event)" [questionId]= "i" [questionList] = "question"></app-survey-question>
-    </div> 
-    <div align="center">
-        <button type="button" class="btn btn-info" (click)="addQuestion()">Add question</button>
-        <button type="button" class ="btn btn-danger" data-toggle="modal" data-target="#submitSurvey">Submit</button>
-    </div>
-  </div> -->
-
-<!-- <form> -->
   <div class="survey container">
   <div class="form-group">
     <input type="text" class="input form-control form-control-lg col-sm-6 col-lg-8 col-centered" placeholder="Name of your survey" [(ngModel)]="surveyName">
@@ -35,9 +17,7 @@
 
   </div>
   </div>
-<!-- </form> -->
 
-  
   <!-- Modal -->
   <div class="modal fade" id="submitSurvey" tabindex="-1" role="dialog" aria-labelledby="submitSurveyLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

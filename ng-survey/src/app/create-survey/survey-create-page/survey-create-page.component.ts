@@ -38,7 +38,7 @@ export class SurveyCreatePageComponent implements OnInit {
   }
   
   submit(){
-    
+    let id = 0;
     if(this.surveyName == null){
       this.surveyName = "Survey default name";
     }
@@ -47,11 +47,12 @@ export class SurveyCreatePageComponent implements OnInit {
     }
   
     this.service.post(new Survey(this.surveyName, this.desc, this.questions)).subscribe(data =>{
-     
+      let survey = data;
+        id = survey.id;
     },
     (error) => { console.log(error); }, 
     () =>{
-      this.router.navigate(['/home']);
+      this.router.navigate(['/surveys/'+id]);
     })
    
     }
