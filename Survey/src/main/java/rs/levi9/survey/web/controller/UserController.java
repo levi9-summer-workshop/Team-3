@@ -3,6 +3,7 @@ package rs.levi9.survey.web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import rs.levi9.survey.model.Survey;
 import rs.levi9.survey.model.SurveyUser;
@@ -22,18 +23,20 @@ public class UserController {
     }
 
     @GetMapping
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     public ResponseEntity getUsers() {
-
         return new ResponseEntity(userService.findAll(), HttpStatus.OK);
     }
 
     @DeleteMapping(path = "/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     public ResponseEntity delete(@PathVariable("id") Long id) {
         userService.delete(id);
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     public ResponseEntity login(@RequestBody SurveyUser surveyUser) {
         SurveyUser user = userService.findUser(surveyUser.getUsername(), surveyUser.getPassword());
         if (user == null) {
@@ -44,6 +47,7 @@ public class UserController {
     }
 
     @PostMapping("/register")
+  //  @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     public ResponseEntity register(@RequestBody SurveyUser surveyUser) {
         surveyUser.setId(null);
         if (userService.checkIfUserExists(surveyUser)) {
@@ -54,11 +58,13 @@ public class UserController {
     }
 
     @PutMapping("/block")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     public ResponseEntity block(@RequestBody SurveyUser surveyUser) {
         return new ResponseEntity(userService.block(surveyUser), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     public SurveyUser getOne(@PathVariable("id") Long id) {
         return this.userService.getOne(id);
     }
