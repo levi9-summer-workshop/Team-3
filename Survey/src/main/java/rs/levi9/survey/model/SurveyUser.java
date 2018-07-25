@@ -24,6 +24,11 @@ public class SurveyUser extends BaseEntity implements Serializable {
     @Column
     private Date blockedUntil;
 
+    @ManyToMany
+    @JoinTable(joinColumns = @JoinColumn(name = "survey_user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<Role> roles;
+
     @OneToMany(cascade = CascadeType.ALL)
     private List<Survey> surveyList;
 
@@ -103,5 +108,13 @@ public class SurveyUser extends BaseEntity implements Serializable {
 
     public void setSurveyList(List<Survey> surveyList) {
         this.surveyList = surveyList;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 }
