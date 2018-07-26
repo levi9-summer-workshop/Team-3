@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SurveyCreatePageServiceService } from '../../create-survey/survey-create-page/survey-create-page-service.service';
 import { Survey } from '../survey';
+import { LoginServiceService } from '../../templates/login/login-service.service';
 
 @Component({
   selector: 'app-survey-results',
@@ -10,7 +11,7 @@ import { Survey } from '../survey';
 })
 export class SurveyResultsComponent implements OnInit {
 
-  constructor(private surveyService : SurveyCreatePageServiceService, private route: ActivatedRoute) { }
+  constructor(private surveyService : SurveyCreatePageServiceService, private router: Router , private route: ActivatedRoute , private loginService : LoginServiceService) { }
 
   id: number;
   private sub: any; 
@@ -18,6 +19,10 @@ export class SurveyResultsComponent implements OnInit {
 
   ngOnInit() {
 
+    if(!this.loginService.isUserAuth()){
+      this.router.navigate(['login']);
+      return;
+    }
     this.sub = this.route.params.subscribe(params => {
        this.id = +params['id']; 
        this.survey = new Survey();    

@@ -12,10 +12,13 @@ import { SurveyCreatePageComponent } from './create-survey/survey-create-page/su
 import { FillSurveyComponent } from './survey-fill/fill-survey/fill-survey.component';
 import { AllSurveysComponent } from './survey-fill/all-surveys/all-surveys.component';
 import { SurveyResultsComponent } from './survey-fill/survey-results/survey-results.component';
+import { AccessForbidenComponent } from './errors/access-forbiden/access-forbiden.component';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { LogOutComponent } from './templates/log-out/log-out.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: "user", component: SurveyUserListComponent },
   { path: "survey", component: SurveyCreatePageComponent },
@@ -25,7 +28,11 @@ const routes: Routes = [
   { path: "login", component: LoginComponent },
   { path : "surveys/:id", component :  FillSurveyComponent },
   { path : "all-surveys", component : AllSurveysComponent },
-  { path: "survey-results/:id", component : SurveyResultsComponent }
+  { path: "survey-results/:id", component : SurveyResultsComponent },
+  { path: "404", component : NotFoundComponent },
+  { path: "forbidden",  component : AccessForbidenComponent},
+  { path: "logout", component : LogOutComponent }
+  
 ];
 
 

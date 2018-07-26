@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { FilledQuestionModel } from '../filled-survey-models/filled-question-model';
 import { FilledSurveyModel } from '../filled-survey-models/filled-survey-model';
+import { LoginServiceService } from '../../templates/login/login-service.service';
 
 
 
@@ -20,10 +21,14 @@ export class FillSurveyComponent implements OnInit, OnDestroy  {
   id: number;
   private sub: any;
   
-  constructor(private surveyService : SurveyCreatePageServiceService, private route: ActivatedRoute, private router : Router) { }
+  constructor(private surveyService : SurveyCreatePageServiceService, private route: ActivatedRoute, private router : Router, private loginService : LoginServiceService) { }
 
   ngOnInit() {
-  
+
+    if(!this.loginService.isUserAuth()){
+      this.router.navigate(['login']);
+      return;
+    }
     this.sub = this.route.params.subscribe(params => {
        this.id = +params['id']; 
        this.survey = new Survey();    

@@ -22,6 +22,10 @@ import { FillSurveyComponent } from './survey-fill/fill-survey/fill-survey.compo
 import { AllSurveysComponent } from './survey-fill/all-surveys/all-surveys.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { SurveyResultsComponent } from './survey-fill/survey-results/survey-results.component';
+import { LoginServiceService } from './templates/login/login-service.service';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { AccessForbidenComponent } from './errors/access-forbiden/access-forbiden.component';
+import { LogOutComponent } from './templates/log-out/log-out.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +44,10 @@ import { SurveyResultsComponent } from './survey-fill/survey-results/survey-resu
     HomeComponent,
     FillSurveyComponent,
     AllSurveysComponent,
-    SurveyResultsComponent
+    SurveyResultsComponent,
+    NotFoundComponent,
+    AccessForbidenComponent,
+    LogOutComponent
   ],
 
   imports: [
@@ -54,7 +61,8 @@ import { SurveyResultsComponent } from './survey-fill/survey-results/survey-resu
   providers: [
     SurveyUserService,
     SurveyCreatePageServiceService,
-    RegistrationService
+    RegistrationService,
+    LoginServiceService
   ],
   
   bootstrap: [AppComponent]
