@@ -20,10 +20,9 @@ export class SurveyCreatePageComponent implements OnInit {
 
   ngOnInit() {
  
-        let a1 : SurveyAnswer[] = [];
- 
-    this.questions[0] = new SurveyQuestion();
-    this.questions[0].answerList = a1;
+      let a1 : SurveyAnswer[] = [];
+      this.questions[0] = new SurveyQuestion();
+      this.questions[0].answerList = a1;
   
 
   }

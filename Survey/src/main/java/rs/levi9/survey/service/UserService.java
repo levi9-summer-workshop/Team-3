@@ -3,10 +3,11 @@ package rs.levi9.survey.service;
 import org.springframework.stereotype.Service;
 import rs.levi9.survey.model.SurveyUser;
 import rs.levi9.survey.repository.UserRepository;
+
 import java.util.List;
 
 @Service
-public class UserService  {
+public class UserService {
 
     private UserRepository userRepository;
 
@@ -40,8 +41,11 @@ public class UserService  {
     }
 
     public boolean checkIfUserExists(SurveyUser surveyUser) {
-        return(userRepository.findUserByEmail(surveyUser.getEmail()) == null && userRepository.findUserByUsername( surveyUser.getUsername()) == null);
+        return (userRepository.findUserByEmail(surveyUser.getEmail()) == null && userRepository.findUserByUsername(surveyUser.getUsername()) == null);
     }
 
+    public SurveyUser findUserByUsername(String username) {
+        return this.userRepository.findUserByUsername(username);
+    }
 
 }

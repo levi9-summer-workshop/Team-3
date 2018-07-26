@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import rs.levi9.survey.model.dto.AuthenticatedUser;
 import rs.levi9.survey.service.AuthUserService;
+import rs.levi9.survey.service.UserService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,10 +19,10 @@ import java.util.List;
 @RequestMapping("/auth")
 public class AuthUserController {
 
-    private AuthUserService userService;
+    private UserService userService;
 
     @Autowired
-    public AuthUserController(AuthUserService userService) {
+    public AuthUserController(UserService userService) {
         this.userService = userService;
     }
 
@@ -31,6 +32,6 @@ public class AuthUserController {
         for(GrantedAuthority authority : authentication.getAuthorities()) {
             roles.add(authority.getAuthority());
         }
-        return  new AuthenticatedUser(authentication.getName(), roles);
+        return  new AuthenticatedUser(userService.findUserByUsername(authentication.getName()).getId(),authentication.getName(), roles);
     }
 }

@@ -2,7 +2,7 @@ INSERT INTO role (role_type) VALUES ('ROLE_ADMIN');
 INSERT INTO role (role_type) VALUES ('ROLE_USER');
 
 insert into survey_user(id, email, password, username, is_blocked) values (1, "admin@survey.com", "admin", "admin", 0);
-insert into survey_user(id, email, password, username, is_blocked) values (2, "user@survey.com", "user", "user", 0);
+insert into survey_user(id, email, password, username, is_blocked) values (2, "user@survey.com",  "user",  "user", 0);
 insert into survey_user(id, email, password, username, is_blocked) values (3, "user1@survey.com", "user1", "user1", 0);
 insert into survey_user(id, email, password, username, is_blocked) values (4, "user2@survey.com", "user2", "user2", 0);
 insert into survey_user(id, email, password, username, is_blocked) values (5, "user3@survey.com", "user3", "user3", 0);

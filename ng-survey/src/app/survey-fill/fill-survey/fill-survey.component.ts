@@ -63,7 +63,6 @@ export class FillSurveyComponent implements OnInit, OnDestroy  {
           //print answer text for testing purposes.
            for(let j = 0; j < this.survey.questionList[i].answerList.length; j++){
             if(this.survey.questionList[i].answerList[j].answerText === f.controls[this.survey.questionList[i].id].value){
-     
                questions[i].answers[0] = this.survey.questionList[i].answerList[j].id;
             }
            }
