@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
   public username : string;
   public password : string;
   public error : string;
+  public lgdin : boolean;
+  
   constructor(private loginService : LoginServiceService, private router: Router) { }
 
   ngOnInit() {
@@ -24,19 +26,22 @@ export class LoginComponent implements OnInit {
     this.message = "Bad credentials!";
     this.username = "";
     this.password = "";
+   
   }
 
   public takeLoginData(form: NgForm) {
 
    this.loginService.login(form.value.username, form.value.password) .subscribe(
     (data) => {this.user = data;
+      this.lgdin = true;
       this.message = "Success!";
+      form.reset();
      },
     (error) => {
       this.error = error;
      }
   );
-       //form.reset();
+       
 }
 
   public onOk() {
