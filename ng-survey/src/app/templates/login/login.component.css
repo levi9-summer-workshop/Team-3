@@ -84,3 +84,8 @@ body {
     font-size: 13px;
     font-family: 'Roboto', sans-serif;
 }
+
+.modal {
+    padding-block-start: 8%;
+    vertical-align: middle;
+}
