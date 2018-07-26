@@ -13,6 +13,9 @@ public class Survey extends BaseEntity implements Serializable {
     @Transient
     private Long userId;
 
+    @Transient
+    private String surveyOwner;
+
     private String name;
 
     @ManyToOne
@@ -45,9 +48,20 @@ public class Survey extends BaseEntity implements Serializable {
         this.questionList = questionList;
     }
 
-    public Survey(Long timesSubmitted, String name, String description, boolean isOpen, List<Question> questionList) {
-        this.timesSubmitted = timesSubmitted;
+    public Survey(Long userId, String surveyOwner, String name, String description, List<Question> questionList) {
+        this.userId = userId;
+        this.surveyOwner = surveyOwner;
         this.name = name;
+        this.description = description;
+        this.questionList = questionList;
+    }
+
+    public Survey(Long timesSubmitted, Long userId, String surveyOwner, String name, SurveyUser surveyUser, String description, boolean isOpen, List<Question> questionList) {
+        this.timesSubmitted = timesSubmitted;
+        this.userId = userId;
+        this.surveyOwner = surveyOwner;
+        this.name = name;
+        this.surveyUser = surveyUser;
         this.description = description;
         this.isOpen = isOpen;
         this.questionList = questionList;
@@ -110,6 +124,14 @@ public class Survey extends BaseEntity implements Serializable {
 
     public void setUserId(Long userId) {
         this.userId = userId;
+    }
+
+    public String getSurveyOwner() {
+        return surveyOwner;
+    }
+
+    public void setSurveyOwner(String surveyOwner) {
+        this.surveyOwner = surveyOwner;
     }
 
     public SurveyUser getSurveyUser() {

@@ -4,7 +4,8 @@ import { SurveyAnswer } from '../survey-answer/survey-answer.model';
 import { Survey } from './survey.model';
 import { SurveyCreatePageServiceService } from './survey-create-page-service.service';
 import { Router } from '@angular/router';
-import { LoginServiceService } from '../../templates/login/login-service.service';
+import { LoginServiceService, AuthUser } from '../../templates/login/login-service.service';
+import { SurveyUser } from '../../survey-user/survey-user.model';
 
 @Component({
   selector: 'app-survey-create-page',
@@ -16,6 +17,7 @@ export class SurveyCreatePageComponent implements OnInit {
   public surveyName : string;
   public desc: string;
   public questions : SurveyQuestion[] = [];
+  public user: AuthUser;
 
   constructor(private service : SurveyCreatePageServiceService, private router: Router, private loginService : LoginServiceService) { }
 
@@ -32,7 +34,7 @@ export class SurveyCreatePageComponent implements OnInit {
   }
   addQuestion(){
     this.questions.push(new SurveyQuestion());
-     let  s1 : SurveyAnswer[] = [];
+    let  s1 : SurveyAnswer[] = [];
     this.questions[this.questions.length - 1].answerList = s1;
   }
   
@@ -49,9 +51,11 @@ export class SurveyCreatePageComponent implements OnInit {
       this.desc = "default description";
     }
   
-    this.service.post(new Survey(this.loginService.user.id, this.surveyName, this.desc, this.questions)).subscribe(data =>{
+    this.user = this.loginService.getAuthUser();
+
+    this.service.post(new Survey(this.user.id, this.user.username, this.surveyName, this.desc, this.questions)).subscribe(data => {
       let survey = data;
-        id = survey.id;
+      id = survey.id;
     },
     (error) => { 
       // console.log(error); 

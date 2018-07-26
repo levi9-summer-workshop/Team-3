@@ -33,6 +33,7 @@ public class SurveyService {
         List<Survey> surveys = surveyRepository.findAll();
         for(Survey s : surveys){
             s.setUserId(s.getSurveyUser().getId());
+            s.setSurveyOwner(s.getSurveyUser().getUsername());
         }
         return surveys;
     }
