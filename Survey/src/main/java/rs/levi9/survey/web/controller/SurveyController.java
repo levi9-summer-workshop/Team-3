@@ -46,15 +46,21 @@ public class SurveyController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-    @PostMapping
+   /* @PostMapping
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     public Survey save(@RequestBody Survey survey) {
         return surveyService.save(survey);
     }
-
+ */
     @PutMapping
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     public Survey update(@RequestBody Survey survey) {
+        return surveyService.save(survey);
+    }
+
+    @PostMapping
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
+    public Survey save(@RequestBody Survey survey) {
         return surveyService.save(survey);
     }
 
