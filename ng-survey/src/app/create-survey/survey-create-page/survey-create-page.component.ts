@@ -50,7 +50,10 @@ export class SurveyCreatePageComponent implements OnInit {
       let survey = data;
         id = survey.id;
     },
-    (error) => { console.log(error); }, 
+    (error) => { 
+      // console.log(error); 
+      window.alert("Don't leave fields empty!");    
+    }, 
     () =>{
       this.router.navigate(['/surveys/'+id]);
     })
