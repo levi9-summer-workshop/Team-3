@@ -19,7 +19,9 @@ export class LoginComponent implements OnInit {
   constructor(private loginService : LoginServiceService, private router: Router) { }
 
   ngOnInit() {
-
+    if(this.loginService.isUserAuth() == true){
+        location.reload();
+    }
     this.user = new AuthUser();
     this.message = "Bad credentials!";
     this.username = "";
@@ -36,7 +38,7 @@ export class LoginComponent implements OnInit {
       this.error = error;
      }
   );
-       //form.reset();
+    
 }
 
   public onOk() {
