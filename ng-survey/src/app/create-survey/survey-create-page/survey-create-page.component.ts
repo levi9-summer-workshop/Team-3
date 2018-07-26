@@ -4,6 +4,7 @@ import { SurveyAnswer } from '../survey-answer/survey-answer.model';
 import { Survey } from './survey.model';
 import { SurveyCreatePageServiceService } from './survey-create-page-service.service';
 import { Router } from '@angular/router';
+import { LoginServiceService } from '../../templates/login/login-service.service';
 
 @Component({
   selector: 'app-survey-create-page',
@@ -16,10 +17,13 @@ export class SurveyCreatePageComponent implements OnInit {
   public desc: string;
   public questions : SurveyQuestion[] = [];
 
-  constructor(private service : SurveyCreatePageServiceService, private router : Router) { }
+  constructor(private service : SurveyCreatePageServiceService, private router: Router, private loginService : LoginServiceService) { }
 
   ngOnInit() {
- 
+    if(!this.loginService.isUserAuth()){
+      this.router.navigate(['login']);
+      return;
+    }
       let a1 : SurveyAnswer[] = [];
       this.questions[0] = new SurveyQuestion();
       this.questions[0].answerList = a1;
