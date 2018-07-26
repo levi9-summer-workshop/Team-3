@@ -43,11 +43,6 @@ export class LoginComponent implements OnInit {
       this.error = error;
      }
   );
-<<<<<<< HEAD
-    
-=======
-       
->>>>>>> e17b7a5a1bc9e945abe047ad8688008c0107bbf0
 }
 
   public onOk() {
