@@ -20,7 +20,6 @@ import { LogOutComponent } from './templates/log-out/log-out.component';
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: "user", component: SurveyUserListComponent },
   { path: "survey", component: SurveyCreatePageComponent },
   { path: "registration", component: RegistrationComponent },
   { path: "users", component: SurveyUserListComponent },

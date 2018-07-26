@@ -26,6 +26,10 @@ export class SurveyUserListComponent implements OnInit {
         return;
       }
       
+   this. getUserList();
+  }
+
+  getUserList(){
     this.surveyService.get().subscribe(data => { 
       this.users = data; 
     },
@@ -52,7 +56,7 @@ export class SurveyUserListComponent implements OnInit {
       
       },
       (error) => {console.error(error) },
-      () => location.reload()
+      () => this. getUserList()
     );
   }
 }
