@@ -1,9 +1,9 @@
 .survey {
     margin: 0 auto;
     padding: 30px 0;
-    background: linear-gradient(to right, #bdc4c1, #e4dfe1);
+    background: linear-gradient(to right, #dfdddd, #f0f0f0);
     font-family: 'Roboto', sans-serif;
-    border: 1px solid #f3f3f3;
+    border: 2px ridge #b1aeae;
 }
 
 .content {
@@ -29,4 +29,19 @@
 
 .input {
     text-align:center;
+    border: 1px ridge #b1aeae;
  }
+
+ .bg {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    overflow-x: hidden;
+    background-size: cover;
+    top: 0;
+    opacity: 0.2;
+    background-image: url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/SImAn91gin31gtxk/stock-market-fluctuations-graph-on-screen-indexes-going-up-and-down-statistics-electronic-chart-with-stock-market-fluctuations_h6zdiquyx_thumbnail-full12.png);    background-repeat: no-repeat;
+    background-position: center;
+    top: 5.7%;
+  }

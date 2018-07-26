@@ -9,6 +9,7 @@
 
 .input {
     width: 90%;
+    border: 1px ridge #b1aeae;
 }
 
 .line {

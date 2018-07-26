@@ -16,6 +16,8 @@ export class SurveyResultsComponent implements OnInit {
   id: number;
   private sub: any; 
   private survey : Survey;
+  private percentage: number;
+  private time : string;
 
   ngOnInit() {
 
@@ -41,6 +43,16 @@ export class SurveyResultsComponent implements OnInit {
     }
   
   calculatePercentage(answ : number, surv : number){
-    return  parseFloat((answ/surv).toFixed(2)) * 100;
+    this.percentage = parseFloat((answ/surv).toFixed(2)) * 100;
+    return this.percentage + '%';
+  }
+
+  times(tms: number) {
+    if(tms == 1) {
+      this.time = "time";
+    } else {
+      this.time = "times";
+    }
+    return this.time;
   }
 }

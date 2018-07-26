@@ -1,16 +1,29 @@
-
-<h1>Results for: {{survey.name}} </h1>
-<h2>Survey description: {{survey.description}} </h2>
-
- <!-- List all questions in an answer. -->
- <h1>Survey has been filled {{survey.timesSubmitted}} times</h1>
-<ng-container *ngFor="let question of survey.questionList">
-    <div>
-        <p> Question: </p>
-        <h5>{{question.questionText}}</h5>
-            <ng-container *ngFor="let answer of question.answerList; let i = index">
-                 <br>
-           <p> {{answer.answerText}} has been chosen {{answer.timesChosen}} times. <br> {{calculatePercentage(answer.timesChosen,survey.timesSubmitted)}}% of users picked this answer!</p>
-        </ng-container>
+<div class="survey container">
+        <form #userForm="ngForm">
+          <h2 class="center"> {{survey.name}} </h2>
+          <p class="font">This survey has been filled <strong>{{survey.timesSubmitted}}</strong> times.</p>
+          <hr>
+          <p class="center">{{survey.description}}</p>
+          <hr>
+        <div class="left">
+          <ng-container *ngFor="let question of survey.questionList; let i = index">
+                <div>
+                    <form class="form-inline">
+                    <strong>{{ i + 1 }}.&nbsp;{{question.questionText}}</strong>
+                    </form>
+                           <!-- List all answers in a question -->
+                        <ng-container *ngFor="let answer of question.answerList; let i = index" class="font">
+                                {{answer.answerText}}<i class="smaller"> has been chosen <strong>{{answer.timesChosen}}</strong> {{times(answer.timesChosen)}}.</i> 
+                                <!-- <br> {{calculatePercentage(answer.timesChosen,survey.timesSubmitted)}} of users picked this answer!  -->
+                                <br>
+                                <div class="progress">
+                                    <div class="progress-bar" role="progressbar" [style.width]="calculatePercentage(answer.timesChosen, survey.timesSubmitted)" aria-valuenow="calculatePercentage(answer.timesChosen, survey.timesSubmitted)" aria-valuemin="0" aria-valuemax="100">{{calculatePercentage(answer.timesChosen,survey.timesSubmitted)}} of users picked this! </div>
+                                </div>
+                        </ng-container>
+                        <hr>
+                </div>
+            </ng-container>
+        </div>
+        </form>
     </div>
-</ng-container>
+    

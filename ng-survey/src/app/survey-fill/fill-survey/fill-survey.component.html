@@ -1,4 +1,4 @@
-<div class="survey container font">
+<div class="survey container">
     <form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)">
       <h2 class="center"> {{survey.name}} </h2>
       <hr>
@@ -11,7 +11,7 @@
                 <strong>{{ i + 1 }}.&nbsp;{{question.questionText}}</strong>
                 </form>
                        <!-- List all answers in a question -->
-                    <ng-container *ngFor="let answer of question.answerList; let i = index">
+                    <ng-container *ngFor="let answer of question.answerList; let i = index" class="font">
                          <!-- Checkbox -->
                     <ng-container *ngIf="question.multipleChoices">
                         <input class = "input answers" type = "checkbox"  name = "{{answer.id}}" value = "{{answer.answerText}}" ngModel > {{answer.answerText}}
