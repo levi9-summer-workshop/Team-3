@@ -49,7 +49,7 @@ export class SurveyCreatePageComponent implements OnInit {
       this.desc = "default description";
     }
   
-    this.service.post(new Survey(this.surveyName, this.desc, this.questions)).subscribe(data =>{
+    this.service.post(new Survey(this.loginService.user.id, this.surveyName, this.desc, this.questions)).subscribe(data =>{
       let survey = data;
         id = survey.id;
     },

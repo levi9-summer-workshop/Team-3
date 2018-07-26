@@ -1,9 +1,6 @@
 package rs.levi9.survey.model;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.List;
 
@@ -13,7 +10,14 @@ public class Survey extends BaseEntity implements Serializable {
 
     private Long timesSubmitted;
 
+    @Transient
+    private Long userId;
+
     private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_survey_user_id")
+    private SurveyUser surveyUser;
 
     @Column(nullable = false)
     private String description;
@@ -98,5 +102,21 @@ public class Survey extends BaseEntity implements Serializable {
 
     public boolean isOpen() {
         return isOpen;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public SurveyUser getSurveyUser() {
+        return surveyUser;
+    }
+
+    public void setSurveyUser(SurveyUser surveyUser) {
+        this.surveyUser = surveyUser;
     }
 }

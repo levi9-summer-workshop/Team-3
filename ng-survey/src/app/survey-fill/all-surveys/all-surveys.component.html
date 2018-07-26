@@ -13,7 +13,7 @@
           <tr *ngFor='let survey of surveys; let i = index'>            
             <th scope="row" class="text-center align-middle"> {{ i + 1 }}</th>
             <td class="text-center align-middle"><a [routerLink]="['/surveys', survey.id]">{{ survey.name }}</a></td>
-            <td class="text-center align-middle"></td> 
+            <td class="text-center align-middle"> {{survey.userId}}</td> 
             <td class="text-center align-middle"><a [routerLink]="['/survey-results/', survey.id]">See the results</a></td>
           </tr>
         </tbody>

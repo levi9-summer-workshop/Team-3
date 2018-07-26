@@ -27,9 +27,7 @@ export class LoginServiceService {
         this.user = data;
         this.headers = headers;
         this.authenticated = true;
-    
     });
-    
     }
 
     public getAuthHeaders(){
@@ -39,17 +37,17 @@ export class LoginServiceService {
     public getAuthUser(){
       return this.user;
     }
+
     public isUserAuth(){
       return this.authenticated;
     }
 
    hasRoleAdmin() {
      if(this.user != null && this.user.roles != null){
-     if (this.user) {
-    return this.user.roles.includes('ROLE_ADMIN');
+      if (this.user) {
+       return this.user.roles.includes('ROLE_ADMIN');
+      }
     }
-  }
-
   }
 
   logout() {
