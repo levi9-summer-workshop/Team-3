@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.levi9.survey.model.Answer;
 import rs.levi9.survey.model.Survey;
+import rs.levi9.survey.model.SurveyUser;
 import rs.levi9.survey.model.dto.FilledQuestion;
 import rs.levi9.survey.model.dto.FilledSurvey;
 import rs.levi9.survey.repository.SurveyRepository;
@@ -14,27 +15,33 @@ import java.util.List;
 public class SurveyService {
 
     private SurveyRepository surveyRepository;
-    private QuestionService questionService;
     private AnswerService answerService;
-
+    private UserService userService;
 
     @Autowired
-    public SurveyService(SurveyRepository surveyRepository, QuestionService questionService, AnswerService answerService) {
+    public SurveyService(SurveyRepository surveyRepository, AnswerService answerService, UserService userService) {
         this.surveyRepository = surveyRepository;
-        this.questionService = questionService;
         this.answerService = answerService;
+        this.userService = userService;
     }
 
     public Survey getOne(Long id) {
-      //  return surveyRepository.getOne(id);
         return surveyRepository.findOne(id);
     }
 
     public List<Survey> findAll() {
-        return surveyRepository.findAll();
+        List<Survey> surveys = surveyRepository.findAll();
+        for(Survey s : surveys){
+            s.setUserId(s.getSurveyUser().getId());
+        }
+        return surveys;
     }
 
     public Survey save(Survey survey) {
+        survey.setSurveyUser(userService.getOne(survey.getUserId()));
+        //user.getSurveyList().add(survey);
+        surveyRepository.save(survey);
+
         return surveyRepository.save(survey);
     }
 
@@ -50,7 +57,7 @@ public class SurveyService {
     private void incrementTimesSubmitted(Long id) {
         Survey s = getOne(id);
         s.incrTimesSubmitted();
-        save(s);
+        surveyRepository.save(s);
     }
 
     /**
@@ -60,7 +67,6 @@ public class SurveyService {
      * @param filledSurvey - object of FilledSurvey that we received from controller.
      */
     public void saveFilledSurvey(FilledSurvey filledSurvey) {
-
         incrementTimesSubmitted(filledSurvey.getId());
         for(FilledQuestion question : filledSurvey.getQuestions()){
             for (Long id : question.getAnswers()) {

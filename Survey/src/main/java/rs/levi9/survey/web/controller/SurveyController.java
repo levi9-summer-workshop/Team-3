@@ -6,8 +6,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import rs.levi9.survey.model.Survey;
+import rs.levi9.survey.model.SurveyUser;
 import rs.levi9.survey.model.dto.FilledSurvey;
 import rs.levi9.survey.service.SurveyService;
+import rs.levi9.survey.service.UserService;
 
 import java.util.List;
 
@@ -17,6 +19,7 @@ import java.util.List;
 public class SurveyController {
 
     private SurveyService surveyService;
+
 
     @Autowired
     public SurveyController(SurveyService surveyService) {
