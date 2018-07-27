@@ -1,6 +1,7 @@
 package rs.levi9.survey.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import rs.levi9.survey.model.Answer;
 import rs.levi9.survey.model.Survey;
@@ -79,4 +80,11 @@ public class SurveyService {
     public List<Survey> findSurveysByUserId(Long id){
         return this.surveyRepository.findSurveysBySurveyUserId(id);
     }
+
+    public void closeSurvey(Long id) {
+        Survey survey = surveyRepository.getOne(id);
+        survey.setOpen(false);
+        surveyRepository.save(survey);
+    }
+
 }

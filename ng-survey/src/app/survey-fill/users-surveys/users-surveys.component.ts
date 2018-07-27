@@ -14,6 +14,8 @@ export class UsersSurveysComponent implements OnInit {
   id: number;
   private sub: any;
   public surveys : Survey[] = [];
+  selectedSurvey = new Survey();
+
   constructor(private surveyService : SurveyCreatePageServiceService, private router: Router, private route: ActivatedRoute, private loginService : LoginServiceService){}//, private router : Router) { }
 
   ngOnInit() {
@@ -32,5 +34,32 @@ export class UsersSurveysComponent implements OnInit {
     this.surveyService.getSurveysByUserId(id).subscribe(data =>{
       this.surveys = data;
      })
+  }
+
+  onSurveyDelete(survey: Survey) {
+    this.selectedSurvey = survey;
+  }
+
+  onSurveyDeleteSubmit() {
+    this.surveyService.delete(this.selectedSurvey.id).subscribe(
+      this.selectedSurvey = null,
+      (error) => console.log(error),
+      () => this.getSurveysByUserId(this.id)
+    )
+  }
+
+  onCloseSurvey(id: number) {
+     this.surveyService.close(id).subscribe
+    (
+      () => this.findSurvById(id).open = false
+    )
+  }
+
+  findSurvById(id: number){
+    for(let i = 0; i < this.surveys.length; i++){
+        if(this.surveys[i].id == id){
+          return this.surveys[i];
+        }
+    }
   }
 }

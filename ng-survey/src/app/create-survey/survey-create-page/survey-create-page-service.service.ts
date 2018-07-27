@@ -30,4 +30,9 @@ export class SurveyCreatePageServiceService {
   getSurveysByUserId(id: number) : Observable<any>{
     return this.http.get("//localhost:8080/survey/get/"+id, { headers : this.loginService.getAuthHeaders() } );
   }
+
+  close(id: number):Observable<any>{
+    return this.http.put("//localhost:8080/survey/close", id,  { headers : this.loginService.getAuthHeaders() } );
+  }
+
 }

@@ -5,16 +5,41 @@
           <tr>
             <th scope="col" class="text-center align-middle">#</th>
             <th scope="col" class="text-center align-middle">Name</th>
-            <th scope="col" class="text-center align-middle">User</th>
             <th scope="col" class="text-center align-middle">Results</th>
+            <th scope="col" class="text-center align-middle">Close this survey</th>
+            <th scope="col" class="text-center align-middle">Delete</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor='let survey of surveys; let i = index'>            
             <th scope="row" class="text-center align-middle"> {{ i + 1 }}</th>
             <td class="text-center align-middle"><a [routerLink]="['/surveys', survey.id]">{{ survey.name }}</a></td>
-            <td class="text-center align-middle"> {{ survey.surveyOwner }}</td> 
             <td class="text-center align-middle"><a [routerLink]="['/survey-results/', survey.id]">See the results</a></td>
+            <td class="text-center align-middle"><button class="btn btn-info button-size" [disabled] = "!survey.open"(click)="onCloseSurvey(survey.id)">Close</button></td>
+            <td class="text-center align-middle"><button class="btn btn-danger button-size" (click)="onSurveyDelete(survey)" data-toggle="modal" data-target="#deleteSurveyModal">Delete</button></td>
           </tr>
         </tbody>
 </table>
+
+<!-- Delete Modal -->
+<div class="modal" id="deleteSurveyModal" tabindex="-1" role="dialog" aria-labelledby="deleteSurveyModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" id="deleteSurveyModalLabel">Delete user</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+          <p>Do you want to delete <i>
+            <!-- {{ survey.surveyName }} -->
+          </i>?</p>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="onSurveyDeleteSubmit()">Submit</button>
+      </div>
+      </div>
+  </div>
+</div>

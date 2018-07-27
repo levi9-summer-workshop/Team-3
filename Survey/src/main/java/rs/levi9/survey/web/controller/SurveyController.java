@@ -73,4 +73,12 @@ public class SurveyController {
     public List<Survey> getSurveysByUserId(@PathVariable("id") Long id) {
       return this.surveyService.findSurveysByUserId(id);
     }
+
+    @PutMapping("/close")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
+    public ResponseEntity close(@RequestBody Long id) {
+        surveyService.closeSurvey(id);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
 }

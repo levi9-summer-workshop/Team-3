@@ -8,7 +8,7 @@ export class Survey {
     public id : number;
     public timesSubmitted: number;
     public description: string;
-    public isOpen: boolean;
+    public open: boolean;
     public name : string;
     public questionList: SurveyQuestion[];
     
@@ -18,5 +18,6 @@ export class Survey {
         this.description = desc;
         this.questionList = q;
         this.surveyOwner = surveyOwner;
+        this.open = true;
     } 
 }

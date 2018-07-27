@@ -18,6 +18,7 @@ export class SurveyCreatePageComponent implements OnInit {
   public desc: string;
   public questions : SurveyQuestion[] = [];
   public user: AuthUser;
+ 
 
   constructor(private service : SurveyCreatePageServiceService, private router: Router, private loginService : LoginServiceService) { }
 
@@ -29,8 +30,8 @@ export class SurveyCreatePageComponent implements OnInit {
       let a1 : SurveyAnswer[] = [];
       this.questions[0] = new SurveyQuestion();
       this.questions[0].answerList = a1;
-  
 
+      
   }
   addQuestion(){
     this.questions.push(new SurveyQuestion());
