@@ -28,11 +28,8 @@ export class AllSurveysComponent implements OnInit {
       this.surveys = data;
     },
     (error) => { 
-      console.log("ne radi"); 
      }, 
      () =>{
-  // this.router.navigate(['/home']);
-  
      })
   }
 }

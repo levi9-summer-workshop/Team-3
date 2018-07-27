@@ -47,7 +47,6 @@ export class LoginComponent implements OnInit {
 
   public onOk() {
     this.router.navigate(['/home']);
-    console.log("ne radi");
   }
 
 }
