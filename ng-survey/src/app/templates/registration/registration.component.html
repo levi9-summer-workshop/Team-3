@@ -39,12 +39,12 @@
 </body>
 
 <!-- Modal -->
-<div class="modal fade" id="userExists" tabindex="-1" role="dialog" aria-labelledby="userExistsLabel" aria-hidden="true">
+<div class="modal fade" id="userExists" data-backdrop="static" role="dialog" aria-labelledby="userExistsLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="userExistsLabel">Survey</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button *ngIf="!registered" type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -52,8 +52,8 @@
           <p>{{ message }}</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="onOk()" [disabled]="f.valid">OK</button>
+          <button *ngIf="!registered" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button *ngIf="registered" type="button" class="btn btn-primary" data-dismiss="modal" (click)="onOk()">OK</button>
       </div>
     </div>
   </div>

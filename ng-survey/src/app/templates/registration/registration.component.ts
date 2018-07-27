@@ -16,6 +16,7 @@ export class RegistrationComponent implements OnInit {
   public errorMessage : string;
   public pass: string;
   public message: string;
+  public registered: boolean;
 
   constructor(private registrationService: RegistrationService, private router: Router) { }
 
@@ -27,10 +28,12 @@ export class RegistrationComponent implements OnInit {
       this.insertNewUser(form.value.username, form.value.email, form.value.password);
       this.registrationService.post(this.user).subscribe(data => {
       this.user = data;     
+      this.registered = true;
     },
     (error) => { 
       this.errorMessage = error;
       this.message = "Couldn't register, user with that username or e-mail already exists!";
+      this.registered = false;
     },
     () => {
       console.log("User registered!");
