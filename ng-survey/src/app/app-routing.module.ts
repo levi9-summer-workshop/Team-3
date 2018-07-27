@@ -15,6 +15,7 @@ import { SurveyResultsComponent } from './survey-fill/survey-results/survey-resu
 import { AccessForbidenComponent } from './errors/access-forbiden/access-forbiden.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { LogOutComponent } from './templates/log-out/log-out.component';
+import { UsersSurveysComponent } from './survey-fill/users-surveys/users-surveys.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: "users", component: SurveyUserListComponent },
   { path: "new-survey", component: SurveyCreatePageComponent },
   { path: "login", component: LoginComponent },
+  { path: "your-surveys/:id", component : UsersSurveysComponent},
   { path : "surveys/:id", component :  FillSurveyComponent },
   { path : "all-surveys", component : AllSurveysComponent },
   { path: "survey-results/:id", component : SurveyResultsComponent },

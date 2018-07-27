@@ -75,4 +75,8 @@ public class SurveyService {
             }
         }
     }
+
+    public List<Survey> findSurveysByUserId(Long id){
+        return this.surveyRepository.findSurveysBySurveyUserId(id);
+    }
 }

@@ -27,4 +27,7 @@ export class SurveyCreatePageServiceService {
   postSubmitedSurvey(survey : FilledSurveyModel) : Observable<any>{
     return this.http.post("//localhost:8080/survey/filled", survey,  { headers : this.loginService.getAuthHeaders() } );
   }
+  getSurveysByUserId(id: number) : Observable<any>{
+    return this.http.get("//localhost:8080/survey/get/"+id, { headers : this.loginService.getAuthHeaders() } );
+  }
 }

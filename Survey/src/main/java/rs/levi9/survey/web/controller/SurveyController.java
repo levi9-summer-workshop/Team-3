@@ -49,12 +49,6 @@ public class SurveyController {
         return new ResponseEntity(HttpStatus.OK);
     }
 
-   /* @PostMapping
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
-    public Survey save(@RequestBody Survey survey) {
-        return surveyService.save(survey);
-    }
- */
     @PutMapping
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
     public Survey update(@RequestBody Survey survey) {
@@ -72,5 +66,11 @@ public class SurveyController {
     public ResponseEntity saveSubmittedSurvey(@RequestBody FilledSurvey filledSurvey) {
       this.surveyService.saveFilledSurvey(filledSurvey);
       return new ResponseEntity(filledSurvey, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/get/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
+    public List<Survey> getSurveysByUserId(@PathVariable("id") Long id) {
+      return this.surveyService.findSurveysByUserId(id);
     }
 }

@@ -11,7 +11,7 @@
             <a class="nav-link" routerLink="/new-survey">New survey</a>
           </li>
           <li *ngIf="loginService.isUserAuth()" class="nav-item" routerLinkActive="active">
-            <a class="nav-link" routerLink="/surveys">Your surveys</a>
+            <a class="nav-link" routerLink="/your-surveys/{{loginService.user.id}}">Your surveys</a>
           </li>
           <li *ngIf="loginService.isUserAuth()" class="nav-item" routerLinkActive="active">
             <a class="nav-link" routerLink="/all-surveys">All surveys</a>
