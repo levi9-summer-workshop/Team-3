@@ -15,6 +15,12 @@ public class SurveyUser extends BaseEntity implements Serializable {
     @Column(nullable = false)
     private String email;
 
+    @Column
+    private String accountConfirmationCode;
+
+    @Column
+    private Boolean emailConfirmed;
+
     @Column(nullable = false)
     private String password;
 
@@ -44,22 +50,6 @@ public class SurveyUser extends BaseEntity implements Serializable {
         this.username = username;
         this.email = email;
         this.password = password;
-    }
-
-    public SurveyUser(String username, String email, String password, List<Survey> surveyList) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.surveyList = surveyList;
-    }
-
-    public SurveyUser(String username, String email, String password, boolean isBlocked, Date blockedUntil, List<Survey> surveyList) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.isBlocked = isBlocked;
-        this.blockedUntil = blockedUntil;
-        this.surveyList = surveyList;
     }
 
     public String getUsername() {
@@ -116,5 +106,21 @@ public class SurveyUser extends BaseEntity implements Serializable {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public String getAccountConfirmationCode() {
+        return accountConfirmationCode;
+    }
+
+    public void setAccountConfirmationCode(String accountConfirmationCode) {
+        this.accountConfirmationCode = accountConfirmationCode;
+    }
+
+    public Boolean getEmailConfirmed() {
+        return emailConfirmed;
+    }
+
+    public void setEmailConfirmed(Boolean emailConfirmed) {
+        this.emailConfirmed = emailConfirmed;
     }
 }

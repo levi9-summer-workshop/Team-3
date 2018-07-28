@@ -1,18 +1,25 @@
 package rs.levi9.survey.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import rs.levi9.survey.model.Survey;
 import rs.levi9.survey.model.SurveyUser;
+import rs.levi9.survey.model.dto.EmailMessage;
 import rs.levi9.survey.repository.UserRepository;
 
+import javax.mail.MessagingException;
 import java.util.List;
 
 @Service
 public class UserService {
 
     private UserRepository userRepository;
+    private EmailService emailService;
 
-    public UserService(UserRepository userRepository) {
+    @Autowired
+    public UserService(UserRepository userRepository, EmailService emailService) {
         this.userRepository = userRepository;
+        this.emailService = emailService;
     }
 
     public SurveyUser getOne(Long id) {
@@ -46,6 +53,26 @@ public class UserService {
 
     public SurveyUser findUserByUsername(String username) {
         return this.userRepository.findUserByUsername(username);
+    }
+
+    public SurveyUser registerUser(SurveyUser surveyUser) throws MessagingException {
+        emailService.sendEmail(new UtilsService().createEmailMessage(surveyUser));
+        surveyUser.setAccountConfirmationCode(new UtilsService().encodeToBase64(surveyUser.getUsername() + ":" + surveyUser.getEmail()));
+        return save(surveyUser);
+    }
+
+    public boolean confirmCode(String code) {
+        SurveyUser user = userRepository.findSurveyUserByAccountConfirmationCode(code);
+        if (user != null) {
+            setUserToRegistered(user);
+            return true;
+        }
+        return false;
+    }
+
+    public void setUserToRegistered(SurveyUser surveyUser) {
+        surveyUser.setEmailConfirmed(true);
+        userRepository.save(surveyUser);
     }
 
 }

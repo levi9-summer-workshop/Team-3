@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.*;
 import rs.levi9.survey.model.SurveyUser;
 import rs.levi9.survey.service.UserService;
 
+import javax.mail.MessagingException;
+
+
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/user")
@@ -45,11 +48,10 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    //  @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
-    public ResponseEntity register(@RequestBody SurveyUser surveyUser) {
+    public ResponseEntity register(@RequestBody SurveyUser surveyUser) throws MessagingException {
         surveyUser.setId(null);
         if (userService.checkIfUserExists(surveyUser)) {
-            return new ResponseEntity(userService.save(surveyUser), HttpStatus.OK);
+            return new ResponseEntity(userService.registerUser(surveyUser), HttpStatus.OK);
         } else {
             return new ResponseEntity(HttpStatus.BAD_REQUEST);
         }

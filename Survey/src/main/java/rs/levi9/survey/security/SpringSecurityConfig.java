@@ -20,11 +20,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-         auth.userDetailsService(authUserService);
-       // auth.inMemoryAuthentication()
-         //       .withUser("user5").password("user5").authorities("USER")
-           //     .and()
-             //   .withUser("user6").password("user6").roles("USER", "ADMIN");
+        auth.userDetailsService(authUserService);
         System.out.println("global configurer finished");
     }
 
@@ -35,14 +31,16 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-                http
+        http
                 // starts authorizing configurations
                 .authorizeRequests()
                 // ignore options method sent by browser
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/user/register").permitAll()
+                //ignore end-point for email confirmation.
+                .antMatchers(HttpMethod.GET, "/confirm/{id}").permitAll()
                 // ignore the static files
-                .antMatchers( "/", "/index.html", "/*.bundle.*", "/favicon.ico", "/assets/**").permitAll()
+                .antMatchers("/", "/index.html", "/*.bundle.*", "/favicon.ico", "/assets/**").permitAll()
                 // authenticate all remaining URLS
                 .anyRequest().fullyAuthenticated().and()
                 // enabling the basic authentication
