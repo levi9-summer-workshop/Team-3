@@ -7,6 +7,7 @@
             <th scope="col" class="text-center align-middle">Name</th>
             <th scope="col" class="text-center align-middle">Results</th>
             <th scope="col" class="text-center align-middle">Close this survey</th>
+            <th scope="col" class="text-center align-middle">Share survey</th>
             <th scope="col" class="text-center align-middle">Delete</th>
           </tr>
         </thead>
@@ -16,6 +17,7 @@
             <td class="text-center align-middle"><a [routerLink]="['/surveys', survey.id]">{{ survey.name }}</a></td>
             <td class="text-center align-middle"><a [routerLink]="['/survey-results/', survey.id]">See the results</a></td>
             <td class="text-center align-middle"><button class="btn btn-info button-size" [disabled] = "!survey.open"(click)="onCloseSurvey(survey.id)">Close</button></td>
+            <td class="text-center align-middle"><button class="btn btn-info button-size" [disabled] = "!survey.open" (click)="copyMessage(survey.id)">Copy Link</button></td>
             <td class="text-center align-middle"><button class="btn btn-danger button-size" (click)="onSurveyDelete(survey)" data-toggle="modal" data-target="#deleteSurveyModal">Delete</button></td>
           </tr>
         </tbody>

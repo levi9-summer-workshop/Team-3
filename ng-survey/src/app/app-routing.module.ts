@@ -16,6 +16,7 @@ import { AccessForbidenComponent } from './errors/access-forbiden/access-forbide
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { LogOutComponent } from './templates/log-out/log-out.component';
 import { UsersSurveysComponent } from './survey-fill/users-surveys/users-surveys.component';
+import { SharedSurveyComponent } from './survey-fill/shared-survey/shared-survey.component';
 
 
 const routes: Routes = [
@@ -32,8 +33,8 @@ const routes: Routes = [
   { path: "survey-results/:id", component : SurveyResultsComponent },
   { path: "404", component : NotFoundComponent },
   { path: "forbidden",  component : AccessForbidenComponent},
-  { path: "logout", component : LogOutComponent }
-  
+  { path: "logout", component : LogOutComponent },
+  { path: "share-survey/:id", component : SharedSurveyComponent}
 ];
 
 

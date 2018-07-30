@@ -27,6 +27,7 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { AccessForbidenComponent } from './errors/access-forbiden/access-forbiden.component';
 import { LogOutComponent } from './templates/log-out/log-out.component';
 import { UsersSurveysComponent } from './survey-fill/users-surveys/users-surveys.component';
+import { SharedSurveyComponent } from './survey-fill/shared-survey/shared-survey.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { UsersSurveysComponent } from './survey-fill/users-surveys/users-surveys
     NotFoundComponent,
     AccessForbidenComponent,
     LogOutComponent,
-    UsersSurveysComponent
+    UsersSurveysComponent,
+    SharedSurveyComponent
   ],
 
   imports: [

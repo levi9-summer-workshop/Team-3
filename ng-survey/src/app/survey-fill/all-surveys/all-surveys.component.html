@@ -10,7 +10,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor='let survey of surveys; let i = index'>            
+          <tr *ngFor='let survey of surveys; let i = index'>     
+            <ng-container *ngIf = "survey.surveyIsPublic">       
             <th scope="row" class="text-center align-middle"> {{ i + 1 }}</th>
             <td class="text-center align-middle"><a [routerLink]="['/surveys', survey.id]">{{ survey.name }}</a></td>
             <td class="text-center align-middle"> {{ survey.surveyOwner }}</td> 
@@ -18,6 +19,7 @@
               <a *ngIf="!survey.open" [routerLink]="['/survey-results/', survey.id]">See the results</a>
               <a *ngIf="survey.open">This survey is still open</a>
             </td>
+          </ng-container>
           </tr>
         </tbody>
 </table>

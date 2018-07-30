@@ -19,7 +19,10 @@ export class UsersSurveysComponent implements OnInit {
   constructor(private surveyService : SurveyCreatePageServiceService, private router: Router, private route: ActivatedRoute, private loginService : LoginServiceService){}//, private router : Router) { }
 
   ngOnInit() {
-   
+    if(this.loginService == null || this.loginService.isUserAuth == null){
+      this.router.navigate(['login']);
+      return;
+    }
     if(!this.loginService.isUserAuth()){
       this.router.navigate(['login']);
       return;
@@ -30,6 +33,7 @@ export class UsersSurveysComponent implements OnInit {
       this.getSurveysByUserId(this.id);
    });
   }
+
   getSurveysByUserId(id : number){
     this.surveyService.getSurveysByUserId(id).subscribe(data =>{
       this.surveys = data;
@@ -62,4 +66,20 @@ export class UsersSurveysComponent implements OnInit {
         }
     }
   }
+
+  copyMessage(index : number){
+    let val ="localhost:4200/#/share-survey/" + this.surveys[index - 1].surveyUrl;
+    let selBox =document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = val;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+  }
+
 }
