@@ -10,5 +10,6 @@ export class Survey {
     public open: boolean;
     public name : string;
     public questionList: Question[] = [];
-    
+    public surveyIsPublic : boolean;
+    public surveyUrl : string;
 }

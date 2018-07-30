@@ -32,4 +32,5 @@ export class AllSurveysComponent implements OnInit {
      () =>{
      })
   }
+
 }

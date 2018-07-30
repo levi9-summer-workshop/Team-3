@@ -30,6 +30,7 @@ export class UsersSurveysComponent implements OnInit {
       this.getSurveysByUserId(this.id);
    });
   }
+
   getSurveysByUserId(id : number){
     this.surveyService.getSurveysByUserId(id).subscribe(data =>{
       this.surveys = data;
@@ -62,4 +63,20 @@ export class UsersSurveysComponent implements OnInit {
         }
     }
   }
+
+  copyMessage(index : number){
+    let val = this.surveys[index - 1].surveyUrl;
+    let selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = val;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+  }
+
 }
