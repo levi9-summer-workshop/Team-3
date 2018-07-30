@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   }
 
   onManage() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/your-surveys/{{loginService.user.id}}']);
   }
 
   onAll() {

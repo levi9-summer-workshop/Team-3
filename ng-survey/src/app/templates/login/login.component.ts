@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginServiceService, AuthUser } from './login-service.service';
+import { THIS_EXPR } from '../../../../node_modules/@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-login',
@@ -46,6 +47,7 @@ export class LoginComponent implements OnInit {
           if(!this.user.emailConfirmed) {
             this.loginService.logout();
             this.lgdin = false;
+            this.message = "You must confirm your account. Check your mail.";
           }
         }
         );
