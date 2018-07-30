@@ -25,23 +25,25 @@ export class SharedSurveyComponent implements OnInit {
   
     this.sub = this.route.params.subscribe(params => {
        this.url = params['id']; 
-      
        this.survey = new Survey();    
        this.getOne(this.url);
-       /*if(!this.survey.surveyIsPublic){
-        if(!this.loginService.isUserAuth()){
-          this.router.navigate(['login']);
-          return;
-        }
-       } */
     });
   } 
   
+  isEveryoneAllowed(){
+    if(!this.survey.surveyIsPublic){
+      if(!this.loginService.isUserAuth()){
+        this.router.navigate(['login']);
+        return;
+      }
+     } 
+  }
+
   getOne(url : string){
 
     this.surveyService.getSurveyByUrl(url).subscribe(data =>{
           this.survey = data;
-         
+          this.isEveryoneAllowed();
     },
     (error) => { 
       console.log(error); 
