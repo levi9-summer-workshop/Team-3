@@ -18,7 +18,9 @@ public class EmailConfirmController {
     @GetMapping("/confirm/{id}")
     public String confirmEmail(@PathVariable("id") String id) {
         if (userService.confirmCode(id)) {
-            return "You have successfully created your account!";
+          //  return "You have successfully created your account! <script>window.location.replace('http://localhost:4200');</script>";
+            return "<h1>You have successfully created your account!</h1> <script> setTimeout(function(){ window.location.replace('http://localhost:4200'); }, 2000);</script>";
+
         } else {
             return "Something is wrong!";
         }
