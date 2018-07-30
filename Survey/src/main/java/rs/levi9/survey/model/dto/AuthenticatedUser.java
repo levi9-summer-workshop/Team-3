@@ -53,4 +53,12 @@ public class AuthenticatedUser{
     public void setRoles(List<String> roles) {
         this.roles = roles;
     }
+
+    public Boolean getEmailConfirmed() {
+        return emailConfirmed;
+    }
+
+    public void setEmailConfirmed(Boolean emailConfirmed) {
+        this.emailConfirmed = emailConfirmed;
+    }
 }
