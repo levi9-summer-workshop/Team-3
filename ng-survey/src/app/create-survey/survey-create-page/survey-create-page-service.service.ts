@@ -34,5 +34,11 @@ export class SurveyCreatePageServiceService {
   close(id: number):Observable<any>{
     return this.http.put("//localhost:8080/survey/close", id,  { headers : this.loginService.getAuthHeaders() } );
   }
+  getSurveyByUrl(url : string):Observable<any>{
+    return this.http.get("//localhost:8080/get-surv/"+url);
+  }
+  postSurveyByUrl(survey : FilledSurveyModel) : Observable<any>{
+    return this.http.post("//localhost:8080/filled", survey);
+  }
 
 }

@@ -1,0 +1,35 @@
+<div class="survey container">
+    <form #userForm="ngForm" (ngSubmit)="onFormSubmit(userForm)">
+      <h2 class="center"> {{survey.name}} </h2>
+      <hr>
+      <p class="center">{{survey.description}}</p>
+      <hr>
+<div class="left">
+      <ng-container *ngFor="let question of survey.questionList; let i = index">
+            <div>
+                <form class="form-inline">
+                <strong>{{ i + 1 }}.&nbsp;{{question.questionText}}</strong>
+                </form>
+                       <!-- List all answers in a question -->
+                    <ng-container *ngFor="let answer of question.answerList; let i = index" class="font">
+                         <!-- Checkbox -->
+                    <ng-container *ngIf="question.multipleChoices">
+                        <input *ngIf="survey.open" class = "input answers" type = "checkbox"  name = "{{answer.id}}" value = "{{answer.answerText}}" ngModel > {{answer.answerText}}
+                    </ng-container>
+                        <!-- Radio -->
+                    <ng-container *ngIf="!question.multipleChoices">
+                        <input *ngIf="survey.open" class = "input" type = "radio"  name = "{{question.id}}"  value = "{{answer.answerText}}" ngModel> {{answer.answerText}}
+                    </ng-container>
+                    <br>
+                    </ng-container>
+                    <div class="bbr"><br></div>
+                    <div *ngIf="question.multipleChoices" class="smallprnt">*One or more answers</div>
+                <hr>
+            </div>
+        </ng-container>
+    </div>
+      <div align="center">
+            <button *ngIf="survey.open" class="btn btn-submit btn-primary">Submit!</button>
+      </div>
+    </form>
+</div>

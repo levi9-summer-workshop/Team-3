@@ -80,13 +80,4 @@ public class SurveyController {
         surveyService.closeSurvey(id);
         return new ResponseEntity(HttpStatus.OK);
     }
-
-    @GetMapping("/get-surv/{id}")
-    public ResponseEntity getSurveyByUrl(@PathVariable("id") String id) {
-        Survey s = surveyService.fidnSurveyByUrl(id);
-        if (s == null) {
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity(s, HttpStatus.OK);
-    }
 }

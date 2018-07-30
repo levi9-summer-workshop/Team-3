@@ -7,39 +7,41 @@ import { FilledQuestionModel } from '../filled-survey-models/filled-question-mod
 import { FilledSurveyModel } from '../filled-survey-models/filled-survey-model';
 import { LoginServiceService } from '../../templates/login/login-service.service';
 
-
-
 @Component({
-  selector: 'app-fill-survey',
-  templateUrl: './fill-survey.component.html',
-  styleUrls: ['./fill-survey.component.css']
+  selector: 'app-shared-survey',
+  templateUrl: './shared-survey.component.html',
+  styleUrls: ['./shared-survey.component.css']
 })
-export class FillSurveyComponent implements OnInit, OnDestroy  {
+export class SharedSurveyComponent implements OnInit {
 
   public survey: Survey;
 
-  id: number;
+  url : string;
   private sub: any;
   
   constructor(private surveyService : SurveyCreatePageServiceService, private route: ActivatedRoute, private router : Router, private loginService : LoginServiceService) { }
 
   ngOnInit() {
   
-    if(!this.loginService.isUserAuth()){
-      this.router.navigate(['login']);
-      return;
-    }
     this.sub = this.route.params.subscribe(params => {
-       this.id = +params['id']; 
+       this.url = params['id']; 
+      
        this.survey = new Survey();    
-       this.getOne(this.id);
+       this.getOne(this.url);
+       /*if(!this.survey.surveyIsPublic){
+        if(!this.loginService.isUserAuth()){
+          this.router.navigate(['login']);
+          return;
+        }
+       } */
     });
   } 
+  
+  getOne(url : string){
 
-  getOne(id : number){
-
-    this.surveyService.getById(id).subscribe(data =>{
+    this.surveyService.getSurveyByUrl(url).subscribe(data =>{
           this.survey = data;
+         
     },
     (error) => { 
       console.log(error); 
@@ -50,15 +52,13 @@ export class FillSurveyComponent implements OnInit, OnDestroy  {
       this.sub.unsubscribe();
     }
 
-   
     submitFilledSurvey(survey : FilledSurveyModel){
-    this.surveyService.postSubmitedSurvey(survey).subscribe((data) =>{
+    this.surveyService.postSurveyByUrl(survey).subscribe((data) =>{
       this.router.navigate(['/home']);
       survey = data;
      
     },
-       (error) => {
-         console.log(error),
+       (error) => {console.log(error),
       () =>{
       
       } 
@@ -99,4 +99,4 @@ export class FillSurveyComponent implements OnInit, OnDestroy  {
        }
        this.submitFilledSurvey(surv);
     } 
-}
+  }
