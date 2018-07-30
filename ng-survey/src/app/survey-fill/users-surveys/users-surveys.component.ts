@@ -68,7 +68,8 @@ export class UsersSurveysComponent implements OnInit {
   }
 
   copyMessage(index : number){
-    let val ="localhost:4200/#/share-survey/" + this.surveys[index - 1].surveyUrl;
+
+    let val ="localhost:4200/#/share-survey/" + this.surveys[index].surveyUrl;
     let selBox =document.createElement('textarea');
     selBox.style.position = 'fixed';
     selBox.style.left = '0';
