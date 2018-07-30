@@ -38,7 +38,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers(HttpMethod.POST, "/user/register").permitAll()
                 //ignore end-point for email confirmation.
-                .antMatchers(HttpMethod.GET, "/confirm/{id}").permitAll()
+                .antMatchers(HttpMethod.GET, "/confirm/{id}", "/survey/get/{id}").permitAll()
                 // ignore the static files
                 .antMatchers("/", "/index.html", "/*.bundle.*", "/favicon.ico", "/assets/**").permitAll()
                 // authenticate all remaining URLS

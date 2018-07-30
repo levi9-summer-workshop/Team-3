@@ -9,6 +9,7 @@ import rs.levi9.survey.model.SurveyUser;
 import rs.levi9.survey.model.dto.FilledQuestion;
 import rs.levi9.survey.model.dto.FilledSurvey;
 import rs.levi9.survey.repository.SurveyRepository;
+import rs.levi9.survey.utils.StringGenerator;
 
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class SurveyService {
 
     public Survey save(Survey survey) {
         survey.setSurveyUser(userService.getOne(survey.getUserId()));
-        //user.getSurveyList().add(survey);
+        survey.setSurveyUrl(new StringGenerator().nextString());
         surveyRepository.save(survey);
 
         return surveyRepository.save(survey);
@@ -86,5 +87,7 @@ public class SurveyService {
         survey.setOpen(false);
         surveyRepository.save(survey);
     }
-
+    public Survey fidnSurveyByUrl(String url){
+        return this.surveyRepository.findSurveyBySurveyUrl(url);
+    }
 }
