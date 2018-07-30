@@ -41,12 +41,6 @@ public class Survey extends BaseEntity implements Serializable {
     public Survey() {
     }
 
-    public Survey(String description, boolean isOpen, List<Question> questionList) {
-        this.description = description;
-        this.isOpen = isOpen;
-        this.questionList = questionList;
-    }
-
     public void incrTimesSubmitted() {
         if(timesSubmitted == null){
             timesSubmitted = new Long(0);

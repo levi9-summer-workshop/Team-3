@@ -19,7 +19,10 @@ export class UsersSurveysComponent implements OnInit {
   constructor(private surveyService : SurveyCreatePageServiceService, private router: Router, private route: ActivatedRoute, private loginService : LoginServiceService){}//, private router : Router) { }
 
   ngOnInit() {
-   
+    if(this.loginService == null || this.loginService.isUserAuth == null){
+      this.router.navigate(['login']);
+      return;
+    }
     if(!this.loginService.isUserAuth()){
       this.router.navigate(['login']);
       return;
