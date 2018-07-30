@@ -32,18 +32,24 @@ export class LoginComponent implements OnInit {
   }
 
   public takeLoginData(form: NgForm) {
-
-   this.loginService.login(form.value.username, form.value.password) .subscribe(
-    (data) => {this.user = data;
-      this.lgdin = true;
-      this.message = "Success!";
-      form.reset();
-     },
-    (error) => {
-      this.error = error;
-     }
-  );
-}
+      this.loginService.login(form.value.username, form.value.password).subscribe(
+        (data) => { 
+          this.user = data;
+          this.lgdin = true;
+          this.message = "Success!";
+          form.reset();
+        },
+        (error) => {
+          this.error = error;
+        },
+        () => {
+          if(!this.user.emailConfirmed) {
+            this.loginService.logout();
+            this.lgdin = false;
+          }
+        }
+        );
+  }
 
   public onOk() {
     this.router.navigate(['/home']);

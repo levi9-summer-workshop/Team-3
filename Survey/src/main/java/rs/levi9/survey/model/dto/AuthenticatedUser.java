@@ -7,6 +7,7 @@ public class AuthenticatedUser{
     private Long id;
     private String username;
     private List<String> roles;
+    private Boolean emailConfirmed;
 
     public AuthenticatedUser() {
     }
@@ -20,6 +21,13 @@ public class AuthenticatedUser{
         this.id = id;
         this.username = username;
         this.roles = roles;
+    }
+
+    public AuthenticatedUser(Long id, String username, List<String> roles, Boolean emailConfirmed) {
+        this.id = id;
+        this.username = username;
+        this.roles = roles;
+        this.emailConfirmed = emailConfirmed;
     }
 
     public Long getId() {

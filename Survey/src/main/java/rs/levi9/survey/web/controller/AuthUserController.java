@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import rs.levi9.survey.model.Survey;
+import rs.levi9.survey.model.SurveyUser;
 import rs.levi9.survey.model.dto.AuthenticatedUser;
 import rs.levi9.survey.service.AuthUserService;
 import rs.levi9.survey.service.UserService;
@@ -32,6 +34,9 @@ public class AuthUserController {
         for(GrantedAuthority authority : authentication.getAuthorities()) {
             roles.add(authority.getAuthority());
         }
-        return  new AuthenticatedUser(userService.findUserByUsername(authentication.getName()).getId(),authentication.getName(), roles);
+        SurveyUser user = userService.findUserByUsername(authentication.getName());
+        Long id = user.getId();
+        AuthenticatedUser auser = new AuthenticatedUser(id, authentication.getName(), roles, user.getEmailConfirmed());
+        return(auser);
     }
 }
