@@ -7,6 +7,7 @@ import 'rxjs/Rx';
     id : number;
     username: string;
     roles: string[];
+    emailConfirmed: boolean;
   }
 
 @Injectable()
@@ -24,6 +25,7 @@ export class LoginServiceService {
       const headers = new HttpHeaders({ authorization: 'Basic ' + base64Credential});
 
     return this.http.get<any>("http://localhost:8080/auth/user", {headers : headers}).do(data =>{
+    
         this.user = data;
         this.headers = headers;
         this.authenticated = true;
