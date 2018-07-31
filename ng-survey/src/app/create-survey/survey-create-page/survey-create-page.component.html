@@ -11,7 +11,9 @@
         <div class="lft">
             <input class="btn button" type="checkbox" [(ngModel)]="isPrivate">&nbsp;Do you want your Survey to be private?
         </div> <br>
-        <input type="date" [(ngModel)] ="expireDate" name = "name"> <br>
+        <p class="font">When do you want your survey to close?</p>
+        <input type="date" class="input" [(ngModel)] ="expireDate" name = "name"> <br>
+        <hr>
         <button type="button" class="btn btn-info" (click)="addQuestion()">Add question</button>
         <button type="button" class ="btn btn-danger" data-toggle="modal" data-target="#submitSurvey">Submit</button>
     </div>
