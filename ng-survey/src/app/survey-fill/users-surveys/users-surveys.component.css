@@ -15,3 +15,8 @@
     top: 5.7%;
     opacity: 0.4;
 }
+
+.font-italic {
+    font-style: italic;
+    color: rgb(82, 116, 116);
+}

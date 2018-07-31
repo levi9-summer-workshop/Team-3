@@ -15,8 +15,8 @@
             <ng-container *ngIf = "!survey.surveyIsPrivate">       
             <th scope="row" class="text-center align-middle"> {{ i + 1 }}</th>
             <td class="text-center align-middle"><a [routerLink]="['/surveys', survey.id]">{{ survey.name }}</a></td>
-            <td class="text-center align-middle"> {{ survey.surveyOwner }}</td> 
-            <td class="text-center align-middle"></td>
+            <td class="text-center align-middle">{{ survey.surveyOwner }}</td> 
+            <td class="text-center align-middle" [class.font-italic]="!survey.open">{{ getDate(survey) | date }}</td>
             <td class="text-center align-middle">
               <a *ngIf="!survey.open" [routerLink]="['/survey-results/', survey.id]">See the results</a>
               <a *ngIf="survey.open">This survey is still open</a>
