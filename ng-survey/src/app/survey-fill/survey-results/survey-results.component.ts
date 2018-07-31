@@ -55,4 +55,11 @@ export class SurveyResultsComponent implements OnInit {
     }
     return this.time;
   }
+
+  text(answ: number, surv: number) {
+    let value = this.calculatePercentage(answ,surv);
+    if(value != '0%') {
+      return value + " of participants picked this.";
+    }
+  }
 }

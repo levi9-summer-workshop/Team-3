@@ -17,7 +17,7 @@
                                 <!-- <br> {{calculatePercentage(answer.timesChosen,survey.timesSubmitted)}} of users picked this answer!  -->
                                 <br>
                                 <div class="progress">
-                                    <div class="progress-bar" role="progressbar" [style.width]="calculatePercentage(answer.timesChosen, survey.timesSubmitted)" aria-valuenow="calculatePercentage(answer.timesChosen, survey.timesSubmitted)" aria-valuemin="0" aria-valuemax="100">{{calculatePercentage(answer.timesChosen,survey.timesSubmitted)}} of users picked this! </div>
+                                    <div class="progress-bar" role="progressbar" [style.width]="calculatePercentage(answer.timesChosen, survey.timesSubmitted)" aria-valuenow="calculatePercentage(answer.timesChosen, survey.timesSubmitted)" aria-valuemin="0" aria-valuemax="100">{{text(answer.timesChosen,survey.timesSubmitted)}}</div>
                                 </div>
                         </ng-container>
                         <hr>
