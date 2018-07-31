@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import rs.levi9.survey.model.Answer;
+import rs.levi9.survey.model.Question;
 import rs.levi9.survey.model.Survey;
 import rs.levi9.survey.model.SurveyUser;
 import rs.levi9.survey.model.dto.FilledQuestion;
@@ -38,7 +39,10 @@ public class SurveyService {
     public List<Survey> findAll() {
         List<Survey> surveys = surveyRepository.findAll();
         for (Survey s : surveys) {
+<<<<<<< HEAD
             //treba izbaciti ovo setUserId i setUserOwner
+=======
+>>>>>>> 82cfb29b4cdb76a3051c74d41d9d2b2011ab74e6
             s.setUserId(s.getSurveyUser().getId());
             s.setSurveyOwner(s.getSurveyUser().getUsername());
             //ovo treba ostaviti
@@ -61,8 +65,6 @@ public class SurveyService {
     public Survey save(Survey survey) {
         survey.setSurveyUser(userService.getOne(survey.getUserId()));
         survey.setSurveyUrl(new StringGenerator().nextString());
-        surveyRepository.save(survey);
-
         return surveyRepository.save(survey);
     }
 

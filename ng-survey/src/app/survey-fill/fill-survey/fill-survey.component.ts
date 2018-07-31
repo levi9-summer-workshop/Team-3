@@ -42,18 +42,21 @@ export class FillSurveyComponent implements OnInit, OnDestroy  {
           this.survey = data;
     },
     (error) => { 
-      console.log(error); 
+      this.router.navigate(['login']);
+      return;
     })
     }
 
     ngOnDestroy(){
       this.sub.unsubscribe();
+      this.router.navigate(['login']);
+      return;
     }
 
    
     submitFilledSurvey(survey : FilledSurveyModel){
     this.surveyService.postSubmitedSurvey(survey).subscribe((data) =>{
-      this.router.navigate(['/home']);
+      // this.router.navigate(['/home']);
       survey = data;
      
     },
@@ -99,4 +102,12 @@ export class FillSurveyComponent implements OnInit, OnDestroy  {
        }
        this.submitFilledSurvey(surv);
     } 
+    
+    redirection() {
+      this.router.navigate(['/all-surveys']);
+    }
+
+    home() {
+      this.router.navigate(['/home']);
+    }
 }
