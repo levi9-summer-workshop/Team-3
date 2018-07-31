@@ -1,10 +1,11 @@
 <div class="survey container">
         <form #userForm="ngForm">
           <h2 class="center"> {{survey.name}} </h2>
-          <p class="font">This survey has been filled <strong>{{survey.timesSubmitted}}</strong> times.</p>
+          <p class="font">This survey has been filled <strong>{{surveySubmitted()}}</strong> times.</p>
           <hr>
           <p class="center">{{survey.description}}</p>
           <hr>
+        <ng-container *ngIf = "survey.timesSubmitted > 0">
         <div class="left">
           <ng-container *ngFor="let question of survey.questionList; let i = index">
                 <div>
@@ -24,6 +25,7 @@
                 </div>
             </ng-container>
         </div>
+        </ng-container>
         </form>
     </div>
     

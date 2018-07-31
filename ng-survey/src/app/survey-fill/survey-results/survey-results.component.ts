@@ -62,4 +62,12 @@ export class SurveyResultsComponent implements OnInit {
       return value + " of participants picked this.";
     }
   }
+
+  surveySubmitted() {
+    if(this.survey.timesSubmitted == null) {
+      return '0';
+    } else {
+      return this.survey.timesSubmitted;
+    }
+  }
 }
