@@ -2,10 +2,9 @@ package rs.levi9.survey.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import rs.levi9.survey.model.Survey;
 import rs.levi9.survey.model.SurveyUser;
-import rs.levi9.survey.model.dto.EmailMessage;
 import rs.levi9.survey.repository.UserRepository;
+import rs.levi9.survey.utils.StringGenerator;
 
 import javax.mail.MessagingException;
 import java.util.Date;
@@ -63,7 +62,7 @@ public class UserService {
     }
 
     public boolean checkIfUserExists(SurveyUser surveyUser) {
-        return (userRepository.findUserByEmail(surveyUser.getEmail()) == null && userRepository.findUserByUsername(surveyUser.getUsername()) == null);
+        return (userRepository.findSurveyUserByEmail(surveyUser.getEmail()) == null && userRepository.findUserByUsername(surveyUser.getUsername()) == null);
     }
 
     public SurveyUser findUserByUsername(String username) {
@@ -72,8 +71,23 @@ public class UserService {
         return user;
     }
 
+    public SurveyUser findUserByEmail(String mail) {
+        return userRepository.findSurveyUserByEmail(mail);
+    }
+
+    public SurveyUser resetPassword(String email) throws MessagingException {
+        SurveyUser user = findUserByEmail(email);
+        if (user != null) {
+            String[] parts = {new StringGenerator().nextString().substring(0, 10), null};
+            user.setPassword(parts[0]);
+            userRepository.save(user);
+            emailService.sendEmail(new UtilsService().createResetPasswordMessage(user));
+        }
+        return null;
+    }
+
     public SurveyUser registerUser(SurveyUser surveyUser) throws MessagingException {
-        emailService.sendEmail(new UtilsService().createEmailMessage(surveyUser));
+        emailService.sendEmail(new UtilsService().createEmailConfirmationMessage(surveyUser));
         surveyUser.setAccountConfirmationCode(new UtilsService().encodeToBase64(surveyUser.getUsername() + ":" + surveyUser.getEmail()));
         return save(surveyUser);
     }

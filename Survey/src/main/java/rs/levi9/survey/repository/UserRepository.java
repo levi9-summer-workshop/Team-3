@@ -13,7 +13,7 @@ public interface UserRepository extends JpaRepository<SurveyUser, Long> {
 
     SurveyUser findUserByUsername(String username);
 
-    SurveyUser findUserByEmail(String email);
+    SurveyUser findSurveyUserByEmail(String email);
 
     SurveyUser findSurveyUserByAccountConfirmationCode(String accountConfirmationCode);
 }

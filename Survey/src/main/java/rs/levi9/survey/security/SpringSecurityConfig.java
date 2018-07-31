@@ -36,7 +36,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 // ignore options method sent by browser
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/user/register", "/filled").permitAll()
+                .antMatchers(HttpMethod.POST, "/user/register", "/filled", "/user/forgot-password").permitAll()
                 //ignore end-point for email confirmation.
                 .antMatchers(HttpMethod.GET, "/confirm/{id}", "/get-surv/{id}").permitAll()
                 // ignore the static files

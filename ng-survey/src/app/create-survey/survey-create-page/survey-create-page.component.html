@@ -12,14 +12,13 @@
             <input class="btn button" type="checkbox" [(ngModel)]="isPrivate">&nbsp;Do you want your Survey to be private?
         </div> <br>
         <p class="font">When do you want your survey to close?</p>
-        <input type="date" class="input" [(ngModel)] ="expireDate" name = "name"> <br>
+        <input type="date" class="input" [(ngModel)] ="expireDate" placeholder="Date" name = "expireDate"> <br>
         <hr>
         <button type="button" class="btn btn-info" (click)="addQuestion()">Add question</button>
         <button type="button" class ="btn btn-danger" data-toggle="modal" data-target="#submitSurvey">Submit</button>
     </div>
   </div>
 </div>
-
   <!-- Modal -->
   <div class="modal fade" id="submitSurvey" tabindex="-1" role="dialog" aria-labelledby="submitSurveyLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

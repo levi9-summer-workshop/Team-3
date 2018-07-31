@@ -69,4 +69,9 @@ public class UserController {
         return this.userService.getOne(id);
     }
 
+    @PostMapping("/forgot-password")
+    public String resetPassword(@RequestBody SurveyUser user) throws MessagingException {
+        userService.resetPassword(user.getEmail());
+        return "Please check your inbox!";
+    }
 }
