@@ -12,6 +12,8 @@ import { LoginServiceService } from '../../templates/login/login-service.service
 export class AllSurveysComponent implements OnInit {
 
   public surveys : Survey[] = [];
+  public date: Date;
+
   constructor(private surveyService : SurveyCreatePageServiceService, private router: Router, private loginService : LoginServiceService){}
 
   ngOnInit() {
@@ -26,6 +28,7 @@ export class AllSurveysComponent implements OnInit {
     this.surveyService.get().subscribe(data =>{
       this.surveys[0] = new Survey();
       this.surveys = data;
+      // this.getDate();
     },
     (error) => { 
      }, 
@@ -33,4 +36,8 @@ export class AllSurveysComponent implements OnInit {
      })
   }
 
+  getDate(survey: Survey) {
+    this.date = survey.surveyExpires;
+    return this.date;
+  }
 }

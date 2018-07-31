@@ -15,6 +15,7 @@ export class UsersSurveysComponent implements OnInit {
   private sub: any;
   public surveys : Survey[] = [];
   selectedSurvey = new Survey();
+  date : Date;
 
   constructor(private surveyService : SurveyCreatePageServiceService, private router: Router, private route: ActivatedRoute, private loginService : LoginServiceService){}//, private router : Router) { }
 
@@ -83,4 +84,8 @@ export class UsersSurveysComponent implements OnInit {
     document.body.removeChild(selBox);
   }
 
+  getDate(survey: Survey) {
+    this.date = survey.surveyExpires;
+    return this.date;
+  }
 }
