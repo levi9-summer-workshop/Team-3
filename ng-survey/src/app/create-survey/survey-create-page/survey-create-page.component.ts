@@ -54,7 +54,7 @@ export class SurveyCreatePageComponent implements OnInit {
     }
   
     this.user = this.loginService.getAuthUser();
-
+    this.removeEmptyAnswers();
     this.service.post(new Survey(this.user.id, this.user.username, this.surveyName, this.desc, this.questions, this.isPrivate)).subscribe(data => {
       let survey = data;
       id = survey.id;
@@ -66,5 +66,21 @@ export class SurveyCreatePageComponent implements OnInit {
     () =>{
       this.router.navigate(['/surveys/'+id]);
     })
+    
     }
+
+
+      removeEmptyAnswers() {
+
+      for (let i = 0; i < this.questions.length; i++) {
+
+          for (let j = 0; j < this.questions[i].answerList.length; j++) {
+
+              if (this.questions[i].answerList[j].answerText == "") {
+                this.questions[i].answerList.splice(j, 1);
+                  j--;
+              }
+          }
+      }
+  }
 }
