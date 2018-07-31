@@ -62,7 +62,7 @@ export class SurveyCreatePageComponent implements OnInit {
     this.user = this.loginService.getAuthUser();
 
 
-    this.service.post(new Survey(this.user.id, this.user.username, this.surveyName, this.desc, this.questions, this.isPrivate, this.expireDate)).subscribe(data => {
+    this.service.post(new Survey(this.user.id, this.user.username, this.surveyName, this.desc, this.questions, this.isPrivate, this.expireDate, true)).subscribe(data => {
 
     this.removeEmptyAnswers();
       let survey = data;

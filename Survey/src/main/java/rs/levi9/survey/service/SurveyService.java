@@ -39,10 +39,6 @@ public class SurveyService {
     public List<Survey> findAll() {
         List<Survey> surveys = surveyRepository.findAll();
         for (Survey s : surveys) {
-<<<<<<< HEAD
-            //treba izbaciti ovo setUserId i setUserOwner
-=======
->>>>>>> 82cfb29b4cdb76a3051c74d41d9d2b2011ab74e6
             s.setUserId(s.getSurveyUser().getId());
             s.setSurveyOwner(s.getSurveyUser().getUsername());
             //ovo treba ostaviti
@@ -99,7 +95,11 @@ public class SurveyService {
     }
 
     public List<Survey> findSurveysByUserId(Long id) {
-        return this.surveyRepository.findSurveysBySurveyUserId(id);
+        List<Survey> surveys = surveyRepository.findSurveysBySurveyUserId(id);
+        for (Survey s : surveys) {
+            closeSurveyIfNeeded(s);
+        }
+        return surveys;
     }
 
     public void closeSurvey(Long id) {

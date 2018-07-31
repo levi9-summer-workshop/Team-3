@@ -14,7 +14,7 @@ export class Survey {
     public surveyIsPrivate : boolean;
     public surveyExpires : Date;
 
-    public constructor(userId : number, surveyOwner: string, name: string, desc: string, q: SurveyQuestion[], isPrivate: boolean, surveyExpire : Date){
+    public constructor(userId : number, surveyOwner: string, name: string, desc: string, q: SurveyQuestion[], isPrivate: boolean, surveyExpire : Date, isOpen : boolean){
         this.surveyExpires = surveyExpire;
         this.surveyIsPrivate = isPrivate;
         this.userId = userId;
@@ -22,6 +22,6 @@ export class Survey {
         this.description = desc;
         this.questionList = q;
         this.surveyOwner = surveyOwner;
-        this.open = true;
+        this.open = isOpen;
     } 
 }

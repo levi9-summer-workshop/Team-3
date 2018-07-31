@@ -27,6 +27,7 @@ export class SharedSurveyComponent implements OnInit {
        this.url = params['id']; 
        this.survey = new Survey();    
        this.getOne(this.url);
+       
     });
   } 
   
@@ -39,11 +40,20 @@ export class SharedSurveyComponent implements OnInit {
      } 
   }
 
+
+  isSurveyOpen(){
+    if(!this.survey.open){
+      this.router.navigate(['/home']);
+      return;
+     }
+  }
+  
   getOne(url : string){
 
     this.surveyService.getSurveyByUrl(url).subscribe(data =>{
           this.survey = data;
           this.isEveryoneAllowed();
+          this.isSurveyOpen();
     },
     (error) => { 
       console.log(error); 

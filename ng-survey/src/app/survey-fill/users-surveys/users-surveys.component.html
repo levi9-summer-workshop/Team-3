@@ -16,7 +16,7 @@
             <th scope="row" class="text-center align-middle"> {{ i + 1 }}</th>
             <td class="text-center align-middle"><a [routerLink]="['/surveys', survey.id]">{{ survey.name }}</a></td>
             <td class="text-center align-middle"><a [routerLink]="['/survey-results/', survey.id]">See the results</a></td>
-            <td class="text-center align-middle"><button class="btn btn-info button-size" [disabled] = "!survey.open"(click)="onCloseSurvey(survey.id)">Close {{" " + survey.open + " " + !survey.open}}</button></td>
+            <td class="text-center align-middle"><button class="btn btn-info button-size" [disabled] = "!survey.open"(click)="onCloseSurvey(survey.id)">Close</button></td>
             <td class="text-center align-middle"><button class="btn btn-info button-size" [disabled] = "!survey.open" (click)="copyMessage(i)">Copy Link</button></td>
             <td class="text-center align-middle"><button class="btn btn-danger button-size" (click)="onSurveyDelete(survey)" data-toggle="modal" data-target="#deleteSurveyModal">Delete</button></td>
           </tr>
