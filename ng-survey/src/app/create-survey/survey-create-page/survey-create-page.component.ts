@@ -31,7 +31,6 @@ export class SurveyCreatePageComponent implements OnInit {
       return;
     }
     this.expireDate = new Date();
-    console.log(this.expireDate);
       let a1 : SurveyAnswer[] = [];
       this.questions[0] = new SurveyQuestion();
       this.questions[0].answerList = a1;
