@@ -39,9 +39,6 @@ public class SurveyService {
     public List<Survey> findAll() {
         List<Survey> surveys = surveyRepository.findAll();
         for (Survey s : surveys) {
-            s.setUserId(s.getSurveyUser().getId());
-            s.setSurveyOwner(s.getSurveyUser().getUsername());
-            //ovo treba ostaviti
             closeSurveyIfNeeded(s);
         }
         return surveys;
@@ -59,7 +56,7 @@ public class SurveyService {
     }
 
     public Survey save(Survey survey) {
-        survey.setSurveyUser(userService.getOne(survey.getUserId()));
+        survey.setSurveyUser(userService.getOne(survey.getSurveyUser().getId()));
         survey.setSurveyUrl(new StringGenerator().nextString());
         return surveyRepository.save(survey);
     }

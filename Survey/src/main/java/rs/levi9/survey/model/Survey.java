@@ -11,17 +11,11 @@ public class Survey extends BaseEntity implements Serializable {
 
     private Long timesSubmitted;
 
-    @Transient
-    private Long userId;
-
     @Column
     private String surveyUrl;
 
     @Column
     private Boolean surveyIsPrivate;
-
-    @Transient
-    private String surveyOwner;
 
     @Column
     private Date surveyExpires;
@@ -58,23 +52,6 @@ public class Survey extends BaseEntity implements Serializable {
 
     public void setOpen(boolean open) {
         isOpen = open;
-    }
-
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public String getSurveyOwner() {
-        return surveyOwner;
-    }
-
-    public void setSurveyOwner(String surveyOwner) {
-        this.surveyOwner = surveyOwner;
     }
 
     public SurveyUser getSurveyUser() {
