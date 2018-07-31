@@ -17,31 +17,49 @@
             <th scope="row" class="text-center align-middle"> {{ i + 1 }}</th>
             <td class="text-center align-middle"><a [routerLink]="['/surveys', survey.id]">{{ survey.name }}</a></td>
             <td class="text-center align-middle"><a [routerLink]="['/survey-results/', survey.id]">See the results</a></td>
-<!--     [class.button-blue]="!hasUnsavedNotes()"
-    [class.button-grey]="hasUnsavedNotes()" -->
-
             <td class="text-center align-middle" [class.font-italic]="!survey.open">{{ getDate(survey) | date }}</td>
             <td class="text-center align-middle"><button class="btn btn-info button-size" [disabled] = "!survey.open"(click)="onCloseSurvey(survey.id)">Close</button></td>
-            <td class="text-center align-middle"><button class="btn btn-info button-size" [disabled] = "!survey.open" (click)="copyMessage(i)">Copy Link</button></td>
+            <td class="text-center align-middle"><button class="btn btn-info button-size" [disabled] = "!survey.open" (click)="copyMessage(i)" data-toggle="modal" data-target="#successfullyCopiedModal">Copy Link</button></td>
+            <!-- <div class="alert alert-success" role="alert">
+              This is a success alert—check it out!
+            </div>             -->
             <td class="text-center align-middle"><button class="btn btn-danger button-size" (click)="onSurveyDelete(survey)" data-toggle="modal" data-target="#deleteSurveyModal">Delete</button></td>
           </tr>
         </tbody>
 </table>
+
+<!-- successfullyCopiedModal -->
+<div class="modal copy-modal" id="successfullyCopiedModal" tabindex="-1" role="dialog" aria-labelledby="successfullyCopiedModallLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="deleteSurveyModalLabel"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+      <div class="modal-body">
+          <p>Link is copied!</p>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+      </div>
+  </div>
+</div>
 
 <!-- Delete Modal -->
 <div class="modal" id="deleteSurveyModal" tabindex="-1" role="dialog" aria-labelledby="deleteSurveyModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
       <div class="modal-content">
       <div class="modal-header">
-          <h5 class="modal-title" id="deleteSurveyModalLabel">Delete user</h5>
+          <h5 class="modal-title" id="deleteSurveyModalLabel">Delete survey</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
           </button>
       </div>
       <div class="modal-body">
-          <p>Do you want to delete <i>
-            <!-- {{ survey.surveyName }} -->
-          </i>?</p>
+          <p class="font">Do you want to delete <i>{{ selectedSurvey.name }}</i>?</p>
       </div>
       <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
