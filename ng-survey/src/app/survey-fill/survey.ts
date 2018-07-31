@@ -2,8 +2,6 @@ import { Question } from "./question";
 
 export class Survey {
 
-    public userId : number;
-    public surveyOwner : string;
     public id : number;
     public timesSubmitted: number;
     public description: string;
