@@ -11,6 +11,8 @@ import rs.levi9.survey.model.dto.FilledSurvey;
 import rs.levi9.survey.repository.SurveyRepository;
 import rs.levi9.survey.utils.StringGenerator;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -28,16 +30,32 @@ public class SurveyService {
     }
 
     public Survey getOne(Long id) {
-        return surveyRepository.findOne(id);
+        Survey s = surveyRepository.findOne(id);
+        closeSurveyIfNeeded(s);
+        return s;
     }
 
     public List<Survey> findAll() {
         List<Survey> surveys = surveyRepository.findAll();
-        for(Survey s : surveys){
+        for (Survey s : surveys) {
+            //treba izbaciti ovo setUserId i setUserOwner
             s.setUserId(s.getSurveyUser().getId());
             s.setSurveyOwner(s.getSurveyUser().getUsername());
+            //ovo treba ostaviti
+            closeSurveyIfNeeded(s);
         }
         return surveys;
+    }
+
+    /**
+     * This method will compare survey-close-date and current date and close it if necessary.
+     *
+     * @param s - Survey to be checked.
+     */
+    public void closeSurveyIfNeeded(Survey s) {
+        if (s.getOpen() && s.getSurveyExpires().compareTo(new Date()) == -1) {
+            s.setOpen(false);
+        }
     }
 
     public Survey save(Survey survey) {
@@ -71,14 +89,14 @@ public class SurveyService {
      */
     public void saveFilledSurvey(FilledSurvey filledSurvey) {
         incrementTimesSubmitted(filledSurvey.getId());
-        for(FilledQuestion question : filledSurvey.getQuestions()){
+        for (FilledQuestion question : filledSurvey.getQuestions()) {
             for (Long id : question.getAnswers()) {
                 answerService.incrementAnswerCount(id);
             }
         }
     }
 
-    public List<Survey> findSurveysByUserId(Long id){
+    public List<Survey> findSurveysByUserId(Long id) {
         return this.surveyRepository.findSurveysBySurveyUserId(id);
     }
 
@@ -87,7 +105,8 @@ public class SurveyService {
         survey.setOpen(false);
         surveyRepository.save(survey);
     }
-    public Survey fidnSurveyByUrl(String url){
+
+    public Survey fidnSurveyByUrl(String url) {
         return this.surveyRepository.findSurveyBySurveyUrl(url);
     }
 }

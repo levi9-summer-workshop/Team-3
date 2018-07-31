@@ -3,7 +3,7 @@ package rs.levi9.survey;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
-import rs.levi9.survey.utils.StringGenerator;
+
 
 @SpringBootApplication
 @EnableGlobalMethodSecurity(prePostEnabled = true)

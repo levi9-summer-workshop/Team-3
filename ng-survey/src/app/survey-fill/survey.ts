@@ -12,4 +12,5 @@ export class Survey {
     public questionList: Question[] = [];
     public surveyIsPrivate : boolean;
     public surveyUrl : string;
+    public surveyExpires : Date;
 }

@@ -2,6 +2,7 @@ package rs.levi9.survey.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -21,6 +22,9 @@ public class Survey extends BaseEntity implements Serializable {
 
     @Transient
     private String surveyOwner;
+
+    @Column
+    private Date surveyExpires;
 
     private String name;
 
@@ -55,9 +59,7 @@ public class Survey extends BaseEntity implements Serializable {
     public void setOpen(boolean open) {
         isOpen = open;
     }
-    public boolean isOpen() {
-        return isOpen;
-    }
+
 
     public Long getUserId() {
         return userId;
@@ -129,5 +131,13 @@ public class Survey extends BaseEntity implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Date getSurveyExpires() {
+        return surveyExpires;
+    }
+
+    public void setSurveyExpires(Date surveyExpires) {
+        this.surveyExpires = surveyExpires;
     }
 }

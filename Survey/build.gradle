@@ -30,7 +30,6 @@ dependencies {
     compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework:spring-context-support')
 	compile('org.springframework.boot:spring-boot-starter-mail')
-	//compile group: 'org.springframework.boot', name: 'spring-boot-starter-mail', version: '1.5.3.RELEASE'
     runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
