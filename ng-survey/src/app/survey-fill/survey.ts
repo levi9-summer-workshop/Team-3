@@ -1,4 +1,5 @@
 import { Question } from "./question";
+import { User } from "../user";
 
 export class Survey {
 
@@ -11,4 +12,5 @@ export class Survey {
     public surveyIsPrivate : boolean;
     public surveyUrl : string;
     public surveyExpires : Date;
+    public surveyUser: User;
 }
