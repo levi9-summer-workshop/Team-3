@@ -56,7 +56,7 @@ export class FillSurveyComponent implements OnInit, OnDestroy  {
    
     submitFilledSurvey(survey : FilledSurveyModel){
     this.surveyService.postSubmitedSurvey(survey).subscribe((data) =>{
-      this.router.navigate(['/home']);
+      // this.router.navigate(['/home']);
       survey = data;
      
     },
@@ -102,4 +102,12 @@ export class FillSurveyComponent implements OnInit, OnDestroy  {
        }
        this.submitFilledSurvey(surv);
     } 
+    
+    redirection() {
+      this.router.navigate(['/all-surveys']);
+    }
+
+    home() {
+      this.router.navigate(['/home']);
+    }
 }
