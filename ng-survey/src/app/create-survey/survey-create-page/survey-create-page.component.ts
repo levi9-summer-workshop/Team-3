@@ -25,10 +25,12 @@ export class SurveyCreatePageComponent implements OnInit {
   constructor(private service : SurveyCreatePageServiceService, private router: Router, private loginService : LoginServiceService) { }
 
   ngOnInit() {
+    
     if(!this.loginService.isUserAuth()){
       this.router.navigate(['login']);
       return;
     }
+    this.expireDate = new Date();
       let a1 : SurveyAnswer[] = [];
       this.questions[0] = new SurveyQuestion();
       this.questions[0].answerList = a1;
