@@ -18,8 +18,8 @@ export class SurveyCreatePageComponent implements OnInit {
   public desc: string;
   public questions : SurveyQuestion[] = [];
   public user: AuthUser;
-  public isPublic = false;
- 
+  public isPrivate = false;
+ //surveyIsPrivate
 
   constructor(private service : SurveyCreatePageServiceService, private router: Router, private loginService : LoginServiceService) { }
 
@@ -55,7 +55,7 @@ export class SurveyCreatePageComponent implements OnInit {
   
     this.user = this.loginService.getAuthUser();
 
-    this.service.post(new Survey(this.user.id, this.user.username, this.surveyName, this.desc, this.questions, this.isPublic)).subscribe(data => {
+    this.service.post(new Survey(this.user.id, this.user.username, this.surveyName, this.desc, this.questions, this.isPrivate)).subscribe(data => {
       let survey = data;
       id = survey.id;
     },

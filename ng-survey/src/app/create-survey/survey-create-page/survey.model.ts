@@ -11,10 +11,10 @@ export class Survey {
     public open: boolean;
     public name : string;
     public questionList: SurveyQuestion[];
-    public surveyIsPublic : boolean;
+    public surveyIsPrivate : boolean;
 
-    public constructor(userId : number, surveyOwner: string, name: string, desc: string, q: SurveyQuestion[], isPublic: boolean){
-        this.surveyIsPublic = isPublic;
+    public constructor(userId : number, surveyOwner: string, name: string, desc: string, q: SurveyQuestion[], isPrivate: boolean){
+        this.surveyIsPrivate = isPrivate;
         this.userId = userId;
         this.name = name;
         this.description = desc;

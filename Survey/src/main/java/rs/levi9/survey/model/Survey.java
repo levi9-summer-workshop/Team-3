@@ -17,7 +17,7 @@ public class Survey extends BaseEntity implements Serializable {
     private String surveyUrl;
 
     @Column
-    private Boolean surveyIsPublic;
+    private Boolean surveyIsPrivate;
 
     @Transient
     private String surveyOwner;
@@ -91,12 +91,12 @@ public class Survey extends BaseEntity implements Serializable {
         this.surveyUrl = surveyUrl;
     }
 
-    public Boolean getSurveyIsPublic() {
-        return surveyIsPublic;
+    public Boolean getSurveyIsPrivate() {
+        return surveyIsPrivate;
     }
 
-    public void setSurveyIsPublic(Boolean surveyIsPublic) {
-        this.surveyIsPublic = surveyIsPublic;
+    public void setSurveyIsPrivate(Boolean surveyIsPrivate) {
+        this.surveyIsPrivate = surveyIsPrivate;
     }
 
     public Long getTimesSubmitted() {

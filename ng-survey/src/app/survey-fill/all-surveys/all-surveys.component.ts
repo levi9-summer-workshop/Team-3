@@ -12,7 +12,7 @@ import { LoginServiceService } from '../../templates/login/login-service.service
 export class AllSurveysComponent implements OnInit {
 
   public surveys : Survey[] = [];
-  constructor(private surveyService : SurveyCreatePageServiceService, private router: Router, private loginService : LoginServiceService){}//, private router : Router) { }
+  constructor(private surveyService : SurveyCreatePageServiceService, private router: Router, private loginService : LoginServiceService){}
 
   ngOnInit() {
    

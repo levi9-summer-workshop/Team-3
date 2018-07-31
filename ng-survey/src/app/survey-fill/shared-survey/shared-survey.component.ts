@@ -31,7 +31,7 @@ export class SharedSurveyComponent implements OnInit {
   } 
   
   isEveryoneAllowed(){
-    if(!this.survey.surveyIsPublic){
+    if(this.survey.surveyIsPrivate){
       if(!this.loginService.isUserAuth()){
         this.router.navigate(['login']);
         return;

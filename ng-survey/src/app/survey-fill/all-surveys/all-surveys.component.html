@@ -11,7 +11,7 @@
         </thead>
         <tbody>
           <tr *ngFor='let survey of surveys; let i = index'>     
-            <ng-container *ngIf = "survey.surveyIsPublic">       
+            <ng-container *ngIf = "!survey.surveyIsPrivate">       
             <th scope="row" class="text-center align-middle"> {{ i + 1 }}</th>
             <td class="text-center align-middle"><a [routerLink]="['/surveys', survey.id]">{{ survey.name }}</a></td>
             <td class="text-center align-middle"> {{ survey.surveyOwner }}</td> 
