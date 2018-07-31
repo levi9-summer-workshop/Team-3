@@ -26,8 +26,4 @@ public class AdminService {
     public void delete(Long id) {
         adminRepository.delete(id);
     }
-
-    public Admin getAdminByCredentials(String uss, String pass) {
-        return (adminRepository.findAdminByEmailAndPassword(uss, pass) == null) ? adminRepository.findAdminByUsernameAndPassword(uss, pass) : adminRepository.findAdminByEmailAndPassword(uss, pass);
-    }
 }

@@ -8,6 +8,7 @@ import rs.levi9.survey.model.dto.EmailMessage;
 import rs.levi9.survey.repository.UserRepository;
 
 import javax.mail.MessagingException;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -23,11 +24,23 @@ public class UserService {
     }
 
     public SurveyUser getOne(Long id) {
-        return userRepository.findOne(id);
+        SurveyUser user = userRepository.findOne(id);
+        unblockUserIfNeeded(user);
+        return user;
+    }
+
+    public void unblockUserIfNeeded(SurveyUser user) {
+        if (user.isBlocked() && user.getBlockedUntil().compareTo(new Date()) == -1) {
+            user.setBlocked(false);
+        }
     }
 
     public List<SurveyUser> findAll() {
-        return userRepository.findAll();
+        List<SurveyUser> users = userRepository.findAll();
+        for (SurveyUser user : users) {
+            unblockUserIfNeeded(user);
+        }
+        return users;
     }
 
     public SurveyUser save(SurveyUser surveyUser) {
@@ -44,7 +57,9 @@ public class UserService {
     }
 
     public SurveyUser findUser(String uss, String pass) {
-        return (userRepository.findUserByEmailAndPassword(uss, pass) == null) ? userRepository.findUserByUsernameAndPassword(uss, pass) : userRepository.findUserByEmailAndPassword(uss, pass);
+        SurveyUser user = (userRepository.findUserByEmailAndPassword(uss, pass) == null) ? userRepository.findUserByUsernameAndPassword(uss, pass) : userRepository.findUserByEmailAndPassword(uss, pass);
+        unblockUserIfNeeded(user);
+        return user;
     }
 
     public boolean checkIfUserExists(SurveyUser surveyUser) {
@@ -52,7 +67,9 @@ public class UserService {
     }
 
     public SurveyUser findUserByUsername(String username) {
-        return this.userRepository.findUserByUsername(username);
+        SurveyUser user = userRepository.findUserByUsername(username);
+        unblockUserIfNeeded(user);
+        return user;
     }
 
     public SurveyUser registerUser(SurveyUser surveyUser) throws MessagingException {
