@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import rs.levi9.survey.model.Answer;
+import rs.levi9.survey.model.Question;
 import rs.levi9.survey.model.Survey;
 import rs.levi9.survey.model.SurveyUser;
 import rs.levi9.survey.model.dto.FilledQuestion;
@@ -33,7 +34,7 @@ public class SurveyService {
 
     public List<Survey> findAll() {
         List<Survey> surveys = surveyRepository.findAll();
-        for(Survey s : surveys){
+        for (Survey s : surveys) {
             s.setUserId(s.getSurveyUser().getId());
             s.setSurveyOwner(s.getSurveyUser().getUsername());
         }
@@ -43,8 +44,6 @@ public class SurveyService {
     public Survey save(Survey survey) {
         survey.setSurveyUser(userService.getOne(survey.getUserId()));
         survey.setSurveyUrl(new StringGenerator().nextString());
-        surveyRepository.save(survey);
-
         return surveyRepository.save(survey);
     }
 
@@ -71,14 +70,14 @@ public class SurveyService {
      */
     public void saveFilledSurvey(FilledSurvey filledSurvey) {
         incrementTimesSubmitted(filledSurvey.getId());
-        for(FilledQuestion question : filledSurvey.getQuestions()){
+        for (FilledQuestion question : filledSurvey.getQuestions()) {
             for (Long id : question.getAnswers()) {
                 answerService.incrementAnswerCount(id);
             }
         }
     }
 
-    public List<Survey> findSurveysByUserId(Long id){
+    public List<Survey> findSurveysByUserId(Long id) {
         return this.surveyRepository.findSurveysBySurveyUserId(id);
     }
 
@@ -87,7 +86,8 @@ public class SurveyService {
         survey.setOpen(false);
         surveyRepository.save(survey);
     }
-    public Survey fidnSurveyByUrl(String url){
+
+    public Survey fidnSurveyByUrl(String url) {
         return this.surveyRepository.findSurveyBySurveyUrl(url);
     }
 }
