@@ -33,14 +33,17 @@ export class SurveyCreatePageComponent implements OnInit {
       return;
     }
   
-
       this.expireDate = new Date();
       this.minDate = this.updateMinimumDate();
-      let a1 : SurveyAnswer[] = [];
-      this.questions[0] = new SurveyQuestion();
-      this.questions[0].answerList = a1;
+     this.initilaze();
      
-      
+    
+  }
+
+  initilaze(){
+    let a1 : SurveyAnswer[] = [];
+    this.questions[0] = new SurveyQuestion();
+    this.questions[0].answerList = a1;
   }
 
   updateMinimumDate(){
