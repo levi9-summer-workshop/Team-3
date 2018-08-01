@@ -2,6 +2,7 @@ package rs.levi9.survey.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import rs.levi9.survey.model.Survey;
 import rs.levi9.survey.model.SurveyUser;
 import rs.levi9.survey.repository.UserRepository;
 import rs.levi9.survey.utils.StringGenerator;
@@ -73,6 +74,13 @@ public class UserService {
 
     public SurveyUser findUserByEmail(String mail) {
         return userRepository.findSurveyUserByEmail(mail);
+    }
+
+    public SurveyUser changePassword(SurveyUser surveyUser){
+        String password = surveyUser.getPassword();
+        surveyUser = getOne(surveyUser.getId());
+        surveyUser.setPassword(password);
+        return save(surveyUser);
     }
 
     public SurveyUser resetPassword(String email) throws MessagingException {

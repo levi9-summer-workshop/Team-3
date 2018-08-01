@@ -31,12 +31,11 @@ public class AuthUserController {
     @RequestMapping("/user")
     public AuthenticatedUser getUser(Authentication authentication) {
         List<String> roles = new ArrayList<>();
-        for(GrantedAuthority authority : authentication.getAuthorities()) {
+        for (GrantedAuthority authority : authentication.getAuthorities()) {
             roles.add(authority.getAuthority());
         }
         SurveyUser user = userService.findUserByUsername(authentication.getName());
         Long id = user.getId();
-        AuthenticatedUser auser = new AuthenticatedUser(id, authentication.getName(), roles, user.getEmailConfirmed());
-        return(auser);
+        return new AuthenticatedUser(id, authentication.getName(), user.getEmail(), roles, user.getEmailConfirmed());
     }
 }
