@@ -27,30 +27,36 @@ export class SurveyCreatePageComponent implements OnInit {
   constructor(private service : SurveyCreatePageServiceService, private router: Router, private loginService : LoginServiceService) { }
 
   ngOnInit() {
-    
+  
+     this.checkIfAccessIsAlowed();
+     this.initilaze();
+  }
+
+  checkIfAccessIsAlowed(){
     if(!this.loginService.isUserAuth()){
       this.router.navigate(['login']);
       return;
     }
-  
-      this.expireDate = new Date();
-      this.minDate = this.updateMinimumDate();
-     this.initilaze();
-     
-    
   }
 
   initilaze(){
     let a1 : SurveyAnswer[] = [];
     this.questions[0] = new SurveyQuestion();
     this.questions[0].answerList = a1;
+    this.minDate = this.updateMinimumDate();
+    this.expireDate = this.timeStampToDate();
   }
 
   updateMinimumDate(){
     let myTimeStamp = this.today.setDate(this.today.getDate() + 1);
     const datePipe = new DatePipe('en-US');
     return datePipe.transform(myTimeStamp, 'yyyy-MM-dd'); 
+  }
 
+  timeStampToDate(){
+    let myTimeStamp = this.today.setDate(this.today.getDate() + 365);
+    const datePipe = new DatePipe('en-US');
+    return new Date(datePipe.transform(myTimeStamp, 'yyyy-MM-dd')); 
   }
 
   addQuestion(){
@@ -62,9 +68,10 @@ export class SurveyCreatePageComponent implements OnInit {
   deleteEventHandler($event : any){
     this.questions.splice($event, 1);
   }
-  
-  submit(){
 
+
+  submit(){
+     
     let id = 0;
     if(this.surveyName == null){
       this.surveyName = "Survey default name";
