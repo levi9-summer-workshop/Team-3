@@ -27,7 +27,7 @@
 			<div class="input-group">
         <span class="input-group-addon"></span>
 				<input class="form-control" type="password" name="confirm_password" #confirm_password="ngModel" ngModel placeholder="Confirm Password" required validateEqual="password" [ngClass]="{'is-invalid': confirm_password.invalid && (confirm_password.dirty || confirm_password.touched)}">
-        <div class="invalid-feedback" *ngIf="confirm_password.invalid && (confirm_password.dirty || confirm_password.touched)">You need to confirm your password!</div>
+        <div class="invalid-feedback" *ngIf="confirm_password.invalid && (confirm_password.dirty || confirm_password.touched)">Passwords don't match!</div>
       </div>
         </div>        
 		<div class="form-group">

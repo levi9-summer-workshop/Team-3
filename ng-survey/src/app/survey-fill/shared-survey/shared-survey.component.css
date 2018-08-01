@@ -58,3 +58,10 @@
  .bbr {
      line-height: 20%;
  }
+
+ .alert {
+     left: 40%;
+     width: 20%;
+     vertical-align: middle;
+     align-content: center;
+ }
