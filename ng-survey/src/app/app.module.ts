@@ -28,6 +28,7 @@ import { AccessForbidenComponent } from './errors/access-forbiden/access-forbide
 import { LogOutComponent } from './templates/log-out/log-out.component';
 import { UsersSurveysComponent } from './survey-fill/users-surveys/users-surveys.component';
 import { SharedSurveyComponent } from './survey-fill/shared-survey/shared-survey.component';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { SharedSurveyComponent } from './survey-fill/shared-survey/shared-survey
     AccessForbidenComponent,
     LogOutComponent,
     UsersSurveysComponent,
-    SharedSurveyComponent
+    SharedSurveyComponent,
+    AccountComponent
   ],
 
   imports: [

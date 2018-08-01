@@ -7,6 +7,7 @@ import 'rxjs/Rx';
     id : number;
     username: string;
     roles: string[];
+    email : string;
     emailConfirmed: boolean;
   }
 
@@ -25,7 +26,7 @@ export class LoginServiceService {
       const headers = new HttpHeaders({ authorization: 'Basic ' + base64Credential});
 
     return this.http.get<any>("http://localhost:8080/auth/user", {headers : headers}).do(data =>{
-    
+  
         this.user = data;
         this.headers = headers;
         this.authenticated = true;
@@ -48,14 +49,11 @@ export class LoginServiceService {
      if(this.user != null && this.user.roles != null){
       if (this.user) {
        return this.user.roles.includes('ROLE_ADMIN');
+       }
       }
     }
-  }
 
-  logout() {
-     this.authenticated = false;
-     this.user = null;
-     this.headers = null;
-     this.router.navigate(['/login']);
-    }
+    logout() {
+      location.reload();
+      }
   }

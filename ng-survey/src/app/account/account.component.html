@@ -1,0 +1,40 @@
+<div class="col-md-9">
+  <div class="card">
+      <div class="card-body">
+          <div class="row">
+              <div class="col-md-12">
+                  <h4>Your Profile</h4>
+                  <hr>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-12">
+                  
+                        <div class="form-group row">
+                          <label for="username" class="col-4 col-form-label">User Name*</label> 
+                           {{user?.username}}
+                        </div>
+                        <div class="form-group row">
+                          <label for="email" class="col-4 col-form-label">Email*</label> 
+                          {{user?.email}}
+                        </div>
+                        <form>
+                        <div class="form-group row">
+                          <label for="newpass" class="col-4 col-form-label">New Password</label> 
+                          <div class="col-8">
+                            <input id="newpass" name="newpass" placeholder="New Password" class="form-control here" type="text">
+                          </div>
+                        </div> 
+                        
+                        <div class="form-group row">
+                          <div class="offset-4 col-8">
+                            <button name="submit" type="submit" class="btn btn-primary">Change password</button>
+                          </div>
+                        </div>
+                      </form>
+              </div>
+          </div>
+          
+      </div>
+  </div>
+</div>
