@@ -41,19 +41,19 @@ export class SharedSurveyComponent implements OnInit {
   }
 
 
-  isSurveyOpen(){
-    if(!this.survey.open){
-      this.router.navigate(['/home']);
-      return;
-     }
-  }
+  // isSurveyOpen(){
+  //   if(!this.survey.open){
+  //     this.router.navigate(['/home']);
+  //     return;
+  //    }
+  // }
   
   getOne(url : string){
 
     this.surveyService.getSurveyByUrl(url).subscribe(data =>{
           this.survey = data;
           this.isEveryoneAllowed();
-          this.isSurveyOpen();
+          // this.isSurveyOpen();
     },
     (error) => { 
       console.log(error); 
@@ -111,4 +111,8 @@ export class SharedSurveyComponent implements OnInit {
        }
        this.submitFilledSurvey(surv);
     } 
+
+    alert() {
+      alert("This survey is closed!");
+    }
   }
