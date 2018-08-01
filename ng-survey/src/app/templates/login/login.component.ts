@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   public takeLoginData(form: NgForm) {
       this.loginService.login(form.value.username, form.value.password).subscribe(
         (data) => { 
-          this.user = data;
+          this.user = { ...data };
           this.lgdin = true;
           this.message = "Success!";
           form.reset();

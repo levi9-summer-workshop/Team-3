@@ -13,15 +13,19 @@ export class SurveyUserService {
     return this.http.get("//localhost:8080/user",  { headers : this.loginService.getAuthHeaders() } );
   }
 
-  post(user: SurveyUser):Observable<any>{
+  post(user: SurveyUser) : Observable<any>{
     return this.http.post("//localhost:8080/user", user,  { headers : this.loginService.getAuthHeaders() } );
   }
 
-  block(user: SurveyUser):Observable<any>{
+  block(user: SurveyUser) : Observable<any>{
     return this.http.put("//localhost:8080/user/block", user,  { headers : this.loginService.getAuthHeaders() } );
   }
 
   delete(userId: number) {
-    return this.http.delete("//localhost:8080/user" + '/' + userId,  { headers : this.loginService.getAuthHeaders() } );
+    return this.http.delete("//localhost:8080/user/" + userId,  { headers : this.loginService.getAuthHeaders() } );
+  }
+
+  changePassword(user : SurveyUser) : Observable<any>{
+    return this.http.put("//localhost:8080/user/change-password", user, { headers : this.loginService.getAuthHeaders() } );
   }
 }

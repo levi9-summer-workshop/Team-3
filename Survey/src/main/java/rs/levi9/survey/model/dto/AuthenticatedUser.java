@@ -6,6 +6,7 @@ public class AuthenticatedUser{
 
     private Long id;
     private String username;
+    private String email;
     private List<String> roles;
     private Boolean emailConfirmed;
 
@@ -17,15 +18,10 @@ public class AuthenticatedUser{
         this.roles = roles;
     }
 
-    public AuthenticatedUser(Long id, String username, List<String> roles) {
+    public AuthenticatedUser(Long id, String username, String email, List<String> roles, Boolean emailConfirmed) {
         this.id = id;
         this.username = username;
-        this.roles = roles;
-    }
-
-    public AuthenticatedUser(Long id, String username, List<String> roles, Boolean emailConfirmed) {
-        this.id = id;
-        this.username = username;
+        this.email = email;
         this.roles = roles;
         this.emailConfirmed = emailConfirmed;
     }
@@ -60,5 +56,13 @@ public class AuthenticatedUser{
 
     public void setEmailConfirmed(Boolean emailConfirmed) {
         this.emailConfirmed = emailConfirmed;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -17,6 +17,7 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { LogOutComponent } from './templates/log-out/log-out.component';
 import { UsersSurveysComponent } from './survey-fill/users-surveys/users-surveys.component';
 import { SharedSurveyComponent } from './survey-fill/shared-survey/shared-survey.component';
+import { AccountComponent } from './account/account.component';
 
 
 const routes: Routes = [
@@ -27,14 +28,15 @@ const routes: Routes = [
   { path: "users", component: SurveyUserListComponent },
   { path: "new-survey", component: SurveyCreatePageComponent },
   { path: "login", component: LoginComponent },
-  { path: "your-surveys/:id", component : UsersSurveysComponent},
+  { path: "your-surveys/:id", component : UsersSurveysComponent },
   { path : "surveys/:id", component :  FillSurveyComponent },
   { path : "all-surveys", component : AllSurveysComponent },
   { path: "survey-results/:id", component : SurveyResultsComponent },
   { path: "404", component : NotFoundComponent },
-  { path: "forbidden",  component : AccessForbidenComponent},
+  { path: "forbidden",  component : AccessForbidenComponent },
   { path: "logout", component : LogOutComponent },
-  { path: "share-survey/:id", component : SharedSurveyComponent}
+  { path: "share-survey/:id", component : SharedSurveyComponent },
+  { path: "account", component : AccountComponent }
 ];
 
 

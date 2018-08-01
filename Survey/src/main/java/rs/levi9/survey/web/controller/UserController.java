@@ -74,4 +74,10 @@ public class UserController {
         userService.resetPassword(user.getEmail());
         return "Please check your inbox!";
     }
+
+    @PutMapping("/change-password")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
+    public SurveyUser changePassword(@RequestBody SurveyUser surveyUser){
+        return userService.changePassword(surveyUser);
+    }
 }
