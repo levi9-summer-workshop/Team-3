@@ -80,4 +80,10 @@ public class UserController {
     public SurveyUser changePassword(@RequestBody SurveyUser surveyUser){
         return userService.changePassword(surveyUser);
     }
+
+    @PutMapping
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_USER')")
+    public ResponseEntity put(@RequestBody SurveyUser surveyUser) {
+        return new ResponseEntity(userService.save(surveyUser), HttpStatus.OK);
+    }
 }

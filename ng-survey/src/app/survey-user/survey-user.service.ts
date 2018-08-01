@@ -17,6 +17,10 @@ export class SurveyUserService {
     return this.http.post("//localhost:8080/user", user,  { headers : this.loginService.getAuthHeaders() } );
   }
 
+  put(user: SurveyUser) : Observable<any> {
+    return this.http.put("//localhost:8080/user", user,  { headers : this.loginService.getAuthHeaders() } );
+  }
+
   block(user: SurveyUser) : Observable<any>{
     return this.http.put("//localhost:8080/user/block", user,  { headers : this.loginService.getAuthHeaders() } );
   }

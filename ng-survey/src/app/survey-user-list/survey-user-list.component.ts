@@ -24,7 +24,7 @@ export class SurveyUserListComponent implements OnInit {
 
   constructor(private surveyService: SurveyUserService, private router: Router  , private loginService : LoginServiceService) { }
 
-    ngOnInit() {
+  ngOnInit() {
       if(!this.loginService.isUserAuth() || !this.loginService.hasRoleAdmin() ){
         this.router.navigate(['login']);
         return;
@@ -86,6 +86,7 @@ export class SurveyUserListComponent implements OnInit {
     }
     );
      console.log("blocked: " + this.user.blocked + ", blocked until: " + this.user.blockedUntil);
+     this.allowCalendar = null;
   }
 
   
@@ -94,5 +95,23 @@ export class SurveyUserListComponent implements OnInit {
     this.blockedUntil = user.blockedUntil;
     return this.blockedUntil;}
   }
+
+  onUnblockUser(user: SurveyUser){
+    this.username = user.username;
+    this.user = user;
+    console.log(this.user.blocked);
+  }
+
+  unblockUserOk() {
+    this.user.blocked = false;
+    this.user.blockedUntil = null;
+    this.surveyService.put(this.user).subscribe(
+      (data) => {},
+      (error) => { console.log(error); }
+    );
+    console.log("blocked: " + this.user.blocked + ", blocked until: " + this.user.blockedUntil);
+    this.allowCalendar = null;
+  }
+
  
 }
