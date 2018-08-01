@@ -29,7 +29,7 @@ public class UserService {
     }
 
     public void unblockUserIfNeeded(SurveyUser user) {
-        if (user.isBlocked() && user.getBlockedUntil().compareTo(new Date()) == -1) {
+        if (user.isBlocked() && user.getBlockedUntil() != null && user.getBlockedUntil().compareTo(new Date()) == -1) {
             user.setBlocked(false);
         }
     }
@@ -51,7 +51,9 @@ public class UserService {
     }
 
     public SurveyUser block(SurveyUser surveyUser) {
-        surveyUser.setBlocked(!surveyUser.isBlocked());
+        if(surveyUser.getBlockedUntil() == null) {
+            surveyUser.setBlocked(true);
+        }
         return userRepository.save(surveyUser);
     }
 

@@ -12,7 +12,6 @@ export class SurveyCreatePageServiceService {
 
   constructor(private http: HttpClient, public loginService: LoginServiceService) { }
   post(survey : Survey) : Observable<any>{
-   
     return this.http.post("//localhost:8080/survey",  survey, { headers : this.loginService.getAuthHeaders() } );
   }
   get(): Observable<any>{
@@ -30,7 +29,6 @@ export class SurveyCreatePageServiceService {
   getSurveysByUserId(id: number) : Observable<any>{
     return this.http.get("//localhost:8080/survey/get/"+id, { headers : this.loginService.getAuthHeaders() } );
   }
-
   close(id: number):Observable<any>{
     return this.http.put("//localhost:8080/survey/close", id,  { headers : this.loginService.getAuthHeaders() } );
   }
