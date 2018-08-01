@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginServiceService } from '../login/login-service.service';
+import { Router } from '../../../../node_modules/@angular/router';
 
 @Component({
   selector: 'app-log-out',
@@ -8,10 +9,11 @@ import { LoginServiceService } from '../login/login-service.service';
 })
 export class LogOutComponent implements OnInit {
 
-  constructor(private service : LoginServiceService) { }
+  constructor(private router : Router) { }
 
   ngOnInit() {
-    this.service.logout();
+    location.reload();
+    this.router.navigate(['login']);
   }
 
 }
