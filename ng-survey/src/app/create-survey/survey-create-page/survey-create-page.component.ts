@@ -5,7 +5,8 @@ import { Survey } from './survey.model';
 import { SurveyCreatePageServiceService } from './survey-create-page-service.service';
 import { Router } from '@angular/router';
 import { LoginServiceService, AuthUser } from '../../templates/login/login-service.service';
-import { SurveyUser } from '../../survey-user/survey-user.model';
+import { DatePipe } from '@angular/common';
+
 
 @Component({
   selector: 'app-survey-create-page',
@@ -20,8 +21,9 @@ export class SurveyCreatePageComponent implements OnInit {
   public user: AuthUser;
   public isPrivate = false;
   public expireDate : Date;
- //surveyIsPrivate
-
+  public minDate : string;
+  public today = new Date();
+  
   constructor(private service : SurveyCreatePageServiceService, private router: Router, private loginService : LoginServiceService) { }
 
   ngOnInit() {
@@ -30,13 +32,24 @@ export class SurveyCreatePageComponent implements OnInit {
       this.router.navigate(['login']);
       return;
     }
-    this.expireDate = new Date();
+  
+
+      this.expireDate = new Date();
+      this.minDate = this.updateMinimumDate();
       let a1 : SurveyAnswer[] = [];
       this.questions[0] = new SurveyQuestion();
       this.questions[0].answerList = a1;
      
       
   }
+
+  updateMinimumDate(){
+    let myTimeStamp = this.today.setDate(this.today.getDate() + 1);
+    const datePipe = new DatePipe('en-US');
+    return datePipe.transform(myTimeStamp, 'yyyy-MM-dd'); 
+
+  }
+
   addQuestion(){
     this.questions.push(new SurveyQuestion());
     let  s1 : SurveyAnswer[] = [];
@@ -48,7 +61,6 @@ export class SurveyCreatePageComponent implements OnInit {
   }
   
   submit(){
-//   let num : number = Date.now(); console.log(num);
 
     let id = 0;
     if(this.surveyName == null){
@@ -65,7 +77,6 @@ export class SurveyCreatePageComponent implements OnInit {
       id = survey.id;
     },
     (error) => { 
-      // console.log(error); 
       window.alert("Don't leave fields empty!");    
     }, 
     () =>{

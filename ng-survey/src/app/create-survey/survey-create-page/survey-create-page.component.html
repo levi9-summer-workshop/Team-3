@@ -9,10 +9,10 @@
     </div> 
     <div align="center">
         <div class="lft">
-            <input class="btn button" type="checkbox" [(ngModel)]="isPrivate">&nbsp;Do you want your Survey to be private?
+            <input class="btn button" type="checkbox" [(ngModel)]="isPrivate" >&nbsp;Do you want your Survey to be private?
         </div> <br>
         <p class="font">When do you want your survey to close?</p>
-        <input type="date" class="input" [(ngModel)] ="expireDate" placeholder="Date" name = "expireDate"> <br>
+        <input type="date" class="input" [(ngModel)] = "expireDate" [min] = "minDate"  placeholder="Date" name = "expireDate"> <br> 
         <hr>
         <button type="button" class="btn btn-info" (click)="addQuestion()">Add question</button>
         <button type="button" class ="btn btn-danger" data-toggle="modal" data-target="#submitSurvey">Submit</button>
