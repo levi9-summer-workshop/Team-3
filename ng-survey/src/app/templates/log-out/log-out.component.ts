@@ -12,8 +12,9 @@ export class LogOutComponent implements OnInit {
   constructor(private router : Router) { }
 
   ngOnInit() {
-    location.reload();
-    this.router.navigate(['login']);
+    // location.reload();
+    // this.router.navigate(['login']);
+    
   }
 
 }
