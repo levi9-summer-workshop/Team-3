@@ -9,6 +9,7 @@ import 'rxjs/Rx';
     roles: string[];
     email : string;
     emailConfirmed: boolean;
+    blocked: boolean;
   }
 
 @Injectable()
@@ -54,6 +55,9 @@ export class LoginServiceService {
     }
 
     logout() {
-      location.reload();
-      }
+      this.authenticated = false;
+      this.user = null;
+      this.headers = null;
+      this.router.navigate(['/login']);
+    }
   }
