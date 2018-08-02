@@ -36,8 +36,7 @@ export class RegistrationComponent implements OnInit {
       this.registered = false;
     },
     () => {
-      console.log("User registered!");
-      this.message = "You registered succcessfully!";
+      this.message = "You registered succcessfully! Check your e-mail to confirm your account.";
       form.reset();
     });
   }
