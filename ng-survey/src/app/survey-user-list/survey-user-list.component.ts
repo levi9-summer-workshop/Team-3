@@ -20,6 +20,7 @@ export class SurveyUserListComponent implements OnInit {
   username: string = "default";
   allowCalendar : boolean = false;
   blockedUntil : Date;
+  click: boolean;
 
 
   constructor(private surveyService: SurveyUserService, private router: Router  , private loginService : LoginServiceService) { }
@@ -60,10 +61,12 @@ export class SurveyUserListComponent implements OnInit {
 
   setAllowCalendarTrue() {
     this.allowCalendar = true;
+    this.click = true;
   }
 
   setAllowCalendarFalse() {
     this.allowCalendar = false;
+    this.click = true;
   }
 
   onBlockUser(user: SurveyUser){
@@ -86,14 +89,6 @@ export class SurveyUserListComponent implements OnInit {
     }
     );
      console.log("blocked: " + this.user.blocked + ", blocked until: " + this.user.blockedUntil);
-  }
-
-  
-  getBlockedUntil(user: SurveyUser) {
-    if(user.blockedUntil != null){
-      this.blockedUntil = user.blockedUntil;
-      return this.blockedUntil;
-    }
   }
 
   onUnblockUser(user: SurveyUser){
