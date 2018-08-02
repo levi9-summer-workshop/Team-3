@@ -9,7 +9,7 @@ import 'rxjs/Rx';
     roles: string[];
     email : string;
     emailConfirmed: boolean;
-    blocked: boolean;
+    isBlocked: boolean;
   }
 
 @Injectable()
