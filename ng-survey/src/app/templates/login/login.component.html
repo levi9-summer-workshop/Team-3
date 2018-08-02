@@ -6,7 +6,7 @@
               <div class="form-group">
                 <div class="input-group">
                 <span class="input-group-addon"></span>
-                <input class="form-control" type="text" name="username" #username="ngModel" ngModel [(ngModel)] ="user.username" required placeholder="Username or e-mail" [ngClass]="{'is-invalid': username.invalid && (username.dirty || username.touched)}">
+                <input class="form-control" type="text" name="username" #username="ngModel" ngModel [(ngModel)] ="user.username" required placeholder="Username" [ngClass]="{'is-invalid': username.invalid && (username.dirty || username.touched)}">
                 <div class="invalid-feedback" *ngIf="username.invalid && (username.dirty || username.touched)">Please enter your username or e-mail!</div>
                 </div>
               </div>
