@@ -1,6 +1,7 @@
 package rs.levi9.survey.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -20,12 +21,15 @@ public class Survey extends BaseEntity implements Serializable {
     @Column
     private Date surveyExpires;
 
+    @NotNull
+    @Column(nullable = false)
     private String name;
 
     @ManyToOne
     @JoinColumn(name = "fk_survey_user_id")
     private SurveyUser surveyUser;
 
+    @NotNull
     @Column(nullable = false)
     private String description;
 
