@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '../../../../node_modules/@angular/common/http';
 import { Router } from '../../../../node_modules/@angular/router';
 import 'rxjs/Rx';
+import { Observable } from 'rxjs/Rx';
 
   export class AuthUser{
     id : number;

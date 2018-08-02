@@ -101,9 +101,6 @@ public class UserService {
 
     public SurveyUser registerUser(SurveyUser surveyUser) throws MessagingException {
         emailService.sendEmail(new UtilsService().createEmailConfirmationMessage(surveyUser));
-       // ArrayList<Role> roles = new ArrayList<>();
-     ////   roles.add(new Role(Role.RoleType.ROLE_USER));
-     ///   surveyUser.setRoles(roles);
         surveyUser.setAccountConfirmationCode(new UtilsService().encodeToBase64(surveyUser.getUsername() + ":" + surveyUser.getEmail()));
         return save(surveyUser);
     }

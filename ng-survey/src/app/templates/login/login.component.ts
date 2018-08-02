@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   public password : string;
   public error : string;
   public lgdin : boolean;
+  public email: string;
   
   constructor(private loginService : LoginServiceService, private router: Router) { }
 
@@ -65,5 +66,9 @@ export class LoginComponent implements OnInit {
 
   public registration() {
     this.router.navigate(['/registration']);
+  }
+
+  public stuff() {
+    console.log(this.email);
   }
 }
