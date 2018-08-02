@@ -70,19 +70,11 @@ export class SurveyCreatePageComponent implements OnInit {
   }
 
 
-  submit(){
-     
+  submit(){ 
     let id = 0;
-    if(this.surveyName == null){
-      this.surveyName = "Survey default name";
-    }
-    if(this.desc == null){
-      this.desc = "default description";
-    }
     this.user = this.loginService.getAuthUser();
     this.removeEmptyAnswers();
     this.service.post(new Survey(this.user.id, this.user.username, this.surveyName, this.desc, this.questions, this.isPrivate, this.expireDate, true)).subscribe(data => {
-
       let survey = data;
       id = survey.id;
     },
