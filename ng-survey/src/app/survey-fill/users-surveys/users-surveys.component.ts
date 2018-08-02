@@ -12,10 +12,12 @@ import { LoginServiceService } from '../../templates/login/login-service.service
 export class UsersSurveysComponent implements OnInit {
 
   id: number;
+  surveyId: number;
   private sub: any;
   public surveys : Survey[] = [];
   selectedSurvey = new Survey();
   date : Date;
+  name: string;
 
   constructor(private surveyService : SurveyCreatePageServiceService, private router: Router, private route: ActivatedRoute, private loginService : LoginServiceService){}//, private router : Router) { }
 
@@ -53,10 +55,16 @@ export class UsersSurveysComponent implements OnInit {
     )
   }
 
-  onCloseSurvey(id: number) {
-     this.surveyService.close(id).subscribe
+  chooseSurvey(id: number) {
+    this.surveyId = id;
+    this.selectedSurvey = this.surveys[this.surveyId];
+    this.name = this.selectedSurvey.name;
+  }
+
+  onCloseSurvey() {
+     this.surveyService.close(this.surveyId).subscribe
     (
-      () => this.findSurvById(id).open = false
+      () => this.findSurvById(this.surveyId).open = false
     )
   }
 
