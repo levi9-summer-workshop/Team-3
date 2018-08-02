@@ -36,6 +36,6 @@ public class AuthUserController {
         }
         SurveyUser user = userService.findUserByUsername(authentication.getName());
         Long id = user.getId();
-        return new AuthenticatedUser(id, authentication.getName(), user.getEmail(), roles, user.getEmailConfirmed());
+        return new AuthenticatedUser(id, authentication.getName(), user.getEmail(), roles, user.getEmailConfirmed(), user.isBlocked());
     }
 }

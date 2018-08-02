@@ -9,6 +9,7 @@ public class AuthenticatedUser{
     private String email;
     private List<String> roles;
     private Boolean emailConfirmed;
+    private Boolean blocked;
 
     public AuthenticatedUser() {
     }
@@ -18,8 +19,9 @@ public class AuthenticatedUser{
         this.roles = roles;
     }
 
-    public AuthenticatedUser(Long id, String username, String email, List<String> roles, Boolean emailConfirmed) {
+    public AuthenticatedUser(Long id, String username, String email, List<String> roles, Boolean emailConfirmed, Boolean blocked) {
         this.id = id;
+        this.blocked = blocked;
         this.username = username;
         this.email = email;
         this.roles = roles;
@@ -64,5 +66,13 @@ public class AuthenticatedUser{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Boolean getBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(Boolean blocked) {
+        this.blocked = blocked;
     }
 }

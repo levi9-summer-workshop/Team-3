@@ -37,6 +37,7 @@ export class LoginComponent implements OnInit {
         (data) => { 
           this.user = { ...data };
           this.lgdin = true;
+          console.log(data);
           this.message = "Success!";
           form.reset();
         },
@@ -48,7 +49,8 @@ export class LoginComponent implements OnInit {
             this.loginService.logout();
             this.lgdin = false;
             this.message = "You must confirm your account. Check your mail.";
-          } else if(this.user.blocked) {
+          }
+          if(this.user.blocked) {
             this.loginService.logout();
             this.lgdin = false;
             this.message = "Your account is blocked. You can't log in.";
