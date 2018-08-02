@@ -1,4 +1,10 @@
+<head>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script type="text/javascript" src="angular-recaptcha.js"></script>
+    <div vc-recaptcha key="6LfA12cUAAAAAJgybf-_PCko5J56u3vZqQcVu-fk"></div>
+</head>
 <body>
+   
   <div class="signup-form">	
     <form (ngSubmit)="takeSignUpData(f)" #f="ngForm">
 		<h2>Sign up</h2>
@@ -23,6 +29,7 @@
         <div class="invalid-feedback" *ngIf="password.invalid && (password.dirty || password.touched)">Please enter your password!</div>
       </div>
         </div>
+        <div class="g-recaptcha" data-sitekey="6LfA12cUAAAAAJgybf-_PCko5J56u3vZqQcVu-fk"></div>
 		<div class="form-group">
 			<div class="input-group">
         <span class="input-group-addon"></span>
@@ -30,6 +37,7 @@
         <div class="invalid-feedback" *ngIf="confirm_password.invalid && (confirm_password.dirty || confirm_password.touched)">Passwords don't match!</div>
       </div>
         </div>        
+        
 		<div class="form-group">
             <button type="submit" [disabled]="f.invalid" class="btn btn-primary btn-block btn-lg" data-toggle="modal" data-target="#userExists">Sign Up</button>
         </div>
@@ -55,6 +63,7 @@
           <button *ngIf="!registered" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button *ngIf="registered" type="button" class="btn btn-primary" data-dismiss="modal" (click)="onOk()">OK</button>
       </div>
+      
     </div>
   </div>
 </div>

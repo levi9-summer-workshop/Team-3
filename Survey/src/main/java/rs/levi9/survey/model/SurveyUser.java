@@ -1,7 +1,11 @@
 package rs.levi9.survey.model;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -30,10 +34,10 @@ public class SurveyUser extends BaseEntity implements Serializable {
     @Column
     private Date blockedUntil;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(joinColumns = @JoinColumn(name = "survey_user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private List<Role> roles;
+           inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<Role> roles = new ArrayList<>(Arrays.asList(new Role(Role.RoleType.ROLE_USER)));
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Survey> surveyList;

@@ -48,7 +48,9 @@ export class FillSurveyComponent implements OnInit, OnDestroy  {
     }
 
     ngOnDestroy(){
+      if(this.sub != null){
       this.sub.unsubscribe();
+    }
       this.router.navigate(['login']);
       return;
     }

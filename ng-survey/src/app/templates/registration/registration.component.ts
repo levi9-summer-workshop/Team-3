@@ -22,6 +22,7 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit() {
     this.user = new SurveyUser();
+   // var app = angular.module('myApp', ['vcRecaptcha']);
   }
 
   public takeSignUpData(form: NgForm) {
