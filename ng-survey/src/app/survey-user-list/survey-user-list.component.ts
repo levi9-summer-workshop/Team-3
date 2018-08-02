@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 import { LoginServiceService } from '../templates/login/login-service.service';
 import { User } from '../user';
+import { DatePipe } from '../../../node_modules/@angular/common';
 
 @Component({
   selector: 'app-survey-user-list',
@@ -21,7 +22,8 @@ export class SurveyUserListComponent implements OnInit {
   allowCalendar : boolean = false;
   blockedUntil : Date;
   click: boolean;
-
+  minDate : string;
+  today = new Date();
 
   constructor(private surveyService: SurveyUserService, private router: Router  , private loginService : LoginServiceService) { }
 
@@ -32,6 +34,7 @@ export class SurveyUserListComponent implements OnInit {
       }
       this.selectedUser = new SurveyUser();
    this. getUserList();
+   this.minDate = this.updateMinimumDate();
   }
 
   getUserList(){
@@ -108,5 +111,16 @@ export class SurveyUserListComponent implements OnInit {
     this.allowCalendar = null;
   }
 
+  updateMinimumDate(){
+    let myTimeStamp = this.today.setDate(this.today.getDate() + 1);
+    const datePipe = new DatePipe('en-US');
+    return datePipe.transform(myTimeStamp, 'yyyy-MM-dd'); 
+  }
+
+  timeStampToDate(){
+    let myTimeStamp = this.today.setDate(this.today.getDate() + 365);
+    const datePipe = new DatePipe('en-US');
+    return new Date(datePipe.transform(myTimeStamp, 'yyyy-MM-dd')); 
+  }
  
 }

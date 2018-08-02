@@ -59,9 +59,9 @@
                 <p>Do you want to block <i>{{ username }}</i>:</p>
                 <input type="radio" name="blockUser" value="indef" (click) = "setAllowCalendarFalse()" ngModel> Indefinitely
                 <br>
-                <input type="radio" name="blockUser" value="def" (click) = "setAllowCalendarTrue()" ngModel> Definitely
+                <input type="radio" name="blockUser" value="def" (click) = "setAllowCalendarTrue()" ngModel> For a definite period <i class="font-sm">(minimum date is tomorrow)</i>
                 <br>
-                <input type="date" [(ngModel)]="blockedUntil" name="blockedUntil">
+                <input type="date" class="spacing" [(ngModel)]="blockedUntil" [min] = "minDate" name="blockedUntil">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
