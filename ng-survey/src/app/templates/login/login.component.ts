@@ -22,14 +22,15 @@ export class LoginComponent implements OnInit {
   constructor(private loginService : LoginServiceService, private router: Router) { }
 
   ngOnInit() {
+
     if(this.loginService.isUserAuth() == true){
         location.reload();
     }
+
     this.user = new AuthUser();
     this.message = "Bad credentials!";
     this.username = "";
     this.password = "";
-   
   }
 
   public takeLoginData(form: NgForm) {
@@ -37,7 +38,6 @@ export class LoginComponent implements OnInit {
         (data) => { 
           this.user = { ...data };
           this.lgdin = true;
-          console.log(data);
           this.message = "Success!";
           form.reset();
         },
