@@ -1,10 +1,12 @@
 <div class="container font">
     <div class="form-inline">
-            {{ id + 1 }}.&nbsp;<input type="text" placeholder="Question text" class="input form-control form-control-sm" [(ngModel)]="question.questionText">&nbsp;
+            {{ id + 1 }}.&nbsp;<input type="text" placeholder="Question text" class="input form-control form-control-sm" #qst="ngModel" [(ngModel)]="question.questionText" [ngClass]="{'is-invalid': qst.invalid && (qst.dirty || qst.touched)}" required>
+            &nbsp;
         <div class="btn-group">
             <button class="btn button btn-secondary" (click)="addAnswer()">+</button>
             <button class="btn button btn-secondary" (click)="deleteQuestion()">&times;</button>
         </div>
+    <div class="invalid-feedback" *ngIf=" qst.invalid && (qst.dirty || qst.touched)">Write question text or remove it!</div>
         <br>
     </div>
     <div class="justify-content-center col-lg-10">

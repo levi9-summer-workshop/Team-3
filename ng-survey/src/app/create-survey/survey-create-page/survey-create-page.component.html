@@ -1,8 +1,11 @@
 <div class="survey container">
   <div class="form-group">
-    <input type="text" class="input form-control form-control-lg col-sm-6 col-lg-8 col-centered" placeholder="Name of your survey" [(ngModel)]="surveyName">
+    <input type="text" class="input form-control form-control-lg col-sm-6 col-lg-8 col-centered" #sn="ngModel" placeholder="Name of your survey" [(ngModel)]="surveyName" [ngClass]="{'is-invalid': sn.invalid && (sn.dirty || sn.touched)}" required>
+    <div class="invalid-feedback" *ngIf=" sn.invalid && (sn.dirty || sn.touched)">Survey must have name!</div>
     <hr>
-    <textarea class="input form-control form-control-sm col-sm-4 col-md-6 col-centered" placeholder="Describe your survey" maxlength="200" rows="3" [(ngModel)]="desc"></textarea>
+    <textarea class="input form-control form-control-sm col-sm-4 col-md-6 col-centered" placeholder="Describe your survey" #sd="ngModel" maxlength="200" rows="3" [(ngModel)]="desc" [ngClass]="{'is-invalid': sd.invalid && (sd.dirty || sd.touched)}" required></textarea>
+        <div class="invalid-feedback" *ngIf=" sd.invalid && (sd.dirty || sd.touched)">Survey must have description!</div>
+        
     <hr>
     <div class="container justify-content-center col-lg-8 font-sm"> 
         <app-survey-question *ngFor="let question of questions; let i = index" (deleteEvent) = "deleteEventHandler($event)" [questionId]= "i" [questionList] = "question"></app-survey-question>

@@ -53,3 +53,7 @@
 .font {
     font-size: 95%;
 }
+
+.invalid-feedback {
+    text-align: center;
+}
