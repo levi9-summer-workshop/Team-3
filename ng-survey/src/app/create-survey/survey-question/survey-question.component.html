@@ -1,6 +1,6 @@
 <div class="container font">
     <div class="form-inline">
-            {{ id + 1 }}.&nbsp;<input type="text" placeholder="Question text" class="input form-control form-control-sm" #qst="ngModel" [(ngModel)]="question.questionText" [ngClass]="{'is-invalid': qst.invalid && (qst.dirty || qst.touched)}" required>
+            {{ id + 1 }}.&nbsp;<input type="text" placeholder="Question text" name="qst" class="input form-control form-control-sm" #qst="ngModel" [(ngModel)]="question.questionText" [ngClass]="{'is-invalid': qst.invalid && (qst.dirty || qst.touched)}" required>
             &nbsp;
         <div class="btn-group">
             <button class="btn button btn-secondary" (click)="addAnswer()">+</button>
@@ -14,7 +14,7 @@
             <app-survey-answer *ngFor="let answer of question.answerList; let i = index" (deleteEvent) = "deleteEventHandler($event)" [answerId]= "i" [srvAnswer]="answer"></app-survey-answer>
         </form>
     <div class="lft">
-        <input class="btn button" type="checkbox" [(ngModel)]="question.multipleChoices">Allow choosing multiple choices?
+        <input class="btn button" type="checkbox" name="multiplech" [(ngModel)]="question.multipleChoices">Allow choosing multiple choices?
     </div>
     <hr>
     </div>

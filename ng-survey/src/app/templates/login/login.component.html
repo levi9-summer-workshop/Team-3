@@ -39,13 +39,15 @@
         </button>
       </div>
       <div class="modal-body">
+        <form #form="ngForm">
           <p>Bodeeeeey wazuuuuuuuuh</p>
-          <input class="form-control form-group" [(ngModel)]="email" type="email" #mail="ngModel" email placeholder="Enter your e-mail here" [ngClass]="{'is-invalid': mail.invalid && (mail.dirty || mail.touched)}">
+          <input class="form-control form-group" [(ngModel)]="email" name="email" type="email" #mail="ngModel" email placeholder="Enter your e-mail here" [ngClass]="{'is-invalid': mail.invalid && (mail.dirty || mail.touched)}">
           <div class="invalid-feedback" *ngIf="mail.invalid && (mail.dirty || mail.touched)">This is not e-mail!</div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="stuff()">Send</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" [disabled]="form.invalid" (click)="stuff()">Send</button>
       </div>
     </div>
   </div>

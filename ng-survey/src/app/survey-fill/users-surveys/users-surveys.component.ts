@@ -58,7 +58,6 @@ export class UsersSurveysComponent implements OnInit {
   chooseSurvey(id: number) {
     this.surveyId = id;
     this.selectedSurvey = this.surveys[this.surveyId];
-    this.name = this.selectedSurvey.name;
   }
 
   onCloseSurvey() {
