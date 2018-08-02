@@ -86,14 +86,14 @@ export class SurveyUserListComponent implements OnInit {
     }
     );
      console.log("blocked: " + this.user.blocked + ", blocked until: " + this.user.blockedUntil);
-     this.allowCalendar = null;
   }
 
   
   getBlockedUntil(user: SurveyUser) {
     if(user.blockedUntil != null){
-    this.blockedUntil = user.blockedUntil;
-    return this.blockedUntil;}
+      this.blockedUntil = user.blockedUntil;
+      return this.blockedUntil;
+    }
   }
 
   onUnblockUser(user: SurveyUser){
