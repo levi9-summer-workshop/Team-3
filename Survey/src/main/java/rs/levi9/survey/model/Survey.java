@@ -117,4 +117,8 @@ public class Survey extends BaseEntity implements Serializable {
     public void setSurveyExpires(Date surveyExpires) {
         this.surveyExpires = surveyExpires;
     }
+
+    public boolean isOpen() {
+        return isOpen;
+    }
 }
