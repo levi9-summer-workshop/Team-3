@@ -30,14 +30,14 @@ export class RegistrationComponent implements OnInit {
       this.registrationService.post(this.user).subscribe(data => {
       this.user = data;     
       this.registered = true;
+      this.message = "You registered succcessfully! Check your e-mail to confirm your account.";
     },
-    (error) => { 
-      this.errorMessage = error;
+    (error) => {
       this.message = "Couldn't register, user with that username or e-mail already exists!";
+      this.errorMessage = error;
       this.registered = false;
     },
     () => {
-      this.message = "You registered succcessfully! Check your e-mail to confirm your account.";
       form.reset();
     });
   }

@@ -33,7 +33,7 @@ export class SurveyUserListComponent implements OnInit {
         return;
       }
       this.selectedUser = new SurveyUser();
-   this. getUserList();
+   this.getUserList();
    this.minDate = this.updateMinimumDate();
   }
 
