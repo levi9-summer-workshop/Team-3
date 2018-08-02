@@ -2,12 +2,15 @@ package rs.levi9.survey.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import rs.levi9.survey.model.Role;
 import rs.levi9.survey.model.Survey;
 import rs.levi9.survey.model.SurveyUser;
 import rs.levi9.survey.repository.UserRepository;
 import rs.levi9.survey.utils.StringGenerator;
 
+import javax.annotation.security.RolesAllowed;
 import javax.mail.MessagingException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -98,6 +101,9 @@ public class UserService {
 
     public SurveyUser registerUser(SurveyUser surveyUser) throws MessagingException {
         emailService.sendEmail(new UtilsService().createEmailConfirmationMessage(surveyUser));
+       // ArrayList<Role> roles = new ArrayList<>();
+     ////   roles.add(new Role(Role.RoleType.ROLE_USER));
+     ///   surveyUser.setRoles(roles);
         surveyUser.setAccountConfirmationCode(new UtilsService().encodeToBase64(surveyUser.getUsername() + ":" + surveyUser.getEmail()));
         return save(surveyUser);
     }

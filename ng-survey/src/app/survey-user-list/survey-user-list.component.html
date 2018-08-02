@@ -17,7 +17,7 @@
             <td class="text-center align-middle">{{ user.username }}</td>
             <td class="text-center align-middle">{{ user.email }}</td>
             <td class="text-center align-middle"><button class="btn button-size btn-info" [disabled]="user.blocked" (click)="onBlockUser(user)" data-toggle="modal" data-target="#blockUserModal">Block</button></td>
-            <td class="text-center align-middle"></td>
+            <td class="text-center align-middle"><ng-container *ngIf="user.blockedUntil != null"> {{user.blockedUntil | date}}</ng-container></td>
             <td class="text-center align-middle"><button class="btn button-size btn-info" [disabled]="!user.blocked" (click)="onUnblockUser(user)" data-toggle="modal" data-target="#unblockUserModal">Unblock</button></td>
             <td class="text-center align-middle"><button class="btn btn-danger button-size" (click)="onUserDelete(user)" data-toggle="modal" data-target="#deleteUserModal">Delete</button></td>
           </tr>

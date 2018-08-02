@@ -10,6 +10,12 @@ public class Role extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private RoleType roleType;
 
+    public Role(){}
+
+    public Role(RoleType roleType){
+        this.roleType = roleType;
+    }
+
     public enum RoleType {
         ROLE_USER, ROLE_ADMIN
     }
