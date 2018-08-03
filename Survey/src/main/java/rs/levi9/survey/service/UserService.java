@@ -88,15 +88,17 @@ public class UserService {
         return save(surveyUser);
     }
 
-    public SurveyUser resetPassword(String email) throws MessagingException {
+    public boolean resetPassword(String email) throws MessagingException {
         SurveyUser user = findUserByEmail(email);
         if (user != null) {
             String[] parts = {new StringGenerator().nextString().substring(0, 10), null};
             user.setPassword(parts[0]);
             userRepository.save(user);
-            emailService.sendEmail(new UtilsService().createResetPasswordMessage(user));
+            if(emailService.sendEmail(new UtilsService().createResetPasswordMessage(user))){
+                return true;
+            }
         }
-        return null;
+        return false;
     }
 
     public SurveyUser registerUser(SurveyUser surveyUser) throws MessagingException {

@@ -70,9 +70,11 @@ public class UserController {
     }
 
     @PostMapping("/forgot-password")
-    public String resetPassword(@RequestBody SurveyUser user) throws MessagingException {
-        userService.resetPassword(user.getEmail());
-        return "Please check your inbox!";
+    public ResponseEntity resetPassword(@RequestBody SurveyUser user) throws MessagingException {
+        if(userService.resetPassword(user.getEmail())){
+            return new ResponseEntity(HttpStatus.OK);
+        }
+       return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
 
     @PutMapping("/change-password")
