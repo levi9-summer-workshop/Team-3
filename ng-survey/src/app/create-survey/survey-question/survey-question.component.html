@@ -1,4 +1,5 @@
 <div class="container font">
+    <form #frm="ngForm">
     <div class="form-inline">
             {{ id + 1 }}.&nbsp;<input type="text" placeholder="Question text" name="qst" class="input form-control form-control-sm" #qst="ngModel" [(ngModel)]="question.questionText" [ngClass]="{'is-invalid': qst.invalid && (qst.dirty || qst.touched)}" required>
             &nbsp;
@@ -18,4 +19,5 @@
     </div>
     <hr>
     </div>
+    </form>
 </div>
