@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthUser, LoginServiceService } from '../templates/login/login-service.service';
 import { Router } from '../../../node_modules/@angular/router';
 import { SurveyUserService } from '../survey-user/survey-user.service';
@@ -13,6 +13,8 @@ export class AccountComponent implements OnInit {
 
 public user : AuthUser;
 public newPasword : string;
+
+@ViewChild('newpass') input; 
 
   constructor(private service : LoginServiceService , private router: Router, private userService : SurveyUserService) { }
 
@@ -37,5 +39,15 @@ public newPasword : string;
       (error) => console.log(error)
     )
   }
+
+  myFunction() {
+    var x = document.getElementById("newpass");
+    //this.input.nativeElement.type =
+    if (this.input.nativeElement.type === "password") {
+      this.input.nativeElement.type = "text";
+    } else {
+      this.input.nativeElement.type = "password";
+    }
+}
 
 }
