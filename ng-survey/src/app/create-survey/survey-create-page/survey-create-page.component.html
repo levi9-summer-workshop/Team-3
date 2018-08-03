@@ -18,7 +18,7 @@
         <input type="date" class="input" [(ngModel)] = "expireDate" [min] = "minDate"  placeholder="Date" name = "expireDate"> <br> 
         <hr>
         <button type="button" class="btn btn-info" (click)="addQuestion()">Add question</button>
-        <button [disabled]="f.invalid" type="button" class ="btn btn-danger" data-toggle="modal" data-target="#submitSurvey">Submit</button>
+        <button [disabled]="f.invalid || !checkIfAnswersIsOk()" type="button" class ="btn btn-danger" data-toggle="modal" data-target="#submitSurvey">Submit</button>
     </div>
   </form>
   </div>

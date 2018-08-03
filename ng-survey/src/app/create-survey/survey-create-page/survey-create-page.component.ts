@@ -100,7 +100,7 @@ export class SurveyCreatePageComponent implements OnInit {
    }
 
    checkIfAnswersIsOk(){
-     if(this.questions != null && this.questions[0] != null && this.questions[0].answerList != null && this.questions[0].answerList[0] != null && (this.questions[0].answerList[0].answerText != null || this.questions[0].answerList[0].answerText != "")){
+     if(this.questions != null && this.questions[0] != null && this.questions[0].answerList != null && this.questions[0].answerList[0] != null && this.questions[0].answerList[0].answerText != null && this.questions[0].answerList[0].answerText != ""){
        return true;
      }
      return false;
