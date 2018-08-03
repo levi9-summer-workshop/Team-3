@@ -29,7 +29,7 @@
                         
                         <div class="form-group row">
                           <div class="offset-4 col-8">
-                            <button (click) = "changePassword()" name="submit" type="submit" class="btn btn-primary">Change password</button>
+                            <button (click) = "changePassword()" name="submit" type="submit" class="btn btn-primary" data-toggle="modal" data-target="#success">Change password</button>
                           </div>
                         </div>
                       </form>
@@ -37,5 +37,23 @@
           </div>
           
       </div>
+  </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="success" data-backdrop="static" role="dialog" aria-labelledby="successLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="successLabel">Survey</h5>
+      </div>
+      <div class="modal-body">
+          <p>You have successfully changed your password!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="onOk()">OK</button>
+      </div>
+    </div>
   </div>
 </div>

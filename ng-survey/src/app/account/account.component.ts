@@ -33,16 +33,17 @@ public newPasword : string;
     user.id = this.user.id;
 
     this.userService.changePassword(user).subscribe(
-      () =>{ 
-        location.reload();
-      },
+      () =>{ },
       (error) => console.log(error)
     )
   }
 
+  onOk() {
+    location.reload();
+  }
+
   myFunction() {
     var x = document.getElementById("newpass");
-    //this.input.nativeElement.type =
     if (this.input.nativeElement.type === "password") {
       this.input.nativeElement.type = "text";
     } else {
