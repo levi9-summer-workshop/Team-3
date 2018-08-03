@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginServiceService, AuthUser } from './login-service.service';
 import { THIS_EXPR } from '../../../../node_modules/@angular/compiler/src/output/output_ast';
+import { SurveyUserService } from '../../survey-user/survey-user.service';
+import { SurveyUser } from '../../survey-user/survey-user.model';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +22,7 @@ export class LoginComponent implements OnInit {
   public lgdin : boolean;
   public email: string;
   
-  constructor(private loginService : LoginServiceService, private router: Router) { }
+  constructor(private loginService : LoginServiceService, private router: Router, private userService : SurveyUserService) { }
 
   ngOnInit() {
 
@@ -68,7 +70,13 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/registration']);
   }
 
-  public stuff() {
-    console.log(this.email);
+  forgotPassword(){
+    let user = new SurveyUser();
+    user.email = this.email;
+    this.userService.forgotPassword(user).subscribe(
+      (data) => { console.log(data); },
+      (error) => { console.log(error); }
+    );
   }
+
 }

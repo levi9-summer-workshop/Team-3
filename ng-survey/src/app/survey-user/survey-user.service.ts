@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { SurveyUser } from './survey-user.model';
 import { LoginServiceService } from '../templates/login/login-service.service';
+import { Survey } from '../survey-fill/survey';
 
 @Injectable()
 export class SurveyUserService {
@@ -31,5 +32,10 @@ export class SurveyUserService {
 
   changePassword(user : SurveyUser) : Observable<any>{
     return this.http.put("//localhost:8080/user/change-password", user, { headers : this.loginService.getAuthHeaders() } );
+  }
+
+  forgotPassword(user : SurveyUser) : Observable<any>{
+    return this.http.post("//localhost:8080/user/forgot-password", user );
+   
   }
 }
