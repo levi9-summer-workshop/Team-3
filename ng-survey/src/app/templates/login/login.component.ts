@@ -21,6 +21,8 @@ export class LoginComponent implements OnInit {
   public error : string;
   public lgdin : boolean;
   public email: string;
+  public msg : string;
+  public msgSent: boolean;
   
   constructor(private loginService : LoginServiceService, private router: Router, private userService : SurveyUserService) { }
 
@@ -71,11 +73,19 @@ export class LoginComponent implements OnInit {
   }
 
   forgotPassword(){
+    this.msg = "We've sent you an e-mail containing your new password!";
+    this.msgSent = true;
     let user = new SurveyUser();
     user.email = this.email;
     this.userService.forgotPassword(user).subscribe(
-      (data) => { console.log(data); },
-      (error) => { console.log(error); }
+      (data) => { 
+        this.msg = "We've sent you an e-mail containing your new password!";
+        this.msgSent = true;
+      },
+      (error) => { 
+        this.msg = "We're sorry, this e-mail is not valid, you've probably made a mistake.";
+        this.msgSent = false;    
+      }
     );
   }
 
