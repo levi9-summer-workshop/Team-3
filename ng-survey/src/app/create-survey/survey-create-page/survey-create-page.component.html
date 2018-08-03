@@ -1,7 +1,7 @@
 <div class="survey container">
   <div class="form-group">
     <form #f="ngForm">
-    <input type="text" class="input form-control form-control-lg col-sm-6 col-lg-8 col-centered" name="nameofsurvey" #sn="ngModel" placeholder="Name of your survey" [ngModelOptions]="{standalone: true}" [(ngModel)]="surveyName" [ngClass]="{'is-invalid': sn.invalid && (sn.dirty || sn.touched)}" required>
+    <input type="text" class="input form-control form-control-lg col-sm-6 col-lg-8 col-centered" name="nameofsurvey" #sn="ngModel" placeholder="Name of your survey" [(ngModel)]="nameofsurvey" [ngClass]="{'is-invalid': sn.invalid && (sn.dirty || sn.touched)}" required>
     <div class="invalid-feedback" *ngIf=" sn.invalid && (sn.dirty || sn.touched)">Survey must have name!</div>
     <hr>
     <textarea class="input form-control form-control-sm col-sm-4 col-md-6 col-centered" name="descriptionofsurvey" placeholder="Describe your survey" #sd="ngModel" maxlength="200" rows="3" [(ngModel)]="desc" [ngClass]="{'is-invalid': sd.invalid && (sd.dirty || sd.touched)}" required></textarea>

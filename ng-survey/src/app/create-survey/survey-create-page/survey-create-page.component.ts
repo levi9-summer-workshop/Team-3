@@ -15,7 +15,7 @@ import { DatePipe } from '@angular/common';
 })
 export class SurveyCreatePageComponent implements OnInit {
 
-  public surveyName : string;
+  public nameofsurvey : string;
   public desc: string;
   public questions : SurveyQuestion[] = [];
   public user: AuthUser;
@@ -74,7 +74,7 @@ export class SurveyCreatePageComponent implements OnInit {
     let id = 0;
     this.user = this.loginService.getAuthUser();
     this.removeEmptyAnswers();
-    this.service.post(new Survey(this.user.id, this.user.username, this.surveyName, this.desc, this.questions, this.isPrivate, this.expireDate, true)).subscribe(data => {
+    this.service.post(new Survey(this.user.id, this.user.username, this.nameofsurvey, this.desc, this.questions, this.isPrivate, this.expireDate, true)).subscribe(data => {
       let survey = data;
       id = survey.id;
     },
