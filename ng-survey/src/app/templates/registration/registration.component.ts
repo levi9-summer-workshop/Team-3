@@ -17,6 +17,8 @@ export class RegistrationComponent implements OnInit {
   public pass: string;
   public message: string;
   public registered: boolean;
+  public confirmPassword = "";
+  public captchaConfirmed = false;
 
   constructor(private registrationService: RegistrationService, private router: Router) { }
 
@@ -53,7 +55,13 @@ export class RegistrationComponent implements OnInit {
   }
 
   resolved(captchaResponse : string){
-    console.log('Resolved captcha with response ${captchaResponse}:');
+    this.captchaConfirmed = true;
   }
 
+    passwordConfirmed(){
+      if(this.user.password == this.confirmPassword && this.captchaConfirmed == true){
+        return true;
+      }
+      return false;
+    }
 }

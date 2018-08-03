@@ -33,13 +33,13 @@
 		<div class="form-group">
 			<div class="input-group">
         <span class="input-group-addon"></span>
-				<input class="form-control" type="password" name="confirm_password" #confirm_password="ngModel" ngModel placeholder="Confirm Password" required validateEqual="password" [ngClass]="{'is-invalid': confirm_password.invalid && (confirm_password.dirty || confirm_password.touched)}">
+				<input class="form-control" type="password" name="confirm_password" #confirm_password="ngModel" ngModel [(ngModel)]="confirmPassword" placeholder="Confirm Password" required validateEqual="password" [ngClass]="{'is-invalid': confirm_password.invalid && (confirm_password.dirty || confirm_password.touched)}">
         <div class="invalid-feedback" *ngIf="confirm_password.invalid && (confirm_password.dirty || confirm_password.touched)">Passwords don't match!</div>
       </div>
         </div>        
-        
+        <re-captcha class="center" (resolved)="resolved($event)" siteKey="6Lca5mcUAAAAAOv4cKiI0esnGryBQ3sLhQNccjs4"></re-captcha>
 		<div class="form-group">
-            <button type="submit" [disabled]="f.invalid" class="btn btn-primary btn-block btn-lg" data-toggle="modal" data-target="#userExists">Sign Up</button>
+            <button type="submit" [disabled]="f.invalid || !passwordConfirmed()" class="btn btn-primary btn-block btn-lg" data-toggle="modal" data-target="#userExists">Sign Up</button>
         </div>
     </form>
 	<div class="text-center font">Already have an account? <a href="login">Login here</a>.</div>
@@ -67,4 +67,4 @@
     </div>
   </div>
 </div>
-<re-captcha (resolved)="resolved($event)" siteKey="6Lca5mcUAAAAAOv4cKiI0esnGryBQ3sLhQNccjs4"></re-captcha>
+

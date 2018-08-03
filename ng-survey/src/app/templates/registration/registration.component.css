@@ -87,3 +87,9 @@ body {
     font-size: 13px;
     font-family: 'Roboto', sans-serif;
 }
+
+.center {
+    width: 40px;
+    text-align: center;
+    margin-left: 20%;
+}
