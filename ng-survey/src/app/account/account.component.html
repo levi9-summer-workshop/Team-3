@@ -11,18 +11,19 @@
               <div class="col-md-12">
                   
                         <div class="form-group row">
-                          <label for="username" class="col-4 col-form-label">User Name*</label> 
+                          <label for="username" class="col-4 col-form-label">User Name</label> 
                            {{user?.username}}
                         </div>
                         <div class="form-group row">
-                          <label for="email" class="col-4 col-form-label">Email*</label> 
+                          <label for="email" class="col-4 col-form-label">Email</label> 
                           {{user?.email}}
                         </div>
                         <form>
                         <div class="form-group row">
                           <label for="newpass" class="col-4 col-form-label">New Password</label> 
                           <div class="col-8">
-                            <input id="newpass" name="newpass" [(ngModel)]="newPasword" placeholder="New Password" class="form-control here" type="password">
+                            <input id="newpass" #newpass name="newpass" [(ngModel)]="newPasword" placeholder="New Password" class="form-control here" type="password">
+                            <input type="checkbox" (click)="myFunction()">Show Password
                           </div>
                         </div> 
                         
