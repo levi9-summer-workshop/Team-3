@@ -51,4 +51,9 @@ export class RegistrationComponent implements OnInit {
   public onOk() {
       this.router.navigate(['/home']);
   }
+
+  resolved(captchaResponse : string){
+    console.log('Resolved captcha with response ${captchaResponse}:');
+  }
+
 }
